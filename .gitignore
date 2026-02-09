@@ -1,0 +1,42 @@
+# Ignore R environment files
+renv/library/
+renv/staging/
+*.Rhistory
+*.RData
+
+# Ignore Python build artifacts
+*.egg-info/
+build/
+dist/
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore macOS metadata
+.DS_Store
+
+# Ignore temporary editor or OS files
+*.swp
+*.swo
+*.~ 
+
+# Ignore tmp test files
+.pytest_cache/
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+
+# Sphinx build directory
+docs/_build/
+docs/build/
+
+# Jupyter notebook checkpoints
+**/.ipynb_checkpoints
+
+# Cache and metadata
+docs/.doctrees/
+docs/.pytest_cache/
+docs/.mypy_cache/
