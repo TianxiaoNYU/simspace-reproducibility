@@ -145,8 +145,8 @@ comp_xen = ct_xen.reindex(columns=ct_order, fill_value=0).div(ct_xen.sum(axis=1)
 vmax = max(comp_ss.max().max(), comp_xen.max().max())
 
 # Create percent annotation matrices
-annot_ss = comp_ss.applymap(lambda v: f"{v*100:.1f}%").values
-annot_xen = comp_xen.applymap(lambda v: f"{v*100:.1f}%").values
+annot_ss  = comp_ss.map(lambda v: f"{v*100:.1f}%").to_numpy()
+annot_xen = comp_xen.map(lambda v: f"{v*100:.1f}%").to_numpy()
 
 # Plot side-by-side heatmaps
 fig, axes = plt.subplots(1, 2, figsize=(6, 6), dpi=250)

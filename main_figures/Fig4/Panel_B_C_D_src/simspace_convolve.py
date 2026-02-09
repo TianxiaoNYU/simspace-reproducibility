@@ -62,8 +62,8 @@ for niches in n_niche:
                 seed=seed
             )
             sim.fit_scdesign(
-                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_count.csv',
-                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_metadata.csv',
+                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_count_2.csv',
+                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_metadata_2.csv',
                 'Cluster',
                 'x_centroid',
                 'y_centroid',
@@ -94,8 +94,8 @@ for niches in n_niche:
                 seed=seed
             )
             sim.fit_scdesign(
-                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_count.csv',
-                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_metadata.csv',
+                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_count_3.csv',
+                f'{script_dir}/../Panel_B_C_D_data/Xenium_reference_metadata_3.csv',
                 'Cluster',
                 'x_centroid',
                 'y_centroid',

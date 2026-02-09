@@ -118,17 +118,18 @@ hm_data = hm_data.reindex(sorted(hm_data.columns), axis=1)
 hm_data = hm_data.reindex(sorted(hm_data.index), axis=0)
 
 # make all diagonal elements NA for hm_data
-hm_data.values[np.diag_indices_from(hm_data)] = np.nan
+hm_arr = hm_data.to_numpy(copy=True)
+np.fill_diagonal(hm_arr, np.nan)
 
 # plot na as gray
 plt.figure(figsize=(7,7), dpi=250)
-sns.heatmap(hm_data, annot=True, cmap='viridis', vmin=0, fmt='.2g', 
-            mask=np.eye(hm_data.shape[0], dtype=bool), 
+sns.heatmap(hm_arr, annot=True, cmap='viridis', vmin=0, fmt='.2g', 
+            mask=np.eye(hm_arr.shape[0], dtype=bool), 
             cbar_kws={'label': 'Interaction Strength'}, square=True, 
             linewidths=0, linecolor='black')
 plt.xlabel('Cell Type')
 plt.ylabel('Cell Type')
-plt.gca().collections[0].colorbar.remove()
+plt.gca().collections[0].colorbar.remove()  # type: ignore
 plt.gca().set_aspect('equal')
 plt.xticks(rotation=90)
 plt.tight_layout()

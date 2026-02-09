@@ -143,24 +143,6 @@ def compare_results(
                     })
                     result_df.to_csv(save_dir + f"pcc/kernel{kernel}_niche{niches}_state{states}_seed{seed}.csv", index=False)
 
-                    # Calculate row-wise Spearman correlation
-                    c2l_smcorr = rowwise_smcorr(ground_truth.values, c2l_res.values)
-                    RCTD_full_smcorr = rowwise_smcorr(ground_truth.values, RCTD_full_res.values)
-                    RCTD_multi_smcorr = rowwise_smcorr(ground_truth.values, RCTD_multi_res.values)
-                    CARD_smcorr = rowwise_smcorr(ground_truth.values, CARD_res.values)
-                    Seurat_smcorr = rowwise_smcorr(ground_truth.values, Seurat_res.values)
-                    spatialDWLS_smcorr = rowwise_smcorr(ground_truth.values, spatialDWLS_res.values)
-                    # Save the results as a DataFrame
-                    result_df = pd.DataFrame({
-                        "c2l": c2l_smcorr,
-                        "RCTD_full": RCTD_full_smcorr,
-                        "RCTD_multi": RCTD_multi_smcorr,
-                        "CARD": CARD_smcorr,
-                        "Seurat": Seurat_smcorr,
-                        "spatialDWLS": spatialDWLS_smcorr
-                    })
-                    result_df.to_csv(save_dir + f"smcc/kernel{kernel}_niche{niches}_state{states}_seed{seed}.csv", index=False)
-
                     # Calculate MSE
                     c2l_mse = rowwise_rmse(ground_truth.values, c2l_res.values)
                     RCTD_full_mse = rowwise_rmse(ground_truth.values, RCTD_full_res.values)
