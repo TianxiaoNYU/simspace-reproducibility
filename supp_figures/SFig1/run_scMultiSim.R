@@ -4,7 +4,7 @@ ncol <- as.numeric(args[2])
 seed <- as.numeric(args[3])
 
 library(scMultiSim)
-save_path <- "/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/SimSpace/fig_data/scMultiSim/"
+save_path <- "./"
 
 lig_params <- data.frame(
   target    = c(101, 102),

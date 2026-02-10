@@ -64,14 +64,14 @@ simspace-reproducibility/
     Fig1/
     Fig2/
       Fig2.py
+      Fig2_README.md
       Panel_D_data/
       Panel_D_src/
-      Panel_D.md
     Fig3/
       Fig3.py
+      Fig3_README.md
       Panel_*_data/
       Panel_*_src/
-      README.md
     ...
   supp_figures/
     SFig1/
