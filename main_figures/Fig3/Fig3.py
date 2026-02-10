@@ -39,7 +39,7 @@ plt.tight_layout()
 plt.savefig(f'{script_dir}/Fig3_panel_B1.png', bbox_inches='tight', dpi=300)
 
 
-sccube_cells = pd.read_csv(f"{script_dir}/Panel_B_C_D_data/Xenium_Breast_scCube.csv",
+sccube_cells = pd.read_csv(f"{script_dir}/Panel_B_C_D_data/scCube_fitted_metadata.csv",
                     index_col=0)
 sccube_cell_counts = sccube_cells['Cell_type'].value_counts()
 sccube_cells = sccube_cells[sccube_cells['Cell_type'].isin(sccube_cell_counts[sccube_cell_counts >= 10].index)]

@@ -2,6 +2,7 @@ import scanpy as sc
 import pandas as pd
 import numpy as np
 import os 
+script_dir = os.path.dirname(os.path.abspath(__file__))
 import pickle
 
 import cell2location
@@ -13,15 +14,15 @@ warnings.filterwarnings("ignore")
 parser = argparse.ArgumentParser(description='cell2location deconvolution',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-parser.add_argument('--input_meta_file', type=str, default='/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/dataset/scdesign/spot_meta_kernel5_niche2_state8_seed0.csv',
+parser.add_argument('--input_meta_file', type=str, default=script_dir + '/spot_meta_kernel5_niche2_state8_seed0.csv',
                     help='input meta file')
-parser.add_argument('--input_omics_file', type=str, default='/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/dataset/scdesign/spot_omics_kernel5_niche2_state8_seed0.csv',
+parser.add_argument('--input_omics_file', type=str, default=script_dir + '/spot_omics_kernel5_niche2_state8_seed0.csv',
                     help='input omics file')
-parser.add_argument('--ref_meta_file', type=str, default='/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/data/Xenium/tile_23/tile_23_meta_update.csv',
+parser.add_argument('--ref_meta_file', type=str, default=script_dir + '/tile_23_meta_update.csv',
                     help='reference meta file')
-parser.add_argument('--ref_omics_file', type=str, default='/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/data/Xenium/tile_23/tile_23_count.csv',
+parser.add_argument('--ref_omics_file', type=str, default=script_dir + '/tile_23_count.csv',
                     help='reference omics file')
-parser.add_argument('--output_dir', type=str, default='/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/output/test',
+parser.add_argument('--output_dir', type=str, default=script_dir,
                     help='output directory')
 arg = parser.parse_args()
 
@@ -58,8 +59,8 @@ def main():
                                         for i in reference_adata.uns['mod']['factor_names']]].copy()
     inf_aver.columns = reference_adata.uns['mod']['factor_names']
 
-    inf_aver_path = os.path.join("/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/results/raw/inf_aver.pkl")
-    mod_path = os.path.join("/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/results/raw/regression_model")
+    inf_aver_path = os.path.join(script_dir, "inf_aver.pkl")
+    mod_path = os.path.join(script_dir, "regression_model")
     
     # inf_aver_path = os.path.join("/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/results/raw/inf_aver.pkl")
     # mod_path = os.path.join("/Users/zhaotianxiao/Library/CloudStorage/Dropbox/FenyoLab/Project/Spatialsim/output/deconvolution/results/raw/regression_model")

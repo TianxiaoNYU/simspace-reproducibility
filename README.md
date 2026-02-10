@@ -13,10 +13,10 @@ This repository contains scripts and data to reproduce **all main and supplement
 ## Quick start
 
 ### 1) Create the default environment
-Using mamba/conda:
+Using conda:
 ```bash
-mamba env create -f environment.yml
-mamba activate simspace-repro
+conda env create -f environment.yml
+conda activate simspace-repro
 ```
 
 ### 2) Reproduce all main figures
