@@ -17,6 +17,7 @@ Using conda:
 ```bash
 conda env create -f environment.yml
 conda activate simspace-repro
+pip install simspace==0.3.1
 ```
 
 ### 2) Reproduce all main figures
