@@ -15,8 +15,10 @@ def parse_args():
 
 def main():
     args = parse_args()
-    df = pd.read_csv(args.csv)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    df = pd.read_csv(os.path.join(script_dir, args.csv))
     os.makedirs(args.outdir, exist_ok=True)
+    
 
     agg = df.groupby(["method","grid_n"]).agg(
         runtime_mean=("runtime_s","mean"),
