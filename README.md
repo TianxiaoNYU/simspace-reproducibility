@@ -5,7 +5,7 @@ This repository contains scripts and data to reproduce **all main and supplement
 - Main figures: `main_figures/`
 - Supplementary figures: `supp_figures/`
 - Example outputs: `example_output/`
-- Figure-to-script mapping: **`FIGURE_INDEX.md`**
+- Figure-to-script mapping: `FIGURE_INDEX.md`
 - Default environment: `environment.yml`
 
 ---
