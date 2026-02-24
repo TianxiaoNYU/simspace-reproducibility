@@ -2,6 +2,8 @@
 
 This repository contains scripts and data to reproduce **all main and supplementary figures** for the SimSpace manuscript.
 
+- Python script for main figures: `plot_main.py`
+- Python script for Supplementary figures: `plot_supp.py`
 - Main figures: `main_figures/`
 - Supplementary figures: `supp_figures/`
 - Example outputs: `example_output/`
@@ -13,7 +15,12 @@ This repository contains scripts and data to reproduce **all main and supplement
 ## Quick start
 
 ### 1) Create the default environment
-Using conda:
+We recommend using conda to setup the environment:
+
+```bash
+git clone https://github.com/TianxiaoNYU/simspace-reproducibility.git
+```
+
 ```bash
 conda env create -f environment.yml
 conda activate simspace-repro
