@@ -95,6 +95,8 @@ This index maps each manuscript figure to the exact script and data used to repr
 ### Supplementary Figure 1
 - **Path:** `supp_figures/SFig1/`
 - **Entry script:** `supp_figures/SFig1/SFig1.py`
+- **Panels:** B1/B2, 220-gene runtime/peak RAM; C1/C2, 2,200-gene runtime/peak RAM
+- **Example output:** `example_output/SFig1/`
 - **Environment:** default unless otherwise noted
 - **Run:**
   ```bash
@@ -112,10 +114,21 @@ This index maps each manuscript figure to the exact script and data used to repr
   python supp_figures/SFig2/SFig2.py
   ```
 
-### Supplementary Figure 3–7
-- **Path:** `supp_figures/SFig3/` … `supp_figures/SFig7/`
-- **Entry scripts:** `SFig3.py` … `SFig7.py` (as implemented)
+### Supplementary Figure 3–8
+- **Path:** `supp_figures/SFig3/` … `supp_figures/SFig8/`
+- **Entry scripts:** `SFig3.py` … `SFig8.py` (as implemented)
 - **Environment:** default unless otherwise noted
+
+### Supplementary Figure 8
+- **Path:** `supp_figures/SFig8/`
+- **Entry script:** `supp_figures/SFig8/SFig8.py`
+- **Figure README:** `supp_figures/SFig8/SFig8_README.md`
+- **Inputs:** frozen Figure 3 Xenium tile, fitted SimSpace parameters,
+  molecular realization, and BANKSY outputs
+- **Run:**
+  ```bash
+  python supp_figures/SFig8/SFig8.py
+  ```
 
 ---
 

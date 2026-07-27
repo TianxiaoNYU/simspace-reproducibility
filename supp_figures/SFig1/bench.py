@@ -17,6 +17,13 @@ def parse_args():
     p.add_argument("--repeats", type=int, default=5)
     p.add_argument("--outfile", type=str, default="results.csv")
     p.add_argument("--threads", type=int, default=1)
+    p.add_argument("--n-genes", type=int, default=220)
+    p.add_argument(
+        "--sccube-data-dir",
+        type=str,
+        default=None,
+        help="scCube input directory, resolved relative to this script.",
+    )
     p.add_argument("--mode", type=str, default="ref-free", choices=["ref-free", "ref-based"])
     p.add_argument("--extra", type=str, default="{}", help="JSON string of extra kwargs to pass to runners")
     return p.parse_args()
@@ -29,8 +36,9 @@ def env_with_threads(n):
 
 def run_once(method, n, seed, mode, extra_kws, pybin=sys.executable, threads=1):
     """Runs a single simulation in a fresh subprocess and captures runtime + peak RAM."""
+    runner_path = Path(__file__).resolve().with_name("runners.py")
     cmd = [
-        pybin, "runners.py",
+        pybin, str(runner_path),
         "--method", method,
         "--shape", str(n), str(n),
         "--seed", str(seed),
@@ -50,15 +58,26 @@ def run_once(method, n, seed, mode, extra_kws, pybin=sys.executable, threads=1):
         raise RuntimeError(f"Runner did not return JSON:\n{proc.stdout}\n{proc.stderr}")
     runtime = payload.get("runtime_s", end - start)
     ram = payload.get("peak_ram_mb", None)
-    return runtime, ram
+    return runtime, ram, payload.get("n_genes")
 
 def main():
     args = parse_args()
     extra = json.loads(args.extra)
+    extra["n_genes"] = args.n_genes
+    if args.sccube_data_dir is not None:
+        extra["sccube_data_dir"] = args.sccube_data_dir
     outpath = Path(args.outfile)
     outpath.parent.mkdir(parents=True, exist_ok=True)
 
-    fields = ["method","mode","grid_n","repeat","runtime_s","peak_ram_mb"]
+    fields = [
+        "method",
+        "mode",
+        "grid_n",
+        "repeat",
+        "n_genes",
+        "runtime_s",
+        "peak_ram_mb",
+    ]
     with open(outpath, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
@@ -66,9 +85,22 @@ def main():
         for method in args.methods:
             for grid_n in args.grid_sizes:
                 for r in range(args.repeats):
-                    t, m = run_once(method, grid_n, r, args.mode, extra, threads=args.threads)
+                    t, m, actual_n_genes = run_once(
+                        method,
+                        grid_n,
+                        r,
+                        args.mode,
+                        extra,
+                        threads=args.threads,
+                    )
+                    if actual_n_genes != args.n_genes:
+                        raise RuntimeError(
+                            f"{method} reported {actual_n_genes} genes; "
+                            f"expected {args.n_genes}"
+                        )
                     writer.writerow(dict(method=method, mode=args.mode,
                                          grid_n=grid_n, repeat=r,
+                                         n_genes=args.n_genes,
                                          runtime_s=t, peak_ram_mb=m))
                     print(f"[{method}] {grid_n}x{grid_n}, run {r}: {t:.2f}s | {m:.1f} MB")
 
