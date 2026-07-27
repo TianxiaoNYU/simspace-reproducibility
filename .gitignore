@@ -25,6 +25,9 @@ __pycache__/
 # Ignore tmp test files
 .pytest_cache/
 
+# Deterministically generated large runtime-benchmark inputs
+supp_figures/SFig1/generated_data/
+
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 .ipynb_checkpoints/*
