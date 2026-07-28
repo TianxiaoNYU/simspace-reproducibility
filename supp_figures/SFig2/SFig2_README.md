@@ -13,7 +13,7 @@ This folder contains everything needed to reproduce the code-generated panels in
   Inputs and/or cached intermediates required for **Panel D**.
 
 - `Panel_E_F_data/`  
-  Inputs and/or cached intermediates required for **Panel D**.
+  Inputs and/or cached intermediates required for **Panels E and F**.
 ---
 
 ## Environment
@@ -39,6 +39,33 @@ Or from this directory:
 ```bash
 python SFig2.py
 ```
+
+---
+
+## Panel A provenance and paired plots
+
+Panel A contains three paired examples. Files `A1`, `A3`, and `A5` show sampled
+cell states; files `A2`, `A4`, and `A6` show the corresponding spatial-domain
+labels from the same `SimSpace` objects.
+
+- `A1/A2`: two MRF-generated domains, seven cell states, parameter seed 1,
+  simulation seed 42, and a user-defined trapezoid tissue mask.
+- `A3/A4`: four manually defined rectangular domains, ten cell states,
+  parameter and simulation seed 42, and the full 100-by-100 lattice.
+- `A5/A6`: four manually defined elliptical domains, twelve cell states,
+  parameter and simulation seed 42, and a noisy user-defined tissue boundary.
+
+The custom tissue masks are applied both to the cell-state grid and to the paired
+domain rendering. This is important because `SimSpace.plot_niche()` displays the
+entire lattice by default, including niche labels outside a custom tissue
+boundary. The local `plot_niche_with_tissue_mask()` helper prevents those
+out-of-tissue labels from appearing in `A2` and `A6`.
+
+The first example is distinct from Figure 1B: it uses randomly generated
+parameters for seven cell states and a trapezoid tissue mask, whereas Figure 1B
+uses fitted parameters for nine cell states on the full lattice. Both use
+simulation seed 42, which can make their initial two-domain MRF scaffolds appear
+similar even though their parameters and resulting niche-label arrays differ.
 
 ---
 

@@ -13,6 +13,22 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 import simspace as ss
 
+
+def plot_niche_with_tissue_mask(sim, outside_tissue, figsize=(5, 5), dpi=150):
+    """Plot niche labels only on the lattice sites retained in the tissue."""
+    outside_tissue = np.asarray(outside_tissue, dtype=bool)
+    if outside_tissue.shape != sim.niche.shape:
+        raise ValueError("The tissue mask and niche grid must have the same shape.")
+    if np.any(sim.grid[outside_tissue] >= 0):
+        raise ValueError("The tissue mask excludes lattice sites that still contain cells.")
+
+    plt.figure(figsize=figsize, dpi=dpi)
+    sns.heatmap(sim.niche, mask=outside_tissue)
+    plt.gca().set_aspect('equal')
+    plt.gca().invert_yaxis()
+    plt.show()
+
+
 ########### Panel A:
 shape = (100, 100)
 param_1 = ss.util.generate_random_parameters(n_group=2, n_state=7, seed=1)
@@ -59,8 +75,10 @@ Sim.density_sampler(density_replicates) # Cell density of each niche # type: ign
 Sim.perturbation(step = 0.2)
 Sim.plot(figsize=(5, 5), dpi=300, size=14)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A1.png'), bbox_inches='tight', dpi=300)
-Sim.plot_niche(figsize=(5, 5), dpi=300)
+plt.close()
+plot_niche_with_tissue_mask(Sim, boundary_mask, figsize=(5, 5), dpi=300)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A2.png'), bbox_inches='tight', dpi=300)
+plt.close()
 
 shape = (100, 100)
 param_1 = ss.util.generate_random_parameters(n_group=4, n_state=10, seed=42)
@@ -107,8 +125,10 @@ Sim.density_sampler(density_replicates)  # Cell density of each niche # type: ig
 Sim.perturbation(step = 0.2)
 Sim.plot(figsize=(5, 5), dpi=250, size=14)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A3.png'), bbox_inches='tight', dpi=300)
+plt.close()
 Sim.plot_niche(figsize=(5, 5), dpi=300)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A4.png'), bbox_inches='tight', dpi=300)
+plt.close()
 
 shape = (100, 100)
 param_1 = ss.util.generate_random_parameters(n_group=4, n_state=12, seed=42)
@@ -164,8 +184,10 @@ Sim.density_sampler(density_replicates)  # Cell density of each niche # type: ig
 Sim.perturbation(step = 0.2)
 Sim.plot(figsize=(5, 5), dpi=250, size=14)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A5.png'), bbox_inches='tight', dpi=300)
-Sim.plot_niche(figsize=(5, 5), dpi=300)
+plt.close()
+plot_niche_with_tissue_mask(Sim, boundary_mask, figsize=(5, 5), dpi=300)
 plt.savefig(os.path.join(script_dir, 'SFig2_panel_A6.png'), bbox_inches='tight', dpi=300)
+plt.close()
 
 ########### Panel B:
 Sim.create_omics(n_genes=1000, bg_ratio=0.2, bg_param = (1, 0.5), marker_param = (3.5, 1.6), spatial=False)
