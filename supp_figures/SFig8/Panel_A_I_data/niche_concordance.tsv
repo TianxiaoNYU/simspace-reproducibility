@@ -1,0 +1,7 @@
+metric	domain	value	n_units
+encoded_niche_vs_BANKSY_ARI	all_simulated_cells	0.6900198111629443	2873
+encoded_niche_vs_BANKSY_NMI	all_simulated_cells	0.5877563114219154	2873
+domain_composition_pearson_r	Tumor	0.9974059878748232	9
+domain_composition_rmse	Tumor	0.01697078247101757	9
+domain_composition_pearson_r	Stromal	0.9219218730239038	9
+domain_composition_rmse	Stromal	0.06669219992005568	9

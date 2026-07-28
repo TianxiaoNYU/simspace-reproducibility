@@ -1,0 +1,9 @@
+software	version
+python	3.11.9
+numpy	2.3.3
+pandas	3.0.0
+scipy	1.16.2
+matplotlib	3.10.8
+seaborn	0.13.2
+scikit-learn	1.8.0
+simspace	0.3.2; source commit ecf2855612871498dc89b8d43169229dfb8f6057
