@@ -114,9 +114,9 @@ This index maps each manuscript figure to the exact script and data used to repr
   python supp_figures/SFig2/SFig2.py
   ```
 
-### Supplementary Figure 3–8
-- **Path:** `supp_figures/SFig3/` … `supp_figures/SFig8/`
-- **Entry scripts:** `SFig3.py` … `SFig8.py` (as implemented)
+### Supplementary Figure 3–9
+- **Path:** `supp_figures/SFig3/` … `supp_figures/SFig9/`
+- **Entry scripts:** `SFig3.py` … `SFig9.py` (as implemented)
 - **Environment:** default unless otherwise noted
 
 ### Supplementary Figure 8
@@ -128,6 +128,16 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Run:**
   ```bash
   python supp_figures/SFig8/SFig8.py
+  ```
+
+### Supplementary Figure 9
+- **Path:** `supp_figures/SFig9/`
+- **Entry script:** `supp_figures/SFig9/SFig9.py`
+- **Figure README:** `supp_figures/SFig9/SFig9_README.md`
+- **Analysis:** phenotype Gibbs-sweep sensitivity for R1-8
+- **Run:**
+  ```bash
+  python supp_figures/SFig9/SFig9.py
   ```
 
 ---

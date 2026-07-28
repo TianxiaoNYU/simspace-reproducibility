@@ -1,0 +1,39 @@
+{
+  "analysis": "R1-8 phenotype Gibbs-sweep sensitivity",
+  "scope_note": "Sensitivity of declared spatial summaries; not a formal diagnostic or proof of full-field equilibrium.",
+  "num_iterations": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8,
+    10
+  ],
+  "default_num_iterations": 4,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "shape": [
+    100,
+    100
+  ],
+  "num_niches": 2,
+  "num_states": 9,
+  "fixed_niche_sweeps": 6,
+  "neighborhood_distance": 3,
+  "neighborhood_method": "manhattan",
+  "perturbation_sd": 0.2,
+  "moran_knn": 5,
+  "geary_knn": 20,
+  "interaction_knn": 50,
+  "simspace_version": "0.3.2",
+  "simspace_source_commit": "ecf2855612871498dc89b8d43169229dfb8f6057"
+}
