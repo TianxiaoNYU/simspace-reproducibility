@@ -1,0 +1,15 @@
+name: spatial-domain-benchmark-stlearn
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  # stLearn 1.4.1 requires Python >=3.12 and NumPy >=2.4, so it cannot
+  # share the environment used by the other five Python methods.
+  - python=3.12
+  - pip>=25
+  - setuptools>=61
+  - wheel
+  - ipykernel
+  - pip:
+      # Latest stable upstream tag. PyPI currently stops at stLearn 1.2.2.
+      - "stlearn @ git+https://github.com/BiomedicalMachineLearning/stLearn.git@03e38844a599ef4f3df8235e3f57bd74a9e96fcf"

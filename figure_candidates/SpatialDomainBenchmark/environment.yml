@@ -1,0 +1,63 @@
+name: spatial-domain-benchmark
+channels:
+  - pyg
+  - pytorch
+  - conda-forge
+  # defaults supplies the Python 3.10 numba build compatible with the
+  # official PyTorch 2.4 llvm-openmp ABI on macOS arm64.
+  - defaults
+dependencies:
+  # Shared runtime for GraphST, STAGATE, SpaGCN, and spCLUE.
+  # Python 3.10 is the oldest version with current osx-arm64 scikit-misc
+  # binaries; all four method codebases support its language/API surface.
+  - python=3.10
+  - pip>=24
+  # umap-learn 0.5.3 (required by the legacy Scanpy stack) imports
+  # pkg_resources, which setuptools 81+ removed.
+  - setuptools<81
+  - wheel
+
+  # spCLUE's published pins are the common scientific-stack baseline.
+  - numpy=1.23.5
+  - pandas=1.5.3
+  - scipy=1.10.0
+  - scikit-learn=1.2.2
+  - matplotlib-base=3.7.0
+  - seaborn=0.12.2
+  - tqdm=4.64.1
+  - anndata=0.8.0
+  - scanpy=1.9.3
+  - umap-learn=0.5.3
+  - numba=0.57.1
+  - h5py=3.9
+  - hdf5=1.14.2=*nompi*
+  - scikit-misc=0.5.2
+
+  # PyTorch Geometric 2.6.1 / PyTorch 2.4.0 is the first complete
+  # osx-arm64 binary combination that includes torch_sparse. It remains
+  # API-compatible with the older PyG calls used by STAGATE.
+  # Channel qualification is required: PyG's compiled extensions use the
+  # official PyTorch-channel ABI, not Conda-forge's same-version ABI.
+  - pytorch::pytorch=2.4.0
+  - pyg=2.6.1
+  - pytorch-sparse=0.6.18
+  - pytorch-scatter=2.1.2
+  - pytorch-cluster=1.6.3
+
+  # Graph clustering, optimal transport, and method-specific utilities.
+  - python-igraph=0.11.8
+  - louvain=0.8.2
+  - leidenalg=0.10.2
+  - networkx=3.1
+  - pot=0.9.4
+  - statsmodels=0.14.1
+  - kneed=0.8.5
+  - requests
+
+  # Notebook kernel only; Jupyter itself may live in a separate UI env.
+  - ipykernel
+
+  # Host-R bridge and pinned method sources are installed by
+  # install-methods.sh. They cannot be expressed safely in this YAML:
+  # rpy2 must be built in ABI mode against host R, and spCLUE has no
+  # setup.py/pyproject.toml. Do not add r-base or r-mclust here.

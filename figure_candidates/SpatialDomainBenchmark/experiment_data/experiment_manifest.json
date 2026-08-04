@@ -1,0 +1,208 @@
+{
+  "datasets": [
+    {
+      "counts_sha256": "71ecf0b7fbdfbd4db23c5dfa1f394060144287a356fd82f07a2c90a4d3dcfc70",
+      "dataset": "curved_layers_seed0_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 0,
+      "manifest_sha256": "0c4e005b1b45fd1e736f82de8775dd35ad27b1dfe43f6a907f428c9277c10d26",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "6823dfa66fa67a194789c4e1c2ea9fb361720a2b04187c59e120954436dbae60",
+      "dataset": "curved_layers_seed0_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 0,
+      "manifest_sha256": "aed629ed6b7728833809f57a94a5370ca45d4606e8cb13545aeddf99e7ed6d98",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "66ea603da8384d4ced1deefdca53fa7e18399f9342ea23de8c19b1c42e51276b",
+      "dataset": "curved_layers_seed0_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 0,
+      "manifest_sha256": "e30088bf0682f450b697b61d2c639c4e6907960fd4668b38b5f085894e68f9f4",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "bfede1be405144b4aa8bf206cad9c56b233fa6cd04cce2e39bdc62a65d733ffb",
+      "dataset": "curved_layers_seed1_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 1,
+      "manifest_sha256": "437bc11be68c81dce02a4eedc10b695182eac81b1c0115751f7c8f128e5c7202",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "629e34bc1a44930902f41f3c4cdaf84e8dd3ef4a4316b9b508df1e7b25e66d16",
+      "dataset": "curved_layers_seed1_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 1,
+      "manifest_sha256": "2df81b198211e6615b69bd477fab2c7a3e3444ce54435989a66972f0784a65eb",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "c55b77edb4f866d5997486080e2d73e9e5f3f2cbd15947fa769a6d9b21bc1014",
+      "dataset": "curved_layers_seed1_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 1,
+      "manifest_sha256": "8a0e19b382ec978c7639d66ec4043e9696abda900ce470cebdbf54e49fcad40c",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "8286fc100b6aa8794de83492c4f237669cdf99208d7a6147a2c57cf734b8b05f",
+      "dataset": "curved_layers_seed2_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 2,
+      "manifest_sha256": "cd0efbf7d5f54d9b33e094a90b2c8b600ba753a161c5e487f4ce47e96859b52f",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "a164cc3e94168c2db5b14142af63b30867b84d7973c5e5ccec5e6b5cf44ff01c",
+      "dataset": "curved_layers_seed2_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 2,
+      "manifest_sha256": "6c7349b4149b01b893655ba17c29199c06793532dc3197583c08dcf7220d088c",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "50859523886d22423c76a3321229de9ff05affbf1b87b0517f9fc9cf262b587a",
+      "dataset": "curved_layers_seed2_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 2,
+      "manifest_sha256": "2df0165dd7faf7d5fae93fa087426e9601d6b5cf0ee10d707422325d74a06def",
+      "topology": "curved_layers"
+    },
+    {
+      "counts_sha256": "0a8b3c78d728fbcf7670a0030b7af76d90a418c611d895d9ab8206bac8816b2c",
+      "dataset": "irregular_mrf_seed0_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 0,
+      "manifest_sha256": "e5a700067cb7c3bb56ab46c6b2e64a7347263277950ce7801572b0341366ddbd",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "23cb73282aff5ac3314705607975e1552592581be05cfd0683ff98a63092e445",
+      "dataset": "irregular_mrf_seed0_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 0,
+      "manifest_sha256": "5f8c558f5e98a74c326632c0bcd433b058670d924f447c18348c84744c395d4b",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "30aad9d9b8567d5e04943f4bbb924844e60b3f37d0e410ea36a3f635adbb5476",
+      "dataset": "irregular_mrf_seed0_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 0,
+      "manifest_sha256": "c366de73089abfb27f2262edba17a4fb888ec7d8c92a0fbf83a276b2f4b2316e",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "41a6062ffb2124c782ce836314dcb854b360189142ff747385f466ed3cefd741",
+      "dataset": "irregular_mrf_seed1_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 1,
+      "manifest_sha256": "65ec73bd133aee557bc4ad2efc69508a0be36fc327524346e7afb9d661f2388f",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "11ab476d696e28736424a6efb9f473723253780dd768ef8a2391669362bc1c72",
+      "dataset": "irregular_mrf_seed1_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 1,
+      "manifest_sha256": "0e896a9ea9231c3481c1529d2c5c490009701e93b4deccb7f87c04685ba3417c",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "b08bbcae1fd6d0894d8eccd26b813be03eef6e2057c2a11b00ddd24d2405e1a1",
+      "dataset": "irregular_mrf_seed1_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 1,
+      "manifest_sha256": "cc97a5addc933181f1ebd74bf397028c6ab171d7b6285e68f6ab62004d58b14a",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "213cfe27280a6ffd736be7df5812ffb6960712350087c3177b297f4c261b34c5",
+      "dataset": "irregular_mrf_seed2_hard",
+      "difficulty": "hard",
+      "domain_fold_change": 2.0,
+      "layout_seed": 2,
+      "manifest_sha256": "145cd1f4fc9c67793b472117df6e2054f4dd0d0b0bcdc792487f2541716a8fd7",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "090b35708fe6ecd31fe4f11f105441d6702c1132828996bf067399d72b00659e",
+      "dataset": "irregular_mrf_seed2_moderate",
+      "difficulty": "moderate",
+      "domain_fold_change": 3.0,
+      "layout_seed": 2,
+      "manifest_sha256": "887450509cac28ca60ab3f33cf33c9bf427c5aacffd008e726ac82cdea99ae52",
+      "topology": "irregular_mrf"
+    },
+    {
+      "counts_sha256": "aa11d01d6b538f5a3b85773a91d35fde60e661d86449013f1ae8d78f4daad460",
+      "dataset": "irregular_mrf_seed2_easy",
+      "difficulty": "easy",
+      "domain_fold_change": 4.0,
+      "layout_seed": 2,
+      "manifest_sha256": "1531dc0eaa4a0cc119fd38fad724d528fe76e57b241c9baf49f0a36af386ac34",
+      "topology": "irregular_mrf"
+    }
+  ],
+  "design": "2 pattern types x 3 difficulty levels x 3 layout seeds",
+  "difficulties": {
+    "easy": 4.0,
+    "hard": 2.0,
+    "moderate": 3.0
+  },
+  "generated_utc": "2026-08-04T14:11:10.031627+00:00",
+  "layout_seeds": [
+    0,
+    1,
+    2
+  ],
+  "n_datasets": 18,
+  "n_named_method_runs": 108,
+  "n_negative_control_runs": 18,
+  "n_total_evaluated_runs": 126,
+  "named_methods": [
+    "graphst",
+    "stagate",
+    "banksy",
+    "spagcn",
+    "spclue",
+    "stlearn"
+  ],
+  "negative_controls": [
+    "expression_pca_kmeans"
+  ],
+  "paired_across_difficulty": {
+    "byte_identical_files": [
+      "coordinates.tsv",
+      "truth.tsv",
+      "genes.tsv",
+      "gene_truth.tsv"
+    ],
+    "changing_factor": "nominal domain fold change",
+    "within": "topology and layout_seed"
+  },
+  "schema_version": "1.0",
+  "topologies": [
+    "curved_layers",
+    "irregular_mrf"
+  ]
+}
