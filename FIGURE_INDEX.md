@@ -88,6 +88,34 @@ This index maps each manuscript figure to the exact script and data used to repr
   python main_figures/Fig6/Fig6.py
   ```
 
+### The new Figure 2 (provisional)
+- **Manuscript placement:** after current Figure 6 pending final figure renumbering; existing figure numbers are unchanged
+- **Path:** `main_figures/Fig2_new/`
+- **Entry script:** `main_figures/Fig2_new/Fig2_new.py`
+- **Figure README:** `main_figures/Fig2_new/Fig2_new_README.md`
+- **Outputs:** `Panel_A.png`, `Panel_B.png`, and `Panel_C.png`; final assembly is maintained in the manuscript figure directory
+- **Analysis:** four-niche cortex-inspired anchor, 5 x 5 thickness-by-layer-specificity design, and reference-free marker expression
+- **Launcher integration:** included automatically by `plot_main.py` through its `Fig*` discovery; existing numeric figure labels remain unchanged
+- **Run:**
+  ```bash
+  python main_figures/Fig2_new/Fig2_new.py
+  ```
+
+### The new Figure 5 (provisional)
+- **Manuscript placement:** intended to replace current Figure 5; final numbering is pending
+- **Path:** `main_figures/Fig5_new/`
+- **Entry script:** `main_figures/Fig5_new/Fig5_new.py`
+- **Figure README:** `main_figures/Fig5_new/Fig5_new_README.md`
+- **Outputs:** complete `Fig5_new.png/.svg` plus standalone `Panel_A`, `Panel_B`, and `Panel_C` PNG/SVG files
+- **Analysis:** two-pattern, three-signal-level, three-seed spatial-domain benchmark of six named methods plus an expression-only negative control
+- **Panel data:** compact map cache under `Panel_A_B_data/` and frozen aggregate metrics under `Panel_C_data/`
+- **External environments/source:** `Panel_A_B_C_src/`; full method reruns use two dedicated Python environments and the host R library
+- **Launcher integration:** included automatically by `plot_main.py` through its `Fig*` discovery
+- **Run:**
+  ```bash
+  python main_figures/Fig5_new/Fig5_new.py
+  ```
+
 ---
 
 ## Supplementary Figures
@@ -124,7 +152,11 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Entry script:** `supp_figures/SFig8/SFig8.py`
 - **Figure README:** `supp_figures/SFig8/SFig8_README.md`
 - **Inputs:** frozen Figure 3 Xenium tile, fitted SimSpace parameters,
-  molecular realization, and BANKSY outputs
+  seed-0 molecular realization, ten-seed scDesign3 molecular summaries,
+  and BANKSY outputs
+- **Panels:** A–G, local spatial and niche validation; H–I, seed-0
+  gene-mean and variance fidelity; J–K, separate ten-seed PCC and RMSE
+  molecular-robustness summaries
 - **Run:**
   ```bash
   python supp_figures/SFig8/SFig8.py
@@ -138,6 +170,60 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Run:**
   ```bash
   python supp_figures/SFig9/SFig9.py
+  ```
+
+### Supplementary Figure 10
+- **Path:** `supp_figures/SFig10/`
+- **Entry script:** `supp_figures/SFig10/SFig10.py`
+- **Full data-generation script:**
+  `supp_figures/SFig10/SFig10_generate_data.py`
+- **Figure README:** `supp_figures/SFig10/SFig10_README.md`
+- **Analysis:** quantitative reference-free 3D spatial structure and
+  truth-based niche recovery for R1-5
+- **Example output:** `example_output/SFig10/SFig10.png`
+- **Run:**
+  ```bash
+  # Fast: render from archived ten-seed outputs
+  python supp_figures/SFig10/SFig10.py
+
+  # Full: regenerate simulations, metrics, exports, and figure
+  python supp_figures/SFig10/SFig10_generate_data.py
+  ```
+
+### Supplementary Figure 11
+- **Path:** `supp_figures/SFig11/`
+- **Entry script:** `supp_figures/SFig11/SFig11.py`
+- **Download helper:** `supp_figures/SFig11/download_starmap.py`
+- **Figure README:** `supp_figures/SFig11/SFig11_README.md`
+- **Analysis:** post-generation comparison of the fixed reference-free
+  Figure 2 cortex simulation with a compact mouse visual-cortex STARmap field
+  for R2-M4
+- **Panel data:** archived source, mapped cells, profiles, metrics, complete
+  configuration, checksums, and software provenance under `Panel_A_E_data/`
+- **Example output:** `example_output/SFig11/SFig11.png`
+- **Launcher integration:** discovered automatically by `plot_supp.py`
+- **Run:**
+  ```bash
+  python supp_figures/SFig11/SFig11.py
+  ```
+
+### Supplementary Figure 12
+- **Path:** `supp_figures/SFig12/`
+- **Entry script:** `supp_figures/SFig12/SFig12.py`
+- **Figure README:** `supp_figures/SFig12/SFig12_README.md`
+- **Analysis:** twenty-seed, 50 × 50-lattice and 500-gene validation of four
+  optional spatial-effect bases, capture thinning, ambient background, and
+  excess dropout for R2-M1/R2-m5; conditional gene truth is reusable for R2-M3
+- **Outputs:** PNG, raw seed-level metrics, complete gene truth,
+  backward-compatibility checks, and software/configuration provenance
+- **Launcher integration:** discovered automatically by `plot_supp.py`
+- **Run:**
+  ```bash
+  # Full: regenerate simulations, metrics, checks, and figure
+  python supp_figures/SFig12/SFig12.py
+
+  # Fast: render from archived outputs
+  python supp_figures/SFig12/SFig12.py --render-only
   ```
 
 ---

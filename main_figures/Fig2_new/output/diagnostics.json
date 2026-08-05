@@ -1,0 +1,7 @@
+{
+  "n_cells": 3360,
+  "composition_rmse_visual_guide": 0.009970072099560525,
+  "median_depth_mae_visual_guide": 0.058453633592535116,
+  "laminar_ordering_violations": 0,
+  "tuning_score": 0.03627420721620133
+}

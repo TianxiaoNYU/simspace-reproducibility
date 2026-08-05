@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-08-04T18:14:10.560727+00:00",
+  "difficulties": {
+    "easy": 4.0,
+    "hard": 2.0,
+    "moderate": 3.0
+  },
+  "implementation_checksums": {
+    "benchmark-config.draft.yml": "ddccae1cf0bb922eb0269c60f1010ff31ff4bfa88640b84d9e504a81d60b58d0",
+    "environment-stlearn.yml": "f174279b5bbf7cd38a5212551c1715e60f9c7e26a5b5317de5dee2e7d5a413ed",
+    "environment.yml": "42e09000661ef453d80a2232fdddd7a9b54aa0a213806faf38b7a955eb3fed2f",
+    "evaluate_experiment.py": "988f2b318f4dd39d6d22a3cdbf0e518497ea4bd14a23e530be0f0da6ee857990",
+    "generate_experiment.py": "06bdae5f33ffed6a4ad09c0944cf0792fd30843d8fee1022f305a265412ec80b",
+    "generate_pilot.py": "4e4c28c409a869596e5332e3d5dde605fa2584ec7cacfae314e2a9c310305adb",
+    "pilot_common.py": "472ef69ee631fa23e399d108a6be57b4aaa902ac589b71c6e80c389f92e0c7bf",
+    "run_banksy.R": "8510b5ff5600f248f44561156a22d55aac2a4e9548182218c10885e23eb20fe9",
+    "run_baselines.py": "6d18f231e9475e612d6972791d042b5daff5776758cb7faa7e0d9446772f3ad0",
+    "run_experiment.py": "189a8cda7fd82a1d9eadca86611d86b11a7a6b0520ca93366e03a9a667d9c869",
+    "run_legacy_method.py": "e3c4ee2ad3e6e33d8e4a639ac003e2264b70fe10666dae3e1da100c0e0057cf0",
+    "run_stlearn.py": "2c53361252b3f10970ce6ba714a2f28ed42270f3bf8be3d8b4292ce8724091cd"
+  },
+  "layout_seeds": [
+    0,
+    1,
+    2
+  ],
+  "method_seed_policy": "100000 + fixed topology offset + layout seed; paired across difficulty",
+  "method_seeds": {
+    "curved_layers_seed0": 100000,
+    "curved_layers_seed1": 100001,
+    "curved_layers_seed2": 100002,
+    "irregular_mrf_seed0": 100100,
+    "irregular_mrf_seed1": 100101,
+    "irregular_mrf_seed2": 100102
+  },
+  "methods": [
+    "stlearn"
+  ],
+  "n_datasets": 18,
+  "n_planned_runs": 18,
+  "named_methods": [
+    "stlearn"
+  ],
+  "negative_controls": [],
+  "resume_successful": false,
+  "schema_version": "1.0",
+  "timeout_minutes": 90.0,
+  "topologies": [
+    "curved_layers",
+    "irregular_mrf"
+  ]
+}

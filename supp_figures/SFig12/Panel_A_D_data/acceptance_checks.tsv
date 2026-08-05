@@ -1,0 +1,11 @@
+check	value	criterion	passed
+default_equals_disabled_components	1.0	equal to 1.0	True
+default_equals_zero_spatial_effect	1.0	equal to 1.0	True
+latent_spatial_coefficient_exact	9.992007221626409e-16	maximum absolute error < 1e-10	True
+observed_dose_response_monotonic	0.23921104230227835	all within-basis adjacent median differences > 0	True
+observed_sign_recovery	1.0	at least 0.95 across seed-level gene summaries	True
+observed_median_bias	0.00717327519846922	maximum absolute median bias <= 0.15	True
+observed_null_control_bias	0.0036325621097918473	maximum absolute null-control median <= 0.10	True
+capture_calibration	7.26124360224123e-05	maximum median absolute error <= 0.03	True
+ambient_calibration	0.04235277523408598	maximum median absolute error <= 0.50 counts per cell	True
+dropout_calibration	0.0012531094674015364	maximum seed-level absolute error <= 0.01	True

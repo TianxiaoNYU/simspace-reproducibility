@@ -1,5 +1,5 @@
 {
-  "analysis": "R1-2 local reference-guided validation",
+  "analysis": "R1-2/R1-3 local reference-guided validation",
   "reference_scope": "one 1 mm x 1 mm Xenium breast-tumor tile",
   "fit_reused": true,
   "held_out_data": false,
@@ -54,5 +54,28 @@
   ],
   "colocalization_permutations": 100,
   "gene_diagnostics": "frozen seed-0 molecular realization aligned to the exact replayed seed-0 coordinates",
+  "expression_fidelity": "Pearson correlation and RMSE between Xenium and the frozen seed-0 molecular realization for log1p gene-wise raw-count means and log1p unbiased raw-count variances across all shared genes",
+  "molecular_replicate_fidelity": "The scDesign3 marginal and copula models were fitted once to the Xenium tile, then molecular draws for spatial seeds 0--9 were generated with matching molecular seeds. For each seed, Pearson correlation and RMSE compare the log1p gene-wise mean count vector with Xenium across all 220 genes.",
+  "molecular_model_fit_seed": 0,
+  "molecular_draw_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "molecular_model": {
+    "marginal_family": "negative binomial",
+    "mu_formula": "celltype",
+    "sigma_formula": "celltype",
+    "copula": "gaussian",
+    "correlation_group": "celltype",
+    "scDesign3_version": "1.5.0"
+  },
   "niche_diagnostics": "frozen Figure 3 BANKSY outputs"
 }

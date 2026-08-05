@@ -1,0 +1,9 @@
+gene	expected_class	pearson_r	spearman_rho	rmse	observed_peak	simulated_peak	peaks_match	observed_matches_expected	simulated_matches_expected
+Cux2	superficial	0.9770205419669752	1.0	0.05110046086620648	superficial	superficial	True	True	True
+Rorb	middle	0.9514052094153196	1.0	0.03983832671609635	middle	middle	True	True	True
+Fezf2	deep	0.9155228451642903	0.7999999999999999	0.07236458309166172	deep	deep	True	True	True
+Deptor	deep	0.867324097552576	0.7999999999999999	0.06355605265207433	deep	deep	True	True	True
+Tshz2	inner	-0.17923432347077423	-0.19999999999999998	0.19040626838452793	deep	inner	False	False	True
+Foxp2	inner	-0.5386342328853873	-0.39999999999999997	0.20309213033159304	superficial	inner	False	False	True
+Sulf2	inner	0.21774236479078213	0.39999999999999997	0.18948301434675174	deep	inner	False	False	True
+Ctgf	inner	0.5748511832967858	0.19999999999999998	0.08453899419804416	inner	inner	True	True	True

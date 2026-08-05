@@ -1,0 +1,253 @@
+{
+  "analysis": "R1-5 quantitative reference-free 3D simulation",
+  "scope_note": "One fixed reference-free configuration; no reference-guided 3D fitting or validation.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "shape": [
+    50,
+    50,
+    20
+  ],
+  "num_niches": 3,
+  "num_states": 6,
+  "num_genes": 36,
+  "niche_sweeps": 10,
+  "phenotype_sweeps": 4,
+  "phi": 5.0,
+  "neighborhood": [
+    [
+      -1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "density_retention": 0.85,
+  "coordinate_perturbation_sd": 0.4,
+  "moran_knn": 18,
+  "recovery_knn": 24,
+  "recovery_features": {
+    "expression_only": "standardized log1p single-cell expression",
+    "expression_plus_3d": "concatenated standardized single-cell expression and standardized mean log1p expression of each cell plus its nearest 3D neighbors"
+  },
+  "kmeans_clusters": 3,
+  "kmeans_n_init": 50,
+  "niche_theta": [
+    [
+      1.0,
+      0.05,
+      0.05
+    ],
+    [
+      0.05,
+      1.0,
+      0.05
+    ],
+    [
+      0.05,
+      0.05,
+      1.0
+    ]
+  ],
+  "phenotype_theta": [
+    [
+      [
+        1.0,
+        1.0,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        1.0,
+        1.0,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25
+      ]
+    ],
+    [
+      [
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        1.0,
+        1.0,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        1.0,
+        1.0,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25
+      ]
+    ],
+    [
+      [
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        0.25,
+        -0.15,
+        -0.15
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        1.0,
+        1.0
+      ],
+      [
+        -0.15,
+        -0.15,
+        -0.15,
+        -0.15,
+        1.0,
+        1.0
+      ]
+    ]
+  ],
+  "omics": {
+    "background_ratio": 0.3333333333333333,
+    "background_gamma_shape_scale": [
+      1.0,
+      1.0
+    ],
+    "marker_gamma_shape_scale": [
+      10.0,
+      0.8
+    ],
+    "ligand_receptor_ratio": 0.0,
+    "direct_spatial_effect": false
+  },
+  "simspace_version": "0.3.2",
+  "simspace_source_commit": "ecf2855612871498dc89b8d43169229dfb8f6057"
+}

@@ -17,6 +17,16 @@ gene_moran_i_rmse	0.04011593408130388	metric units	gene_agreement.tsv
 gene_geary_c_pearson_r	0.9002482045329845	Pearson r	gene_agreement.tsv
 gene_geary_c_rmse	0.04413381994230672	metric units	gene_agreement.tsv
 eligible_genes	202	genes	gene_agreement.tsv
+expression_log1p_mean_count_pearson_r	0.9982602526974481	Pearson r	../Panel_J_K_data/expression_agreement.tsv
+expression_log1p_mean_count_rmse	0.039192067558374524	log1p summary units	../Panel_J_K_data/expression_agreement.tsv
+expression_log1p_variance_pearson_r	0.9858857580574139	Pearson r	../Panel_J_K_data/expression_agreement.tsv
+expression_log1p_variance_rmse	0.17997214678719461	log1p summary units	../Panel_J_K_data/expression_agreement.tsv
+expression_shared_genes	220	genes	../Panel_J_K_data/expression_agreement.tsv
+molecular_replicate_pearson_r_median	0.9953043628328326	Pearson r	../Panel_L_data/molecular_replicate_agreement.tsv
+molecular_replicate_pearson_r_range	0.983520,0.998263	min,max	../Panel_L_data/molecular_replicate_agreement.tsv
+molecular_replicate_rmse_median	0.065535558522544	log1p mean-count units	../Panel_L_data/molecular_replicate_agreement.tsv
+molecular_replicate_rmse_range	0.038918,0.119899	min,max	../Panel_L_data/molecular_replicate_agreement.tsv
+molecular_replicates	10	seeds	../Panel_L_data/molecular_replicate_agreement.tsv
 colocalization_pearson_r_median	0.8993963159328958	pearson_r	colocalization_agreement.tsv
 colocalization_pearson_r_range	0.864007,0.948151	min,max	colocalization_agreement.tsv
 colocalization_rmse_median	0.009813257262860139	rmse	colocalization_agreement.tsv

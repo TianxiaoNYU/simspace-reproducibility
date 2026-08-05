@@ -24,7 +24,7 @@ git clone https://github.com/TianxiaoNYU/simspace-reproducibility.git
 ```bash
 conda env create -f environment.yml
 conda activate simspace-repro
-pip install simspace==0.3.2
+pip install simspace==0.3.4
 ```
 
 ### 2) Setting Up the R Environment for Omics Simulation
@@ -103,6 +103,12 @@ simspace-reproducibility/
       Fig3_README.md
       Panel_*_data/
       Panel_*_src/
+    Fig5_new/
+      Fig5_new.py
+      Fig5_new_README.md
+      Panel_A_B_data/
+      Panel_C_data/
+      Panel_A_B_C_src/
     ...
   supp_figures/
     SFig1/

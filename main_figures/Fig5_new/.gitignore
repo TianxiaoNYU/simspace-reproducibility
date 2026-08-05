@@ -1,0 +1,8 @@
+# Deterministically regenerated full benchmark artifacts are intentionally local.
+Panel_A_B_C_src/experiment_data/
+Panel_A_B_C_src/experiment_results/
+
+# Interpreter and operating-system caches.
+__pycache__/
+*.py[cod]
+.DS_Store

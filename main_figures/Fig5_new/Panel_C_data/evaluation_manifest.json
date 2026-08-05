@@ -1,0 +1,42 @@
+{
+  "difficulties": [
+    "hard",
+    "moderate",
+    "easy"
+  ],
+  "evaluated_utc": "2026-08-04T18:19:07.875527+00:00",
+  "layout_seeds": [
+    0,
+    1,
+    2
+  ],
+  "methods": [
+    "graphst",
+    "stagate",
+    "banksy",
+    "spagcn",
+    "spclue",
+    "stlearn",
+    "expression_pca_kmeans"
+  ],
+  "n_datasets": 18,
+  "n_expected_runs": 126,
+  "n_successful_runs": 125,
+  "named_methods": [
+    "graphst",
+    "stagate",
+    "banksy",
+    "spagcn",
+    "spclue",
+    "stlearn"
+  ],
+  "negative_controls": [
+    "expression_pca_kmeans"
+  ],
+  "schema_version": "1.0",
+  "summary_sha256": "a90547431e9bd1da39d2d3cc805ff2194b0357beaccfb86a4a5c72d77352eb8d",
+  "topologies": [
+    "curved_layers",
+    "irregular_mrf"
+  ]
+}

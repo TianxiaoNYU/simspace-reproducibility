@@ -1,0 +1,209 @@
+{
+  "analysis": "Supplementary Figure 12 optional spatial-expression and observation layers",
+  "reviewer_comments": [
+    "R2-M1",
+    "R2-m5"
+  ],
+  "related_comment": "R2-M3",
+  "simspace_expected_version": "0.3.4",
+  "simspace_installed_version": "0.3.4",
+  "simspace_source_commit": "de0a4c002e4ae733e354e3e180ab69b381ad994a",
+  "adjacent_simspace_commit_at_run": "de0a4c002e4ae733e354e3e180ab69b381ad994a",
+  "adjacent_simspace_source_dirty_at_run": false,
+  "python": "3.11.9 | packaged by conda-forge | (main, Apr 19 2024, 18:34:54) [Clang 16.0.6 ]",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "software": {
+    "numpy": "2.3.3",
+    "pandas": "3.0.0",
+    "scipy": "1.16.2",
+    "matplotlib": "3.10.8",
+    "seaborn": "0.13.2"
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "representative_seed": 0,
+  "representative_gene_id": 95,
+  "representative_gene": "Gene_95",
+  "representative_gene_selection": "Among seed-0 linear genes with configured strength +1, select the gene with the largest minimum phenotype-specific baseline mean; break ties by the median phenotype-specific baseline mean and then GeneID.",
+  "representative_gene_effect": {
+    "basis": "linear",
+    "configured_strength": 1.0,
+    "direction": "Anti-diagonal"
+  },
+  "shape": [
+    50,
+    50
+  ],
+  "n_states": 4,
+  "n_genes": 500,
+  "mrf_sweeps": 3,
+  "mrf_phi": 1.8,
+  "density_retention": 0.65,
+  "coordinate_jitter": 0.55,
+  "spatial_basis_families": [
+    "linear",
+    "radial",
+    "hotspot",
+    "structure_distance"
+  ],
+  "spatial_basis_settings": {
+    "linear_directions": {
+      "Horizontal": [
+        1.0,
+        0.0
+      ],
+      "Vertical": [
+        0.0,
+        1.0
+      ],
+      "Diagonal": [
+        0.7071067811865475,
+        0.7071067811865475
+      ],
+      "Anti-diagonal": [
+        0.7071067811865475,
+        -0.7071067811865475
+      ]
+    },
+    "radial_center": [
+      0.5,
+      0.5
+    ],
+    "hotspot_center": [
+      0.3,
+      0.7
+    ],
+    "hotspot_bandwidth": 0.18,
+    "structure_points": [
+      [
+        0.15,
+        0.2
+      ],
+      [
+        0.325,
+        0.35
+      ],
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.675,
+        0.65
+      ],
+      [
+        0.85,
+        0.8
+      ]
+    ],
+    "coordinate_scaling": "unit_range",
+    "center_basis": true
+  },
+  "representative_spatial_direction": [
+    0.7071067811865475,
+    0.7071067811865475
+  ],
+  "spatial_strengths": [
+    -1.0,
+    -0.75,
+    -0.5,
+    -0.25,
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "n_effect_genes_per_basis": 96,
+  "n_null_validation_genes_per_basis": 24,
+  "capture_levels": [
+    1.0,
+    0.85,
+    0.7,
+    0.55,
+    0.4
+  ],
+  "ambient_rates_counts_per_cell": [
+    0.0,
+    5.0,
+    20.0,
+    50.0,
+    100.0
+  ],
+  "dropout_levels": [
+    {
+      "label": "Off",
+      "configuration": null
+    },
+    {
+      "label": "Very low",
+      "configuration": {
+        "mode": "mean_dependent",
+        "intercept": -0.5,
+        "slope": -1.0
+      }
+    },
+    {
+      "label": "Low",
+      "configuration": {
+        "mode": "mean_dependent",
+        "intercept": 0.5,
+        "slope": -1.0
+      }
+    },
+    {
+      "label": "Moderate",
+      "configuration": {
+        "mode": "mean_dependent",
+        "intercept": 1.5,
+        "slope": -1.0
+      }
+    },
+    {
+      "label": "High",
+      "configuration": {
+        "mode": "mean_dependent",
+        "intercept": 2.5,
+        "slope": -1.0
+      }
+    }
+  ],
+  "combined_technical_noise": {
+    "capture_efficiency": 0.7,
+    "ambient_rate": 50.0
+  },
+  "combined_dropout": {
+    "mode": "mean_dependent",
+    "intercept": 1.5,
+    "slope": -1.0
+  },
+  "generative_order": [
+    "cell-type-conditioned Gamma means",
+    "optional direct spatial log-mean effect",
+    "Poisson biological count realization",
+    "optional binomial capture thinning",
+    "optional Poisson ambient background",
+    "optional excess dropout"
+  ],
+  "statistical_unit": "simulation seed"
+}

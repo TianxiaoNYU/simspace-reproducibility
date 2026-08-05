@@ -1,0 +1,140 @@
+schema_version: 1.0
+status: production_benchmark_completed
+
+environments:
+  generation_and_evaluation: simspace-repro
+  python_methods: spatial-domain-benchmark
+  stlearn: spatial-domain-benchmark-stlearn
+  banksy: host-r
+
+dataset:
+  topology_families:
+    - curved_layers
+    - irregular_mrf
+  layout_seeds: [0, 1, 2]
+  n_locations: 3000
+  n_genes: 2000
+  n_domains: 4
+  n_phenotypes: 10
+  phenotype_domain_structure:
+    enriched_types_per_domain: [3, 2, 3, 2]
+    mean_enriched_types_per_domain: 2.5
+    enriched_probability_mass: 0.40
+    shared_probability_mass: 0.60
+    rotate_assignment_by_layout_seed: true
+    exclusive_types: false
+  difficulty:
+    easy:
+      domain_fold_change: 4.0
+    moderate:
+      domain_fold_change: 3.0
+    hard:
+      domain_fold_change: 2.0
+  gene_classes:
+    background: 1200
+    phenotype_program_total: 600
+    phenotype_program_per_phenotype: 60
+    domain_program_total: 200
+    domain_program_per_domain: 50
+  domain_effect_model:
+    scale: heterogeneous_log_fold_change
+    domain_strength_template: [0.80, 0.95, 1.05, 1.20]
+    rotate_domain_strengths_by_layout_seed: true
+    gene_weight_distribution: scaled_beta_2_2
+    gene_weight_range: [0.60, 1.40]
+    location_activity_distribution: scaled_beta_5_2
+    location_activity_range: [0.50, 1.00]
+    shared_across_topology_families: true
+  minimum_domain_fraction: 0.10
+  coordinate_scaling: median_nearest_neighbor_distance_equals_one
+  topology_parameters:
+    curved_layers:
+      nominal_grid_shape: [104, 118]
+      retained_locations: 3000
+      coordinate_jitter_sd_lattice_units: 0.15
+      geometry: four_curved_radial_depth_bands
+    irregular_mrf:
+      nominal_grid_shape: [68, 68]
+      retained_locations: 3000
+      nominal_retention_fraction: 0.6487889273
+      coordinate_jitter_sd_lattice_units: 0.55
+      niche_mrf:
+        seed_base: 7008
+        phi: 5.25
+        sweeps: 40
+        neighborhood: manhattan
+        neighborhood_radius: 2
+        theta_diagonal: 1.0
+        theta_off_diagonal: -0.12
+  external_reference_inputs: false
+
+runner_input:
+  counts: counts.mtx.gz
+  genes: genes.tsv
+  coordinates: coordinates.tsv
+  known_domain_count: 4
+  excluded:
+    - truth.tsv
+    - topology_name
+    - difficulty_name
+    - histology
+    - generative_parameters
+
+methods:
+  - name: GraphST
+    clustering: mclust_G4
+  - name: STAGATE
+    clustering: mclust_G4
+  - name: BANKSY
+    lambda: 0.5
+    clustering: mclust_G4
+  - name: SpaGCN
+    histology: false
+    clustering: native_kmeans_initialized_K4
+  - name: spCLUE
+    n_clusters: 4
+    clustering: mclust_G4
+  - name: stLearn
+    histology: false
+    weights: physical_distance_plus_expression
+    preprocessing: filter_min_cells_1_normalize_1e4_log1p_pca50_sme_scale_pca50
+    clustering: kmeans_K4
+
+negative_control:
+  name: expression_pca_kmeans
+  input: counts_only
+  preprocessing: library_normalize_log1p_pca50
+  clustering: kmeans_K4
+  runs: 18
+
+execution:
+  target: cpu
+  threads_per_run: 1
+  timeout_minutes: 90
+  memory_limit_gb: 32
+  method_seed_policy: 100000_plus_fixed_topology_offset_plus_layout_seed_paired_across_difficulty
+  retries_for_method_failure: 0
+  retries_for_infrastructure_interruption: 1
+
+metrics:
+  primary:
+    - adjusted_rand_index
+    - normalized_mutual_information
+    - boundary_f1_one_graph_hop
+  operational:
+    - wall_time_seconds
+    - peak_rss_mb
+    - completion_status
+    - produced_cluster_count
+  evaluation_graph_neighbors: 6
+
+production_counts:
+  pattern_types: 2
+  difficulty_levels: 3
+  layout_seeds_per_pattern_and_level: 3
+  datasets: 18
+  named_methods_per_dataset: 6
+  named_method_runs: 108
+  negative_controls_per_dataset: 1
+  negative_control_runs: 18
+  total_evaluated_runs: 126

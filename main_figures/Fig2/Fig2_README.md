@@ -44,6 +44,26 @@ python Fig2.py
 
 ## Panel D data 
 
+### Comparison design and parameter-selection rule
+
+The SimSpace arm is an untuned reference-free comparison. The common
+configuration was fixed at a 100 x 100 grid, two niches, nine phenotypes,
+four phenotype sweeps, six niche sweeps, and a Manhattan neighborhood of
+radius three. For each seed from 0 through 7,
+`generate_random_parameters()` used its package-default ranges and drew the
+phenotype affinities uniformly from [-0.8, 0.8], niche affinities from
+[-0.5, 0.5], density parameters from [0.01, 0.4], and the smoothness
+parameter from [4.4, 5.0]. All eight seed-indexed simulations were retained.
+
+Neither Xenium nor MERFISH, and none of Moran's I, Geary's C, or Ripley's L,
+was used to tune these parameters or select simulations. The reference data
+were loaded only to calculate the comparison statistics after generation.
+Thus, Figure 2D evaluates de novo reference-free generation rather than a
+reference-fitted model. Supplementary Figure 8 provides the complementary
+reference-guided evaluation requested during review, using an archived
+automatically fitted Xenium parameter set and ten independently seeded
+post-fit spatial realizations.
+
 ### MERFISH
 External data downloaded from the study: Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region [https://www.science.org/doi/10.1126/science.aau5324].
 

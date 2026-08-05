@@ -1,4 +1,4 @@
-"""Supplementary Figure 8: local reference-guided validation for R1-2.
+"""Supplementary Figure 8: local reference-guided validation for R1-2/R1-3.
 
 The analysis deliberately reuses the frozen Figure 3 Xenium tile and fitted
 SimSpace parameters.  It does not refit the model or treat cells, genes, or
@@ -38,6 +38,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parents[1]
 FIG3_DATA = REPO_ROOT / "main_figures" / "Fig3" / "Panel_B_C_D_data"
 DATA_DIR = SCRIPT_DIR / "Panel_A_I_data"
+EXPRESSION_DATA_DIR = SCRIPT_DIR / "Panel_J_K_data"
+MOLECULAR_DATA_DIR = SCRIPT_DIR / "Panel_L_data"
 EXAMPLE_DIR = REPO_ROOT / "example_output" / "SFig8"
 
 K_NEIGHBORS = 20
@@ -314,6 +316,113 @@ def gene_agreement(metrics: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def expression_fidelity(
+    reference_counts: pd.DataFrame,
+    simulated_counts: pd.DataFrame,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Compare gene-wise count means and variances on a log1p scale."""
+    genes = reference_counts.columns.intersection(
+        simulated_counts.columns, sort=False
+    )
+    reference = reference_counts.loc[:, genes].astype(float)
+    simulated = simulated_counts.loc[:, genes].astype(float)
+    metrics = pd.DataFrame(
+        {
+            "gene": genes,
+            "reference_mean_count": reference.mean(axis=0).to_numpy(),
+            "simulated_mean_count": simulated.mean(axis=0).to_numpy(),
+            "reference_variance": reference.var(axis=0, ddof=1).to_numpy(),
+            "simulated_variance": simulated.var(axis=0, ddof=1).to_numpy(),
+            "reference_zero_fraction": (reference == 0).mean(axis=0).to_numpy(),
+            "simulated_zero_fraction": (simulated == 0).mean(axis=0).to_numpy(),
+        }
+    )
+    for statistic in ["mean_count", "variance"]:
+        metrics[f"reference_log1p_{statistic}"] = np.log1p(
+            metrics[f"reference_{statistic}"]
+        )
+        metrics[f"simulated_log1p_{statistic}"] = np.log1p(
+            metrics[f"simulated_{statistic}"]
+        )
+
+    rows = []
+    for statistic in ["mean_count", "variance"]:
+        reference_values = metrics[f"reference_log1p_{statistic}"].to_numpy()
+        simulated_values = metrics[f"simulated_log1p_{statistic}"].to_numpy()
+        valid = np.isfinite(reference_values) & np.isfinite(simulated_values)
+        rows.append(
+            {
+                "statistic": statistic,
+                "scale": f"log1p gene-wise {statistic.replace('_', ' ')}",
+                "pearson_r": float(
+                    pearsonr(
+                        reference_values[valid], simulated_values[valid]
+                    ).statistic
+                ),
+                "rmse": float(
+                    np.sqrt(
+                        np.mean(
+                            (
+                                reference_values[valid]
+                                - simulated_values[valid]
+                            )
+                            ** 2
+                        )
+                    )
+                ),
+                "n_genes": int(valid.sum()),
+            }
+        )
+    return metrics, pd.DataFrame(rows)
+
+
+def molecular_replicate_agreement(
+    reference_counts: pd.DataFrame,
+    replicate_summaries: pd.DataFrame,
+) -> pd.DataFrame:
+    """Compare each molecular realization's gene means with the reference."""
+    reference_means = np.log1p(reference_counts.astype(float).mean(axis=0))
+    rows = []
+    for seed, frame in replicate_summaries.groupby("molecular_seed"):
+        simulated_means = frame.set_index("gene")["mean_count"]
+        genes = reference_means.index.intersection(
+            simulated_means.index, sort=False
+        )
+        reference_values = reference_means.loc[genes].to_numpy()
+        simulated_values = np.log1p(
+            simulated_means.loc[genes].to_numpy(dtype=float)
+        )
+        valid = np.isfinite(reference_values) & np.isfinite(simulated_values)
+        rows.append(
+            {
+                "molecular_seed": int(seed),
+                "pearson_r": float(
+                    pearsonr(
+                        reference_values[valid], simulated_values[valid]
+                    ).statistic
+                ),
+                "rmse": float(
+                    np.sqrt(
+                        np.mean(
+                            (
+                                reference_values[valid]
+                                - simulated_values[valid]
+                            )
+                            ** 2
+                        )
+                    )
+                ),
+                "n_genes": int(valid.sum()),
+            }
+        )
+    agreement = pd.DataFrame(rows).sort_values("molecular_seed")
+    if agreement["molecular_seed"].tolist() != list(SIMULATION_SEEDS):
+        raise ValueError(
+            "Molecular summaries must contain exactly seeds 0--9."
+        )
+    return agreement
+
+
 def centered_colocalization(
     labels: np.ndarray,
     neighbors: np.ndarray,
@@ -459,6 +568,8 @@ def summary_rows(
     celltype_agreement_table: pd.DataFrame,
     ripley_agreement_table: pd.DataFrame,
     gene_agreement_table: pd.DataFrame,
+    expression_agreement_table: pd.DataFrame,
+    molecular_replicate_agreement_table: pd.DataFrame,
     colocalization_agreement_table: pd.DataFrame,
     niche_metric_table: pd.DataFrame,
 ) -> pd.DataFrame:
@@ -543,6 +654,45 @@ def summary_rows(
         "genes",
         "gene_agreement.tsv",
     )
+    for _, row in expression_agreement_table.iterrows():
+        add(
+            f"expression_log1p_{row['statistic']}_pearson_r",
+            float(row["pearson_r"]),
+            "Pearson r",
+            "../Panel_J_K_data/expression_agreement.tsv",
+        )
+        add(
+            f"expression_log1p_{row['statistic']}_rmse",
+            float(row["rmse"]),
+            "log1p summary units",
+            "../Panel_J_K_data/expression_agreement.tsv",
+        )
+    add(
+        "expression_shared_genes",
+        int(expression_agreement_table["n_genes"].min()),
+        "genes",
+        "../Panel_J_K_data/expression_agreement.tsv",
+    )
+    for column, unit in [("pearson_r", "Pearson r"), ("rmse", "log1p mean-count units")]:
+        values = molecular_replicate_agreement_table[column]
+        add(
+            f"molecular_replicate_{column}_median",
+            float(values.median()),
+            unit,
+            "../Panel_L_data/molecular_replicate_agreement.tsv",
+        )
+        add(
+            f"molecular_replicate_{column}_range",
+            f"{values.min():.6f},{values.max():.6f}",
+            "min,max",
+            "../Panel_L_data/molecular_replicate_agreement.tsv",
+        )
+    add(
+        "molecular_replicates",
+        int(len(molecular_replicate_agreement_table)),
+        "seeds",
+        "../Panel_L_data/molecular_replicate_agreement.tsv",
+    )
     for column in ["pearson_r", "rmse"]:
         values = colocalization_agreement_table[column]
         add(
@@ -580,74 +730,42 @@ def add_panel_label(axis: plt.Axes, label: str) -> None:
 
 
 def plot_figure(
-    reference_coordinates: np.ndarray,
-    reference_labels: np.ndarray,
-    simulated_coordinates: np.ndarray,
-    simulated_labels: np.ndarray,
     cell_types: list[str],
     celltype_agreement_table: pd.DataFrame,
     ripley_profile_table_data: pd.DataFrame,
     ripley_agreement_table: pd.DataFrame,
     gene_metric_table: pd.DataFrame,
     gene_agreement_table: pd.DataFrame,
+    expression_metric_table: pd.DataFrame,
+    expression_agreement_table: pd.DataFrame,
+    molecular_replicate_agreement_table: pd.DataFrame,
     reference_colocalization: np.ndarray,
     simulated_colocalization_median: np.ndarray,
     niche_composition_table: pd.DataFrame,
 ) -> plt.Figure:
     sns.set_theme(style="whitegrid", context="paper")
-    fig = plt.figure(figsize=(13.2, 12.6), constrained_layout=True)
-    grid = fig.add_gridspec(3, 3)
-    axes = np.array(
-        [
-            [fig.add_subplot(grid[0, 0]), fig.add_subplot(grid[0, 1]), fig.add_subplot(grid[0, 2])],
-            [fig.add_subplot(grid[1, 0]), fig.add_subplot(grid[1, 1]), fig.add_subplot(grid[1, 2])],
-            [fig.add_subplot(grid[2, 0]), fig.add_subplot(grid[2, 1]), fig.add_subplot(grid[2, 2])],
-        ]
-    )
-
-    palette = dict(
-        zip(cell_types, sns.color_palette("tab10", n_colors=len(cell_types)))
-    )
-    for axis, coordinates, labels, title, panel in [
-        (
-            axes[0, 0],
-            reference_coordinates,
-            reference_labels,
-            f"Xenium reference (n={len(reference_coordinates):,})",
-            "A",
-        ),
-        (
-            axes[0, 1],
-            simulated_coordinates,
-            simulated_labels,
-            f"SimSpace seed 0 (n={len(simulated_coordinates):,})",
-            "B",
-        ),
-    ]:
-        for cell_type in cell_types:
-            selected = labels == cell_type
-            axis.scatter(
-                coordinates[selected, 0],
-                coordinates[selected, 1],
-                s=4,
-                alpha=0.75,
-                linewidths=0,
-                color=palette[cell_type],
-                label=TYPE_ABBREVIATIONS.get(cell_type, cell_type),
-            )
-        axis.set_title(title)
-        axis.set_xlabel("Normalized x")
-        axis.set_ylabel("Normalized y")
-        axis.set_aspect("equal")
-        axis.grid(False)
-        add_panel_label(axis, panel)
-    axes[0, 1].legend(
-        loc="center left",
-        bbox_to_anchor=(1.00, 0.5),
-        frameon=False,
-        fontsize=7,
-        ncol=1,
-    )
+    fig = plt.figure(figsize=(16.8, 12.6), constrained_layout=True)
+    grid = fig.add_gridspec(3, 4)
+    bottom_grid = grid[2, :].subgridspec(1, 3)
+    spatial_agreement_axis = fig.add_subplot(grid[0, 0])
+    gene_axes = [
+        fig.add_subplot(grid[0, 1]),
+        fig.add_subplot(grid[0, 2]),
+    ]
+    ripley_axis = fig.add_subplot(grid[0, 3])
+    colocalization_axes = [
+        fig.add_subplot(grid[1, 0]),
+        fig.add_subplot(grid[1, 1]),
+    ]
+    niche_axis = fig.add_subplot(grid[1, 2])
+    expression_axes = [
+        fig.add_subplot(grid[1, 3]),
+        fig.add_subplot(bottom_grid[0, 0]),
+    ]
+    robustness_axes = [
+        fig.add_subplot(bottom_grid[0, 1]),
+        fig.add_subplot(bottom_grid[0, 2]),
+    ]
 
     agreement_plot = pd.concat(
         [
@@ -676,7 +794,7 @@ def plot_figure(
         color="#d8e6f3",
         fliersize=0,
         width=0.55,
-        ax=axes[0, 2],
+        ax=spatial_agreement_axis,
     )
     sns.stripplot(
         data=agreement_plot,
@@ -686,20 +804,20 @@ def plot_figure(
         color="#2f6f9f",
         size=4,
         jitter=0.16,
-        ax=axes[0, 2],
+        ax=spatial_agreement_axis,
     )
-    axes[0, 2].axhline(0, color="0.45", linewidth=0.8)
-    axes[0, 2].set_ylim(-1.05, 1.05)
-    axes[0, 2].set_xlabel("")
-    axes[0, 2].set_ylabel("Pearson r across cell types or radii")
-    axes[0, 2].set_title("Spatial agreement (10 seeds)")
-    add_panel_label(axes[0, 2], "C")
+    spatial_agreement_axis.axhline(0, color="0.45", linewidth=0.8)
+    spatial_agreement_axis.set_ylim(-1.05, 1.05)
+    spatial_agreement_axis.set_xlabel("")
+    spatial_agreement_axis.set_ylabel("Reference–simulation Pearson r")
+    spatial_agreement_axis.set_title("SimSpace vs Xenium (10 seeds)")
+    add_panel_label(spatial_agreement_axis, "A")
 
     gene_labels = {
-        "moran_i": ("Moran's I", "D"),
-        "geary_c": ("Geary's C", "E"),
+        "moran_i": ("Moran's I", "B"),
+        "geary_c": ("Geary's C", "C"),
     }
-    for axis, metric in zip(axes[1, :2], gene_labels):
+    for axis, metric in zip(gene_axes, gene_labels):
         reference = gene_metric_table[f"{metric}_reference"]
         simulated = gene_metric_table[f"{metric}_simulated"]
         axis.scatter(
@@ -749,7 +867,7 @@ def plot_figure(
         values="centered_l",
     )
     radii = simulated_ripley.index.to_numpy(dtype=float)
-    axes[1, 2].fill_between(
+    ripley_axis.fill_between(
         radii,
         simulated_ripley.min(axis=1).to_numpy(),
         simulated_ripley.max(axis=1).to_numpy(),
@@ -757,39 +875,39 @@ def plot_figure(
         alpha=0.3,
         label="SimSpace range",
     )
-    axes[1, 2].plot(
+    ripley_axis.plot(
         radii,
         simulated_ripley.median(axis=1).to_numpy(),
         color="#2f75b5",
         linewidth=1.8,
         label="SimSpace median",
     )
-    axes[1, 2].plot(
+    ripley_axis.plot(
         reference_ripley["normalized_radius"],
         reference_ripley["centered_l"],
         color="0.2",
         linewidth=1.8,
         label="Xenium reference",
     )
-    axes[1, 2].axhline(0, color="0.55", linewidth=0.7)
-    axes[1, 2].text(
+    ripley_axis.axhline(0, color="0.55", linewidth=0.7)
+    ripley_axis.text(
         0.04,
         0.95,
         (
             f"median r = {ripley_agreement_table['pearson_r'].median():.2f}\n"
             f"median RMSE = {ripley_agreement_table['rmse'].median():.3f}"
         ),
-        transform=axes[1, 2].transAxes,
+        transform=ripley_axis.transAxes,
         ha="left",
         va="top",
         fontsize=8,
         bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.75},
     )
-    axes[1, 2].set_title("Whole-layout Ripley's L profile")
-    axes[1, 2].set_xlabel("Normalized radius d")
-    axes[1, 2].set_ylabel("L(d) − d")
-    axes[1, 2].legend(frameon=False, fontsize=7, loc="lower left")
-    add_panel_label(axes[1, 2], "F")
+    ripley_axis.set_title("Whole-layout Ripley's L profile")
+    ripley_axis.set_xlabel("Normalized radius d")
+    ripley_axis.set_ylabel("L(d) − d")
+    ripley_axis.legend(frameon=False, fontsize=7, loc="lower left")
+    add_panel_label(ripley_axis, "D")
 
     abbreviations = [TYPE_ABBREVIATIONS.get(t, t) for t in cell_types]
     common_limit = float(
@@ -800,16 +918,16 @@ def plot_figure(
     )
     for axis, matrix, title, panel in [
         (
-            axes[2, 0],
+            colocalization_axes[0],
             reference_colocalization,
             "Xenium centered co-localization",
-            "G",
+            "E",
         ),
         (
-            axes[2, 1],
+            colocalization_axes[1],
             simulated_colocalization_median,
             "SimSpace median centered co-localization",
-            "H",
+            "F",
         ),
     ]:
         sns.heatmap(
@@ -821,7 +939,7 @@ def plot_figure(
             square=True,
             xticklabels=abbreviations,
             yticklabels=abbreviations,
-            cbar=panel == "H",
+            cbar=panel == "F",
             cbar_kws={"label": "Observed − permutation mean", "shrink": 0.7},
             ax=axis,
         )
@@ -832,7 +950,7 @@ def plot_figure(
 
     domain_palette = {"Tumor": "#b34f4f", "Stromal": "#3f7f9f"}
     for domain, frame in niche_composition_table.groupby("domain"):
-        axes[2, 2].scatter(
+        niche_axis.scatter(
             frame["reference_fraction"],
             frame["simulated_fraction"],
             s=28,
@@ -843,12 +961,12 @@ def plot_figure(
         correlation = pearsonr(
             frame["reference_fraction"], frame["simulated_fraction"]
         ).statistic
-        axes[2, 2].text(
+        niche_axis.text(
             0.04,
             0.94 if domain == "Tumor" else 0.84,
             f"{domain}: r = {correlation:.3f}",
             color=domain_palette[domain],
-            transform=axes[2, 2].transAxes,
+            transform=niche_axis.transAxes,
             va="top",
             fontsize=8,
         )
@@ -856,14 +974,128 @@ def plot_figure(
         niche_composition_table["reference_fraction"].max(),
         niche_composition_table["simulated_fraction"].max(),
     )
-    axes[2, 2].plot(
+    niche_axis.plot(
         [0, maximum], [0, maximum], linestyle="--", color="0.4", linewidth=0.8
     )
-    axes[2, 2].set_xlabel("Xenium cell-type fraction")
-    axes[2, 2].set_ylabel("SimSpace cell-type fraction")
-    axes[2, 2].set_title("BANKSY domain composition")
-    axes[2, 2].legend(frameon=False, loc="lower right", fontsize=8)
-    add_panel_label(axes[2, 2], "I")
+    niche_axis.set_xlabel("Xenium cell-type fraction")
+    niche_axis.set_ylabel("SimSpace cell-type fraction")
+    niche_axis.set_title("BANKSY domain composition")
+    niche_axis.legend(frameon=False, loc="lower right", fontsize=8)
+    add_panel_label(niche_axis, "G")
+
+    expression_panels = [
+        (
+            expression_axes[0],
+            "mean_count",
+            "Gene-wise mean expression",
+            "H",
+        ),
+        (
+            expression_axes[1],
+            "variance",
+            "Gene-wise expression variance",
+            "I",
+        ),
+    ]
+    for axis, statistic, title, panel in expression_panels:
+        reference = expression_metric_table[
+            f"reference_log1p_{statistic}"
+        ]
+        simulated = expression_metric_table[
+            f"simulated_log1p_{statistic}"
+        ]
+        axis.scatter(
+            reference,
+            simulated,
+            s=15,
+            alpha=0.58,
+            color="#2f75b5",
+            edgecolors="none",
+        )
+        low = min(reference.min(), simulated.min())
+        high = max(reference.max(), simulated.max())
+        padding = 0.04 * (high - low if high > low else 1.0)
+        axis.plot(
+            [low - padding, high + padding],
+            [low - padding, high + padding],
+            linestyle="--",
+            color="0.4",
+            linewidth=0.8,
+        )
+        agreement = expression_agreement_table.loc[
+            expression_agreement_table["statistic"] == statistic
+        ].iloc[0]
+        axis.text(
+            0.04,
+            0.95,
+            (
+                f"PCC = {agreement['pearson_r']:.3f}\n"
+                f"RMSE = {agreement['rmse']:.3f}"
+            ),
+            transform=axis.transAxes,
+            ha="left",
+            va="top",
+            fontsize=9,
+        )
+        axis.set_title(
+            f"{title} (n={int(agreement['n_genes'])})"
+        )
+        axis.set_xlabel("Xenium reference (log1p)")
+        axis.set_ylabel("SimSpace seed 0 (log1p)")
+        add_panel_label(axis, panel)
+
+    seeds = molecular_replicate_agreement_table["molecular_seed"].to_numpy()
+    robustness_specs = [
+        (
+            robustness_axes[0],
+            "pearson_r",
+            "PCC across 10 molecular seeds",
+            "PCC",
+            "#2f75b5",
+            "J",
+            (0.96, 0.05, "right", "bottom"),
+        ),
+        (
+            robustness_axes[1],
+            "rmse",
+            "RMSE across 10 molecular seeds",
+            "RMSE (log1p mean-count units)",
+            "#c45a3c",
+            "K",
+            (0.96, 0.95, "right", "top"),
+        ),
+    ]
+    for axis, metric, title, ylabel, color, panel, annotation in robustness_specs:
+        values = molecular_replicate_agreement_table[metric]
+        axis.scatter(
+            seeds,
+            values,
+            s=34,
+            color=color,
+            edgecolors="white",
+            linewidths=0.5,
+            zorder=3,
+        )
+        axis.set_xticks(seeds)
+        axis.set_xlabel("Simulation seed")
+        axis.set_ylabel(ylabel)
+        axis.set_title(title)
+        axis.grid(False)
+        text_x, text_y, horizontal_alignment, vertical_alignment = annotation
+        axis.text(
+            text_x,
+            text_y,
+            (
+                f"median = {values.median():.3f}\n"
+                f"range = {values.min():.3f}–{values.max():.3f}"
+            ),
+            transform=axis.transAxes,
+            ha=horizontal_alignment,
+            va=vertical_alignment,
+            fontsize=8,
+            bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.8},
+        )
+        add_panel_label(axis, panel)
 
     fig.suptitle(
         "Local validation of a reference-guided SimSpace Xenium realization",
@@ -875,6 +1107,8 @@ def plot_figure(
 
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    EXPRESSION_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    MOLECULAR_DATA_DIR.mkdir(parents=True, exist_ok=True)
     EXAMPLE_DIR.mkdir(parents=True, exist_ok=True)
 
     simspace_version = distribution_version("simspace")
@@ -983,6 +1217,7 @@ def main() -> None:
     colocalization_agreements = []
     simulated_matrices = []
     seed_rows = []
+    molecular_design_tables = []
     seed_zero_metadata: pd.DataFrame | None = None
 
     for seed in SIMULATION_SEEDS:
@@ -1001,6 +1236,12 @@ def main() -> None:
             raise ValueError(f"Unmapped cell state in simulation seed {seed}.")
         coordinates = normalize_coordinates(metadata[["row", "col"]])
         labels = metadata["fitted_celltype"].to_numpy()
+        molecular_design = metadata[
+            ["row", "col", "fitted_celltype"]
+        ].copy()
+        molecular_design.insert(0, "cell_index", np.arange(len(metadata)))
+        molecular_design.insert(0, "molecular_seed", seed)
+        molecular_design_tables.append(molecular_design)
 
         if seed == 0:
             same_state = np.array_equal(
@@ -1104,6 +1345,14 @@ def main() -> None:
     colocalization_agreement_table = pd.DataFrame(
         colocalization_agreements
     )
+    molecular_design_table = pd.concat(
+        molecular_design_tables, ignore_index=True
+    )
+    molecular_design_table.to_csv(
+        MOLECULAR_DATA_DIR / "molecular_simulation_design.tsv",
+        sep="\t",
+        index=False,
+    )
 
     simulated_coordinates = normalize_coordinates(
         seed_zero_metadata[["row", "col"]]
@@ -1116,6 +1365,25 @@ def main() -> None:
         simulated_counts,
     )
     gene_agreement_table = gene_agreement(gene_metric_table)
+    expression_metric_table, expression_agreement_table = expression_fidelity(
+        reference_counts,
+        simulated_counts,
+    )
+    molecular_summary_path = (
+        MOLECULAR_DATA_DIR / "molecular_replicate_summaries.tsv"
+    )
+    if not molecular_summary_path.exists():
+        raise FileNotFoundError(
+            f"Missing {molecular_summary_path}. Run "
+            "Panel_L_src/generate_molecular_replicates.R first."
+        )
+    molecular_replicate_summaries = pd.read_csv(
+        molecular_summary_path, sep="\t"
+    )
+    molecular_replicate_agreement_table = molecular_replicate_agreement(
+        reference_counts,
+        molecular_replicate_summaries,
+    )
 
     reference_domains = pd.read_csv(input_paths["reference_banksy_domains"])
     simulated_domains = pd.read_csv(input_paths["simulated_banksy_domains"])
@@ -1132,6 +1400,8 @@ def main() -> None:
         celltype_agreement_table,
         whole_layout_ripley_agreement_table,
         gene_agreement_table,
+        expression_agreement_table,
+        molecular_replicate_agreement_table,
         colocalization_agreement_table,
         niche_metric_table,
     )
@@ -1159,6 +1429,21 @@ def main() -> None:
     gene_agreement_table.to_csv(
         DATA_DIR / "gene_agreement.tsv", sep="\t", index=False
     )
+    expression_metric_table.to_csv(
+        EXPRESSION_DATA_DIR / "expression_fidelity.tsv",
+        sep="\t",
+        index=False,
+    )
+    expression_agreement_table.to_csv(
+        EXPRESSION_DATA_DIR / "expression_agreement.tsv",
+        sep="\t",
+        index=False,
+    )
+    molecular_replicate_agreement_table.to_csv(
+        MOLECULAR_DATA_DIR / "molecular_replicate_agreement.tsv",
+        sep="\t",
+        index=False,
+    )
     colocalization_table.to_csv(
         DATA_DIR / "colocalization_matrices.tsv", sep="\t", index=False
     )
@@ -1174,7 +1459,7 @@ def main() -> None:
     summary.to_csv(DATA_DIR / "summary_metrics.tsv", sep="\t", index=False)
 
     config = {
-        "analysis": "R1-2 local reference-guided validation",
+        "analysis": "R1-2/R1-3 local reference-guided validation",
         "reference_scope": "one 1 mm x 1 mm Xenium breast-tumor tile",
         "fit_reused": True,
         "held_out_data": False,
@@ -1200,6 +1485,29 @@ def main() -> None:
             "frozen seed-0 molecular realization aligned to the exact "
             "replayed seed-0 coordinates"
         ),
+        "expression_fidelity": (
+            "Pearson correlation and RMSE between Xenium and the frozen "
+            "seed-0 molecular realization for log1p gene-wise raw-count "
+            "means and log1p unbiased raw-count variances across all "
+            "shared genes"
+        ),
+        "molecular_replicate_fidelity": (
+            "The scDesign3 marginal and copula models were fitted once to "
+            "the Xenium tile, then molecular draws for spatial seeds 0--9 "
+            "were generated with matching molecular seeds. For each seed, "
+            "Pearson correlation and RMSE compare the log1p gene-wise mean "
+            "count vector with Xenium across all 220 genes."
+        ),
+        "molecular_model_fit_seed": 0,
+        "molecular_draw_seeds": list(SIMULATION_SEEDS),
+        "molecular_model": {
+            "marginal_family": "negative binomial",
+            "mu_formula": "celltype",
+            "sigma_formula": "celltype",
+            "copula": "gaussian",
+            "correlation_group": "celltype",
+            "scDesign3_version": "1.5.0",
+        },
         "niche_diagnostics": "frozen Figure 3 BANKSY outputs",
     }
     (DATA_DIR / "analysis_config.json").write_text(
@@ -1232,16 +1540,15 @@ def main() -> None:
         np.stack(simulated_matrices), axis=0
     )
     figure = plot_figure(
-        reference_coordinates,
-        reference_labels,
-        simulated_coordinates,
-        simulated_labels,
         cell_types,
         celltype_agreement_table,
         whole_layout_ripley_table,
         whole_layout_ripley_agreement_table,
         gene_metric_table,
         gene_agreement_table,
+        expression_metric_table,
+        expression_agreement_table,
+        molecular_replicate_agreement_table,
         reference_colocalization,
         median_simulated_colocalization,
         niche_composition_table,
