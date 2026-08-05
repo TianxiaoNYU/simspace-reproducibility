@@ -1,0 +1,85 @@
+{
+  "status": "selected Supplementary Figure 6 analysis",
+  "reviewer_comment": "R2-M4",
+  "analysis_role": "Post-generation comparison of the fixed reference-free Figure 3 anchor; STARmap was not used to fit, tune, or select the simulated anchor.",
+  "observed_dataset": {
+    "name": "STARmap mouse visual cortex BY3 1k-gene sample",
+    "zenodo_record": "https://zenodo.org/records/10698912",
+    "source_url": "https://zenodo.org/records/10698912/files/STARmap_mouse_visual_cortex.zip?download=1",
+    "zenodo_doi": "10.5281/zenodo.10698912",
+    "original_starmap_doi": "10.1126/science.aat5691",
+    "license": "CC BY 4.0",
+    "archive_bytes": 471002,
+    "archive_sha256": "c1ffc459cf149b25773411fc6c5ef32845104dd8974802f627171fbf394e083c",
+    "archive_md5": "8f8464ab54504d8854a9fb39cdbcb478",
+    "matrix_cells_by_genes": [
+      1207,
+      1020
+    ],
+    "selected_cells": 601
+  },
+  "selection_rule": "Cells with an excitatory layer annotation eL2/3, eL4, eL5, eL6-1, or eL6-2 and a cortical domain label L2/3, L4, L5, or L6.",
+  "class_order": [
+    "superficial",
+    "middle",
+    "deep",
+    "inner"
+  ],
+  "observed_cell_class_mapping": {
+    "eL2/3": "superficial",
+    "eL4": "middle",
+    "eL5": "deep",
+    "eL6-1": "inner",
+    "eL6-2": "inner"
+  },
+  "observed_spatial_domain_mapping": {
+    "L2/3": "superficial",
+    "L4": "middle",
+    "L5": "deep",
+    "L6": "inner"
+  },
+  "simulated_cell_class_mapping": {
+    "L2/3 IT": "superficial",
+    "L4/5 IT": "middle",
+    "L5 ET": "deep",
+    "L5 IT": "deep",
+    "L5/6 NP": "inner",
+    "L6 CT": "inner",
+    "L6 IT": "inner",
+    "L6 IT Car3": "inner",
+    "L6b": "inner"
+  },
+  "simulated_spatial_domain_mapping": {
+    "superficial (L2/3)": "superficial",
+    "middle (L4/5)": "middle",
+    "deep (L5)": "deep",
+    "inner (L5/6-L6b)": "inner"
+  },
+  "markers": [
+    "Cux2",
+    "Rorb",
+    "Fezf2",
+    "Deptor",
+    "Tshz2",
+    "Foxp2",
+    "Sulf2",
+    "Ctgf"
+  ],
+  "representative_map_markers": [
+    "Cux2",
+    "Rorb"
+  ],
+  "representative_map_note": "Cux2 and Rorb are displayed as spatial examples; all eight shared markers remain in the profile panels and numeric metrics.",
+  "marker_expected_class": {
+    "Cux2": "superficial",
+    "Rorb": "middle",
+    "Fezf2": "deep",
+    "Deptor": "deep",
+    "Tshz2": "inner",
+    "Foxp2": "inner",
+    "Sulf2": "inner",
+    "Ctgf": "inner"
+  },
+  "expression_comparison": "For each gene, domain-wise mean counts are normalized within each dataset to sum to one. Maps show log1p counts scaled to each dataset and gene's 99th percentile.",
+  "independence_note": "One observed sample and one fixed simulated realization; cells and domains are not treated as biological replicates."
+}

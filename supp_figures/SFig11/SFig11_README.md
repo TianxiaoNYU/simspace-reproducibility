@@ -1,86 +1,61 @@
-# Supplementary Figure 11 — reference-free mouse-cortex comparison
+# Supplementary Figure 11
 
-This analysis addresses reviewer comment R2-M4 by comparing the fixed
-reference-free cortex simulation from the new Figure 2 with an observed mouse
-visual-cortex STARmap field. The observed data are used only after simulation;
-they are not used to fit, tune, or select the simulated anchor.
+This folder contains everything needed to reproduce the code-generated panels in **Supp Figure 11**, including panel-specific data and (when needed) panel-specific external code.
 
-## Dataset
+---
 
-The reviewer suggested STARmap, and a compact processed visual-cortex sample
-is available under CC BY 4.0 at Zenodo DOI
-[`10.5281/zenodo.10698912`](https://doi.org/10.5281/zenodo.10698912).
-The 471,002-byte archive contains a 1,207-cell by 1,020-gene raw-count
-matrix, spatial coordinates, cortical-domain labels, and cell annotations.
-The original STARmap study is Wang et al., *Science* 2018, DOI
-[`10.1126/science.aat5691`](https://doi.org/10.1126/science.aat5691).
+## Contents
 
-The downloaded archive is retained in `Panel_A_E_data/` so the normal figure
-entry point runs without network access. `download_starmap.py` independently
-reproduces the download and verifies its byte count, MD5, and SHA-256 digest.
+- `SFig11.py`  
+  Entry script to reproduce Supp Figure 11 (generates the figure and/or panel outputs).
 
-## Design
+- `Panel_A_B_C_data/`  
+  Inputs and/or cached intermediates required for **Panel A, B, C**.
+---
 
-The analysis retains cells with an explicit excitatory-layer annotation
-(`eL2/3`, `eL4`, `eL5`, `eL6-1`, or `eL6-2`) and an explicit cortical-domain
-label (`L2/3`, `L4`, `L5`, or `L6`), leaving 601 STARmap cells. Observed and
-simulated labels are collapsed to four declared classes: superficial, middle,
-deep, and inner.
+## Environment
 
-Spatial structure is compared through row-normalized 4 × 4
-cell-class-by-domain matrices. Expression is compared for all eight named
-Figure 2 markers present in STARmap: *Cux2*, *Rorb*, *Fezf2*, *Deptor*,
-*Tshz2*, *Foxp2*, *Sulf2*, and *Ctgf*. For each marker, domain-wise mean counts
-are normalized within each dataset to sum to one; absolute assay count scales
-are not compared.
-
-Panels A and B compare the spatial cell-class organization. Panel C shows
-spatial expression maps for *Cux2* and *Rorb* as representative, visually
-legible examples. Panels D and E retain the complete prespecified eight-gene
-comparison, including discordant profiles.
-
-Cells and spatial domains within the single observed field are not treated as
-independent biological replicates. The correlations summarize agreement of
-the declared coarse profiles rather than sampling uncertainty or biological
-replication.
-
-## Run
-
-From the reproducibility-repository root:
-
+### Default (SimSpace)
+Most of Supp Figure 11 should run in the default environment:
 ```bash
+# Run the line below if not creating the repro env before
+# conda env create -f ../../environment.yml
 conda activate simspace-repro
-python main_figures/Fig2_new/Fig2_new.py
+```
+
+---
+
+## Run Supp Figure 11
+
+From the repository root:
+```bash
 python supp_figures/SFig11/SFig11.py
 ```
 
-If the archived STARmap input needs to be reacquired:
-
+Or from this directory:
 ```bash
-python supp_figures/SFig11/download_starmap.py
+python SFig11.py
 ```
 
-The entry script writes:
+---
 
-- `supp_figures/SFig11/SFig11.png`;
-- `example_output/SFig11/SFig11.png`;
-- mapped observed and simulated cells under `Panel_A_E_data/`;
-- cell-class/domain and marker-profile tables;
-- aggregate and per-gene comparison metrics; and
-- the complete analysis configuration, input manifest, checksums, and
-  software versions.
+## Panel A B C data
 
-## Result and interpretation limits
+### jaccard
 
-The cell-class-by-domain matrices agree strongly (Pearson `r = 0.967`, RMSE
-`= 0.079`). Across all eight shared markers, the profile-matrix Pearson
-correlation is `r = 0.524`, the median per-marker Pearson correlation is
-`r = 0.721`, and observed and simulated peak domains match for five of eight
-markers.
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the jaccard index for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
 
-The profiles of *Cux2*, *Rorb*, *Fezf2*, and *Deptor* are highly concordant,
-and *Ctgf* has the same peak domain with weaker profile agreement. *Tshz2*,
-*Foxp2*, and *Sulf2* are discordant in this observed field. The figure therefore
-supports strong coarse laminar agreement and heterogeneous molecular agreement;
-it does not claim reconstruction of the particular STARmap specimen or broad
-agreement for every cortical marker.
+
+### pcc
+
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the pearson correlations for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
+
+
+### rmse
+
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the rooted mean square error for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
+
+---

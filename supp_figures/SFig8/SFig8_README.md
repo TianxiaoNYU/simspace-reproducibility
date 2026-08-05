@@ -1,110 +1,58 @@
-# Supplementary Figure 8 — local reference-guided validation
+# Supplementary Figure 8
 
-This analysis addresses reviewer comments R1-2, R1-3, and R2-M6 using the
-existing Figure 3 Xenium breast-tumor tile and the archived SimSpace fitted
-parameter file. It adds no dataset and modifies no package function.
+This folder contains everything needed to reproduce the code-generated panels in **Supp Figure 8**, including panel-specific data and (when needed) panel-specific external code.
 
-## Scope
+---
 
-- Reference: one 1 mm × 1 mm Xenium tile (2,032 cells; 220 genes).
-- Spatial evaluation: ten independently seeded SimSpace simulations generated
-  from the same archived fitted parameter set (seeds 0–9).
-- Molecular evaluation: the frozen seed-0 molecular realization aligned to
-  the exactly replayed seed-0 spatial realization, plus ten newly generated
-  molecular realizations for spatial seeds 0–9 from one scDesign3 fit.
-- Niche evaluation: the frozen BANKSY outputs already used for Figure 3.
-- The reference and seed-0 cell maps are not repeated because they are already
-  shown in Figure 3.
-- Inference: a local, within-source case study. Seeds, cells, cell types, and
-  genes are not independent biological replicates, and no analysis is
-  held-out.
-- Calibration provenance: the archived Figure 3 parameter set was fitted with
-  optimizer seed 0, population size 100, 30 generations, and one simulation
-  replicate per fitness evaluation. The exact fitted file is
-  `main_figures/Fig3/Panel_B_C_D_data/simspace_fitted_params.json`.
+## Contents
 
-Moran's I is a calibration metric because the Figure 3 fit used cell-type
-Moran's I and neighborhood entropy. Cell-type Geary's C, whole-layout
-Ripley's L, gene-pattern metrics, permutation-centered cell-type
-co-localization, and BANKSY niche summaries are out-of-objective diagnostics.
+- `SFig8.py`  
+  Entry script to reproduce Supp Figure 8 (generates the figure and/or panel outputs).
 
-Cell-type Moran's I and Geary's C use a 20-nearest-neighbor graph and the seven
-cell types represented by at least 20 cells in the reference tile. Gene
-Moran's I and Geary's C use the 202 genes detected in 5%–95% of reference
-cells. Ripley's L is intentionally not stratified by cell type or gene: it is
-computed from all cell coordinates in the complete tile to evaluate overall
-point-pattern scattering, matching Figure 2. Coordinates are scaled
-independently along each axis to the unit square, and the uncorrected centered
-profile L(d)−d is evaluated at 25 evenly spaced radii from 0 to 0.25.
-Reference-versus-simulated agreement is computed across those 25 radii using
-Pearson correlation and RMSE. Panel A compares every simulated seed directly
-with the Xenium reference; it is not a simulation-versus-simulation
-correlation.
+- `Panel_C_D_data/`  
+  Inputs and/or cached intermediates required for **Panel C, D**.
+---
 
-Expression fidelity uses all 220 genes shared by the Xenium reference and
-simulated datasets. Panels H and I compare the frozen seed-0 realization with
-Xenium using the log1p gene-wise raw-count mean and log1p unbiased raw-count
-variance. Panels J and K fit the scDesign3 marginal and copula models once,
-generate new molecular profiles for spatial seeds 0–9 using the matching
-molecular seeds, and separately report PCC and RMSE between each realization's
-log1p gene-mean vector and the Xenium vector across all 220 genes. These
-same-tile results measure reference concordance rather than held-out accuracy.
+## Environment
 
-Spatial cell-cell communication inference is not included here. That distinct
-question maps to R1-7 and requires a validated ligand–receptor truth model;
-co-localization in this analysis is noncausal.
-
-## Run
-
-The frozen run used SimSpace 0.3.2 from commit
-`ecf2855612871498dc89b8d43169229dfb8f6057`. From the reproducibility
-repository root, activate the environment defined by `environment.yml`,
-verify the adjacent source checkout, and run:
-
+### Default (SimSpace)
+Most of Supp Figure 8 should run in the default environment:
 ```bash
-git -C ../SimSpace rev-parse HEAD
-python -m pip install -e ../SimSpace
+# Run the line below if not creating the repro env before
+# conda env create -f ../../environment.yml
+conda activate simspace-repro
+```
+
+---
+
+## Run Supp Figure 8
+
+From the repository root:
+```bash
 python supp_figures/SFig8/SFig8.py
 ```
 
-The first command must report
-`ecf2855612871498dc89b8d43169229dfb8f6057`.
-
-To regenerate Panels J–K, use R 4.4.2 with scDesign3 1.5.0 and
-SingleCellExperiment 1.28.1:
-
+Or from this directory:
 ```bash
-Rscript supp_figures/SFig8/Panel_L_src/generate_molecular_replicates.R \
-  main_figures/Fig3/Panel_B_C_D_data/Xenium_reference_metadata.csv \
-  main_figures/Fig3/Panel_B_C_D_data/Xenium_reference_count.csv \
-  supp_figures/SFig8/Panel_L_data/molecular_simulation_design.tsv \
-  supp_figures/SFig8/Panel_L_data/molecular_replicate_summaries.tsv
-python supp_figures/SFig8/SFig8.py
+python SFig8.py
 ```
 
-The initial Python run can use the frozen molecular summary supplied in
-`Panel_L_data/`; the R command is needed only to regenerate that table.
+---
 
-The script writes:
+## Panel C D data
 
-- `supp_figures/SFig8/SFig8.png`;
-- `example_output/SFig8/SFig8.png`; and
-- frozen result and provenance tables under
-  `supp_figures/SFig8/Panel_A_I_data/`;
-- seed-0 expression-fidelity tables under
-  `supp_figures/SFig8/Panel_J_K_data/`; and
-- ten-seed molecular design, summaries, and agreement under
-  `supp_figures/SFig8/Panel_L_data/`.
+### BANKSY_xenium_domain.csv
 
-`Panel_A_I_data/summary_metrics.tsv` is the numeric source for the manuscript
-and response. `whole_layout_ripley_profiles.tsv` and
-`whole_layout_ripley_agreement.tsv` contain the all-cell profiles and
-ten-seed agreement values. `Panel_J_K_data/expression_fidelity.tsv` and
-`expression_agreement.tsv` contain the 220-gene seed-0 results.
-`Panel_L_data/molecular_replicate_summaries.tsv` and
-`molecular_replicate_agreement.tsv` contain the ten-seed molecular results,
-and `molecular_software_versions.tsv` records the R environment.
-`analysis_config.json`, `input_manifest.tsv`, `seed_provenance.tsv`, and
-`software_versions.tsv` record the configuration, input hashes, coordinate
-hashes, and Python execution environment; the R versions for Panels J–K are
-specified above.
+They records the spatial clustering results for the Xenium reference and SimSpace data. Details can be found in `main_figures/Fig4/`
+
+### Xenium_reference_count.csv
+External data collected from High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis [https://www.nature.com/articles/s41467-023-43458-x]. This tile will used as the reference for scCube as it requires a reference to generate the molecular data even for its refernece-free mode.
+
+### scCube_fitted_count.csv & Xenium_Breast_scCube.csv
+
+They records the reference-based simulation results from scCube. Details can be found in `main_figures/Fig4/`
+
+### simspace_fitted_count.csv
+They records the reference-based simulation results from simspace reference-based simulations. Details can be found in `main_figures/Fig4/`
+
+---

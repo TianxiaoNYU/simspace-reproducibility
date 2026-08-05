@@ -59,7 +59,7 @@ Neither Xenium nor MERFISH, and none of Moran's I, Geary's C, or Ripley's L,
 was used to tune these parameters or select simulations. The reference data
 were loaded only to calculate the comparison statistics after generation.
 Thus, Figure 2D evaluates de novo reference-free generation rather than a
-reference-fitted model. Supplementary Figure 8 provides the complementary
+reference-fitted model. Supplementary Figure 9 provides the complementary
 reference-guided evaluation requested during review, using an archived
 automatically fitted Xenium parameter set and ten independently seeded
 post-fit spatial realizations.

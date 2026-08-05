@@ -9,8 +9,9 @@ This folder contains everything needed to reproduce the code-generated panels in
 - `SFig4.py`  
   Entry script to reproduce Supp Figure 4 (generates the figure and/or panel outputs).
 
-- `Panel_C_D_data/`  
-  Inputs and/or cached intermediates required for **Panel C, D**.
+- `Panel_A_B_C_data/`  
+  Inputs and/or cached intermediates required for **Panel A, B, C**.
+
 ---
 
 ## Environment
@@ -39,20 +40,10 @@ python SFig4.py
 
 ---
 
-## Panel C D data
+## Panel A B C data
 
-### BANKSY_xenium_domain.csv
+### MERFISH
+External data downloaded from the study: Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region [https://www.science.org/doi/10.1126/science.aau5324].
 
-They records the spatial clustering results for the Xenium reference and SimSpace data. Details can be found in `main_figures/Fig3/`
-
-### Xenium_reference_count.csv
-External data collected from High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis [https://www.nature.com/articles/s41467-023-43458-x]. This tile will used as the reference for scCube as it requires a reference to generate the molecular data even for its refernece-free mode.
-
-### scCube_fitted_count.csv & Xenium_Breast_scCube.csv
-
-They records the reference-based simulation results from scCube. Details can be found in `main_figures/Fig3/`
-
-### simspace_fitted_count.csv
-They records the reference-based simulation results from simspace reference-based simulations. Details can be found in `main_figures/Fig3/`
-
----
+### Xenium
+External data downloaded from the study: High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis [https://www.nature.com/articles/s41467-023-43458-x].

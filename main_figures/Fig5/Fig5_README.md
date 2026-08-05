@@ -9,11 +9,14 @@ This folder contains everything needed to reproduce the code-generated panels in
 - `Fig5.py`  
   Entry script to reproduce Figure 5 (generates the figure and/or panel outputs).
 
-- `Panel_B_C_D_data/`  
-  Inputs and/or cached intermediates required for **Panel B, C, D**.
+- `Panel_A_data/`  
+  Inputs and/or cached intermediates required for **Panel A**.
+
+- `Panel_B_C_D_data/`
+  Inputs and/or cached intermediates required for **Panel B, C, D**.  
 
 - `Panel_B_C_D_src/`
-  External code for Panel B, C, D that requires a separate environment for the SVG detection methods.  
+  External code for Panel B, C, D that requires a separate environment for all deconvolution methods.  
 ---
 
 ## Environment
@@ -42,39 +45,55 @@ python Fig5.py
 
 ---
 
+## Panel A data 
+
+### simspace_fitted_params.json
+
+SimSpace parameter file. Used for generating example plots in the workflow
+
+---
+
 ## Panel B C D data 
 
-### fitted_pvals.csv
+### jaccard
 
-Cache file which stores the p-values or similar statistics from all 7 SVG detection methods. It will be used to generate the heatmap in panel B.
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the jaccard index for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
 
-### METHOD_NAME/\*_280.csv, METHOD_NAME/\*_281.csv, ...
 
-For all 7 SVG detection methods, we stored their SVG results for all 8 synthetic datasets we tested in the reference-free mode. These files contain the gene ID and the computed SVG statistics from each method.
+### pcc
 
-### METHOD_NAME/\*_ref.csv, METHOD_NAME/\*_xenium.csv, ...
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the pearson correlations for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
 
-These files contain the SCG detection results in the reference-based mode, where `*_ref.csv` records the SVG results on the SimSpace simulated data, and `*_xenium.csv` records the SVG results on Xenium reference. 
+
+### rmse
+
+kernel{i}_niche{j}_state{k}_seed{l}.csv: 
+- the result table containing the rooted mean square error for every spot's deconvolution results in the simulated data with {i, j, k, l} parameters. 
+
+### Xenium_reference_*.csv
+
+External data collected from High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis [https://www.nature.com/articles/s41467-023-43458-x]. This tile will used as the reference for scCube as it requires a reference to generate the molecular data even for its refernece-free mode.
+
+Different files represents tiles with different number of cell types for SimSpace's simulation and the downstream deconvolution.
 
 ---
 
 ## Panel B C D src
 
-### Xenium_reference_count.csv & Xenium_reference_metadata.csv
-External data collected from High resolution mapping of the tumor microenvironment using integrated single-cell, spatial and in situ analysis [https://www.nature.com/articles/s41467-023-43458-x]. This tile will used as the reference for SimSpace to do the reference-based simulations.
+### simspace_convolve.py
 
-### simspace_data_prep.py
+The script to generate SimSpace simulation data for the deconvolution benchmarking. One can run that using `simspace-repro` conda env. It will generate all the convolved spot-level spatial data (examples in `tmp_convolve_data`) for the downsteam deconvolution algorithms.
 
-Generate the reference-free simulation datasets, which will be stored in `benchmark_datasets` for the downstream analysis.
+### tmp_convolve_data/meta and tmp_convolve_data/omics
 
-### benchmark_datasets
+SimSpace's simulated spot-level metadata and expression data. Stored in the format as `spot_meta_kernel{i}_niche{j}_state{k}_seed{l}.csv` and `spot_omics_kernel{i}_niche{j}_state{k}_seed{l}.csv`, where {i, j, k, l} represents the parameters used while simulating.
 
-Store all the SimSpace generated data for SVG detection comparison. SimSpace's reference-based simulation results are within `./Xenium_fitted/`, and the Xenium reference within `./Xenium_red/`
+### deconvolution/main.py
 
-### panel_B.R
+The key script to (a) deconvolve the simulated convolved data using 6 differenet methods (b) compute the results statistics (Jaccard index, PCC, RMSE). To run the whole script, one should have all 6 methods, CARD, cell2location, RCTD, Seurat, spatialDWLS, and STdeconvolve installed in their own environment. 
 
-R script to draw the heatmap in panel B of Figure 5, using the cache `Panel_B_C_D_data/fitted_pvals.csv`. R packages `ggplot2` and `pheatmap` are necessary.
+### deconvolution/*.R (or *.py)
 
-### METHOD_NAME/
-
-The script of each deconvolution methods, including scBSP, Giotto, Hotspot, Moran's I, SPARK, and spatialDE. We followed the provided guidance on each package's official page to have them installed, so it is recommended to follow the same guidance to reproduce the results if one desired.
+The individual scripts to generate the corresponding deconvolution results

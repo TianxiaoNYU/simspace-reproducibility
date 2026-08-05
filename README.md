@@ -98,14 +98,14 @@ simspace-reproducibility/
       Fig2_README.md
       Panel_D_data/
       Panel_D_src/
-    Fig3/
-      Fig3.py
-      Fig3_README.md
+    Fig4/
+      Fig4.py
+      Fig4_README.md
       Panel_*_data/
       Panel_*_src/
-    Fig5_new/
-      Fig5_new.py
-      Fig5_new_README.md
+    Fig6/
+      Fig6.py
+      Fig6_README.md
       Panel_A_B_data/
       Panel_C_data/
       Panel_A_B_C_src/
@@ -174,7 +174,7 @@ Where relevant, we provide cached intermediate results / caches to avoid refitti
 
 ### Getting help
 If you encounter an issue reproducing a figure, please open a GitHub issue and include:
-- figure name (e.g., Fig3, SFig2)
+- figure name (e.g., Fig4, SFig2)
 - the command you ran
 - full traceback/error message
 - OS + Python version

@@ -12,11 +12,16 @@ import os
 import simspace as ss
 import subprocess
 import glob
-# Find all FigX.py scripts in the supp_figures directory
-fig_scripts = glob.glob('supp_figures/SFig*/SFig*.py')
+# Find the exact entry script for each supplementary-figure directory.
+figure_dirs = glob.glob('supp_figures/SFig*')
+fig_scripts = [
+    os.path.join(figure_dir, f'{os.path.basename(figure_dir)}.py')
+    for figure_dir in figure_dirs
+    if os.path.isfile(os.path.join(figure_dir, f'{os.path.basename(figure_dir)}.py'))
+]
 
-# Sort the scripts to ensure consistent execution order
-fig_scripts.sort()
+# Sort by manuscript supplementary-figure number.
+fig_scripts.sort(key=lambda path: int(os.path.basename(os.path.dirname(path))[4:]))
 
 print(f"Found {len(fig_scripts)} figure scripts to run:")
 for script in fig_scripts:

@@ -1,0 +1,4 @@
+role	path	source	bytes	sha256
+observed_archive	supp_figures/SFig6/Panel_A_E_data/STARmap_mouse_visual_cortex.zip	https://zenodo.org/records/10698912/files/STARmap_mouse_visual_cortex.zip?download=1	471002	c1ffc459cf149b25773411fc6c5ef32845104dd8974802f627171fbf394e083c
+simulated_metadata	main_figures/Fig3/Panel_A_C_data/anchor_cells.tsv.gz	main_figures/Fig3	99845	5858b13780d617b5d2bd74d30e2b9ce876437758a49b731a8ee3aec44cf29dd4
+simulated_expression	main_figures/Fig3/Panel_C_data/simulated_expression.tsv.gz	main_figures/Fig3	122856	fc3a8df9b481e3937e7ae123f4b0592ac1d3a773fea2c35b13de0e97aa7fa12e

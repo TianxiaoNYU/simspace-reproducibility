@@ -1,0 +1,61 @@
+{
+  "schema_version": "4.0",
+  "representative_condition": {
+    "difficulty": "moderate",
+    "layout_seed": 0,
+    "visual_cluster_alignment": "maximum-overlap Hungarian assignment; display only"
+  },
+  "curve_summary": "median with observed seed range",
+  "boundary_summary": "median with observed seed range",
+  "combined_performance_panel": {
+    "columns": [
+      "curved_layers",
+      "irregular_mrf"
+    ],
+    "rows": [
+      "adjusted_rand_index",
+      "boundary_f1"
+    ],
+    "shared_legend": true
+  },
+  "complete_figure_layout": {
+    "top_row": [
+      "A",
+      "C"
+    ],
+    "bottom_row": [
+      "B"
+    ],
+    "panel_b_spans_full_width": true
+  },
+  "signal_axis": "domain-specific expression strength (2x, 3x, 4x)",
+  "composition_color_scale": [
+    0.0,
+    0.2
+  ],
+  "map_annotation": "ARI for the displayed seed and difficulty",
+  "validity_reporting": "supporting documentation only; not drawn in panels",
+  "independent_unit": "layout seed",
+  "source_files": {
+    "experiment_summary.tsv": "a90547431e9bd1da39d2d3cc805ff2194b0357beaccfb86a4a5c72d77352eb8d",
+    "representative_maps.tsv.gz": "84a5c6ef72f9eda1dab8a2ab747ceb993feff9276fb2812f082c97f81258fdd9"
+  },
+  "outputs": {
+    "A": {
+      "Panel_A.png": "4cde13eea383b233df53cb9ad8b8400f4c17149407b9dd3fbc58223c3088cafd",
+      "Panel_A.svg": "85c885594bae2b1264e77531c7161816f7fe45dbd402dc3b10e10f29a85af369"
+    },
+    "B": {
+      "Panel_B.png": "9039bd1d1f6ef723a72e0620150b26dd5f7423ab52d4192596a6489b19c93859",
+      "Panel_B.svg": "57cd215229db986a7ae388b3b1ed0ec78494a3ed35827f59384f65c514552bc3"
+    },
+    "C": {
+      "Panel_C.png": "2e194b3a3f0e62a00f08fa2beb05743eaf86b3c37f1e8d6c5b3d7c754e6d4218",
+      "Panel_C.svg": "05483c5b7ffa6d21875aa9662c9c0a3fba6cbffd0e07ac5fe124a74572548c01"
+    },
+    "complete": {
+      "Fig6.png": "20f086999011b4a6270baca775012abd3d9ddb134ddba8cb5154edf48bee086b",
+      "Fig6.svg": "a16a30b1e06dddd48621234ea0e958cce605a8d0f12dd4755d6e6d6efca1dece"
+    }
+  }
+}
