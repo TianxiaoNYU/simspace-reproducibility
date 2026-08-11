@@ -52,13 +52,19 @@ PERTURBATION_SD = 0.2
 MORAN_K = 5
 GEARY_K = 20
 INTERACTION_K = 50
-SIMSPACE_EXPECTED_VERSION = "0.3.2"
-SIMSPACE_SOURCE_COMMIT = "ecf2855612871498dc89b8d43169229dfb8f6057"
+SIMSPACE_EXPECTED_VERSION = "0.3.4"
+SIMSPACE_SOURCE_COMMIT = "de0a4c002e4ae733e354e3e180ab69b381ad994a"
 
 METRIC_LABELS = {
     "moran_i": "Moran's I",
     "geary_c": "Geary's C",
     "interaction_distance": "Interaction distance",
+}
+
+METRIC_TITLES = {
+    "moran_i": "Moran's I Distribution",
+    "geary_c": "Geary's C Distribution",
+    "interaction_distance": "Cell Type Interaction Distribution",
 }
 
 
@@ -334,15 +340,15 @@ def plot_figure(
     raw_metrics: pd.DataFrame,
     representative: dict[int, pd.DataFrame],
 ) -> plt.Figure:
-    sns.set_theme(style="whitegrid", context="paper")
+    sns.set_theme(style="white", context="paper")
     figure = plt.figure(figsize=(12.0, 6.7), dpi=300)
-    grid = figure.add_gridspec(2, 4, height_ratios=[1.05, 1.0])
+    grid = figure.add_gridspec(2, 1, height_ratios=[1.0, 1.0])
+    summary_grid = grid[0, 0].subgridspec(1, 3, wspace=0.30)
+    layout_grid = grid[1, 0].subgridspec(1, 4, wspace=0.25)
     palette = sns.color_palette("viridis", len(SWEEP_COUNTS))
-    default_index = SWEEP_COUNTS.index(DEFAULT_SWEEPS)
-    palette[default_index] = sns.color_palette("muted")[3]
 
     for index, metric in enumerate(METRIC_LABELS):
-        axis = figure.add_subplot(grid[0, index])
+        axis = figure.add_subplot(summary_grid[0, index])
         subset = raw_metrics[raw_metrics["metric"] == metric]
         sns.violinplot(
             data=subset,
@@ -357,46 +363,28 @@ def plot_figure(
         )
         axis.set_xlabel("Phenotype Gibbs sweeps")
         axis.set_ylabel(METRIC_LABELS[metric])
-        axis.set_title(chr(ord("A") + index), loc="left", fontweight="bold")
+        axis.set_title(METRIC_TITLES[metric])
+        if index == 0:
+            axis.text(
+                -0.12,
+                1.08,
+                "A",
+                transform=axis.transAxes,
+                fontsize=13,
+                fontweight="bold",
+                va="top",
+            )
 
-    legend_axis = figure.add_subplot(grid[0, 3])
-    legend_axis.axis("off")
-    legend_axis.text(
-        0.02,
-        0.95,
-        "Sensitivity design",
-        fontsize=11,
-        fontweight="bold",
-        va="top",
-    )
-    legend_axis.text(
-        0.02,
-        0.82,
-        "8 fixed seeds (0–7)\n"
-        "2 niches; 9 cell states\n"
-        "100 × 100 lattice\n"
-        "6 niche sweeps (fixed)\n"
-        "Default: 4 phenotype sweeps\n\n"
-        "Violins pool the same metric\n"
-        "components across seeds.\n"
-        "This is a summary-sensitivity\n"
-        "analysis, not a proof of\n"
-        "full-field equilibrium.",
-        fontsize=9.2,
-        linespacing=1.35,
-        va="top",
-    )
-
-    state_palette = sns.color_palette("tab10", N_STATES)
+    state_palette = sns.color_palette("tab20", N_STATES)
     for index, sweeps in enumerate((1, 2, 4, 10)):
-        axis = figure.add_subplot(grid[1, index])
+        axis = figure.add_subplot(layout_grid[0, index])
         meta = representative[sweeps]
         colors = [state_palette[int(state)] for state in meta["state"]]
         axis.scatter(
             meta["col"],
             meta["row"],
             c=colors,
-            s=1.8,
+            s=8,
             linewidths=0,
             rasterized=True,
         )
@@ -404,19 +392,14 @@ def plot_figure(
         axis.set_xticks([])
         axis.set_yticks([])
         axis.set_title(
-            f"{chr(ord('D') + index)}   {sweeps} sweep"
+            f"{chr(ord('B') + index)}   {sweeps} sweep"
             f"{'s' if sweeps != 1 else ''}",
             loc="left",
             fontweight="bold",
         )
-        axis.set_xlabel("Seed 0")
+        axis.set_xlabel("X")
+        axis.set_ylabel("Y")
 
-    figure.suptitle(
-        "Sensitivity of spatial summaries to phenotype Gibbs sweep count",
-        fontsize=13,
-        fontweight="bold",
-        y=1.01,
-    )
     figure.tight_layout()
     return figure
 

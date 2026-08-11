@@ -67,8 +67,8 @@ SIX_CONNECTED_NEIGHBORHOOD = (
     (0, 0, -1),
     (0, 0, 1),
 )
-SIMSPACE_EXPECTED_VERSION = "0.3.2"
-SIMSPACE_SOURCE_COMMIT = "ecf2855612871498dc89b8d43169229dfb8f6057"
+SIMSPACE_EXPECTED_VERSION = "0.3.4"
+SIMSPACE_SOURCE_COMMIT = "de0a4c002e4ae733e354e3e180ab69b381ad994a"
 
 LEVEL_LABELS = {
     "niche_indicator": "Niche indicators",
@@ -592,12 +592,6 @@ def plot_figure(
         fontweight="bold",
     )
 
-    figure.suptitle(
-        "Quantitative evaluation of reference-free 3D simulation",
-        fontsize=13,
-        fontweight="bold",
-        y=1.01,
-    )
     figure.tight_layout()
     return figure
 

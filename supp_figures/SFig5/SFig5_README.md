@@ -26,8 +26,8 @@ than independent biological replicates.
 
 ## Run
 
-The frozen run used SimSpace 0.3.2 from commit
-`ecf2855612871498dc89b8d43169229dfb8f6057`. From the reproducibility
+The frozen run used SimSpace 0.3.4 from commit
+`de0a4c002e4ae733e354e3e180ab69b381ad994a`. From the reproducibility
 repository root:
 
 ```bash

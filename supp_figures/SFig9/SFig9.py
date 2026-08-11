@@ -49,8 +49,8 @@ PERMUTATIONS = 100
 MIN_CELLTYPE_COUNT = 20
 MIN_GENE_DETECTION = 0.05
 MAX_GENE_DETECTION = 0.95
-SIMSPACE_EXPECTED_VERSION = "0.3.2"
-SIMSPACE_SOURCE_COMMIT = "ecf2855612871498dc89b8d43169229dfb8f6057"
+SIMSPACE_EXPECTED_VERSION = "0.3.4"
+SIMSPACE_SOURCE_COMMIT = "de0a4c002e4ae733e354e3e180ab69b381ad994a"
 
 TYPE_ABBREVIATIONS = {
     "Invasive_Tumor": "Tumor",
@@ -1097,11 +1097,6 @@ def plot_figure(
         )
         add_panel_label(axis, panel)
 
-    fig.suptitle(
-        "Local validation of a reference-guided SimSpace Xenium realization",
-        fontsize=15,
-        fontweight="bold",
-    )
     return fig
 
 

@@ -1,6 +1,6 @@
 # Supplementary Figure 9 — local reference-guided validation
 
-This analysis addresses reviewer comments R1-2, R1-3, and R2-M6 using the
+This analysis addresses reviewer comments R1-2, R1-3, R2-M6, and R3-2 using the
 existing Figure 4 Xenium breast-tumor tile and the archived SimSpace fitted
 parameter file. It adds no dataset and modifies no package function.
 
@@ -56,8 +56,8 @@ co-localization in this analysis is noncausal.
 
 ## Run
 
-The frozen run used SimSpace 0.3.2 from commit
-`ecf2855612871498dc89b8d43169229dfb8f6057`. From the reproducibility
+The frozen run used SimSpace 0.3.4 from commit
+`de0a4c002e4ae733e354e3e180ab69b381ad994a`. From the reproducibility
 repository root, activate the environment defined by `environment.yml`,
 verify the adjacent source checkout, and run:
 
@@ -68,7 +68,7 @@ python supp_figures/SFig9/SFig9.py
 ```
 
 The first command must report
-`ecf2855612871498dc89b8d43169229dfb8f6057`.
+`de0a4c002e4ae733e354e3e180ab69b381ad994a`.
 
 To regenerate Panels J–K, use R 4.4.2 with scDesign3 1.5.0 and
 SingleCellExperiment 1.28.1:

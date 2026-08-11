@@ -40,8 +40,8 @@ with another simulator or a published domain-identification method.
 
 ## Fast figure regeneration
 
-The archived run uses SimSpace 0.3.2 from commit
-`ecf2855612871498dc89b8d43169229dfb8f6057`. From the reproducibility
+The archived run uses SimSpace 0.3.4 from commit
+`de0a4c002e4ae733e354e3e180ab69b381ad994a`. From the reproducibility
 repository root, the normal entry point reads the archived ten-seed outputs
 and regenerates only the figure:
 
