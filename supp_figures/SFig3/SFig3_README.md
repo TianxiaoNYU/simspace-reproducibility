@@ -8,7 +8,7 @@ benchmark. It does not modify or reinterpret the original SimSpace results.
 ## Scientific question
 
 The original reference-free molecular generator draws phenotype-conditioned
-Gamma–Poisson counts. SimSpace 0.3.4 retains that generator unchanged and adds
+Gamma–Poisson counts. SimSpace 0.4.0 retains that generator unchanged and adds
 two independent, opt-in layers:
 
 1. a direct spatial log-mean effect for selected genes,
@@ -23,8 +23,7 @@ exactly.
 
 ## Frozen design
 
-- SimSpace: version 0.3.4, source commit
-  `de0a4c002e4ae733e354e3e180ab69b381ad994a`.
+- SimSpace: version 0.4.0.
 - Seeds: 0–19; the simulation seed is the independent statistical unit.
 - Layout: 50 × 50 reference-free lattice, four phenotypes, one fixed MRF
   affinity matrix, three Gibbs sweeps, 0.65 uniform retention (approximately

@@ -47,4 +47,4 @@ The matrix is a capability audit, not a global performance ranking. Quantitative
 
 This is a capability and interface audit, not an overall performance ranking. The compact headers in the manuscript are shorthand for the exact rules above. A cross therefore means that the audited method does not meet that full column definition; it does not imply that the method lacks every related or adjacent function.
 
-SimSpace is audited at version 0.3.2 (commit `ecf2855612871498dc89b8d43169229dfb8f6057`). Its row must be refreshed if the frozen manuscript software version changes before submission.
+SimSpace is audited at version 0.4.0. This release adds the documented headless command-line interface and stable CLI outputs while leaving the production simulation functions used by the manuscript workflows unchanged.

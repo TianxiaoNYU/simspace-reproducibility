@@ -56,10 +56,9 @@ co-localization in this analysis is noncausal.
 
 ## Run
 
-The frozen run used SimSpace 0.3.4 from commit
-`de0a4c002e4ae733e354e3e180ab69b381ad994a`. From the reproducibility
-repository root, activate the environment defined by `environment.yml`,
-verify the adjacent source checkout, and run:
+The frozen run uses SimSpace 0.4.0. From the reproducibility repository root,
+activate the environment defined by `environment.yml`, verify the adjacent
+source checkout, and run:
 
 ```bash
 git -C ../SimSpace rev-parse HEAD
