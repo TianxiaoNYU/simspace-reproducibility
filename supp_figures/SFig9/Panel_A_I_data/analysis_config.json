@@ -1,11 +1,12 @@
 {
   "analysis": "R1-2/R1-3 local reference-guided validation",
   "reference_scope": "one 1 mm x 1 mm Xenium breast-tumor tile",
-  "fit_reused": true,
+  "spatial_fit_reused": false,
+  "spatial_fit_design": "ten independently fitted parameter sets archived for optimizer seeds 0--9; this script consumes rather than reruns calibration",
   "held_out_data": false,
-  "simspace_version": "0.3.4",
-  "simspace_source_commit": "de0a4c002e4ae733e354e3e180ab69b381ad994a",
-  "simulation_seeds": [
+  "simspace_version": "0.4.0",
+  "simspace_source_commit": "9889513c0eccd254544a12347c48c0b846e281ba",
+  "optimizer_seeds": [
     0,
     1,
     2,
@@ -17,6 +18,25 @@
     8,
     9
   ],
+  "generation_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "optimizer_generation_seed_pairing": "matched 0--9",
+  "spatial_generation_shape": [
+    100,
+    100
+  ],
+  "niche_sweeps": 6,
+  "phenotype_sweeps": 4,
   "knn_k": 20,
   "ripley_scope": "all cell coordinates in the complete tile, without cell-type or gene stratification",
   "ripley_radii_after_axiswise_unit_normalization": [
@@ -53,9 +73,9 @@
     0.95
   ],
   "colocalization_permutations": 100,
-  "gene_diagnostics": "frozen seed-0 molecular realization aligned to the exact replayed seed-0 coordinates",
-  "expression_fidelity": "Pearson correlation and RMSE between Xenium and the frozen seed-0 molecular realization for log1p gene-wise raw-count means and log1p unbiased raw-count variances across all shared genes",
-  "molecular_replicate_fidelity": "The scDesign3 marginal and copula models were fitted once to the Xenium tile, then molecular draws for spatial seeds 0--9 were generated with matching molecular seeds. For each seed, Pearson correlation and RMSE compare the log1p gene-wise mean count vector with Xenium across all 220 genes.",
+  "gene_diagnostics": "separate frozen Figure 4 spatial and molecular realization",
+  "expression_fidelity": "Pearson correlation and RMSE between Xenium and the frozen Figure 4 molecular realization for log1p gene-wise raw-count means and log1p unbiased raw-count variances across all shared genes",
+  "molecular_replicate_fidelity": "The scDesign3 marginal and copula models were fitted once to the Xenium tile, then one molecular draw was generated for each independently fitted spatial layout using matched molecular seeds 0--9. For each fit, Pearson correlation and RMSE compare the log1p gene-wise mean count vector with Xenium across all 220 genes.",
   "molecular_model_fit_seed": 0,
   "molecular_draw_seeds": [
     0,
@@ -77,5 +97,12 @@
     "correlation_group": "celltype",
     "scDesign3_version": "1.5.0"
   },
-  "niche_diagnostics": "frozen Figure 4 BANKSY outputs"
+  "frozen_figure4_diagnostic_panels": [
+    "B",
+    "C",
+    "G",
+    "H",
+    "I"
+  ],
+  "niche_diagnostics": "separate frozen Figure 4 BANKSY outputs"
 }

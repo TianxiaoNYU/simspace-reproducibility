@@ -132,9 +132,9 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Path:** `supp_figures/SFig9/`
 - **Entry script:** `supp_figures/SFig9/SFig9.py`
 - **Figure README:** `supp_figures/SFig9/SFig9_README.md`
-- **Inputs:** frozen Figure 4 Xenium tile, fitted parameters, molecular realizations, and BANKSY outputs
-- **Analysis:** local spatial, molecular, and niche validation of reference-guided generation
-- **Run:** `python supp_figures/SFig9/SFig9.py`
+- **Inputs:** Figure 4 Xenium tile; ten independent spatial fits (optimizer seeds 0–9); molecular realizations; and BANKSY outputs
+- **Analysis:** local independent-calibration spatial robustness and molecular, co-localization, and niche fidelity
+- **Run:** follow the staged Python–R–Python commands in `supp_figures/SFig9/SFig9_README.md`
 
 ### Supplementary Figure 10
 - **Path:** `supp_figures/SFig10/`

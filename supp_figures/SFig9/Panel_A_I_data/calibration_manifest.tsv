@@ -1,0 +1,11 @@
+optimizer_seed	generation_seed	molecular_seed	parameter_file	parameter_file_sha256	parameter_file_bytes	n_fitted_numeric_parameters	mapping_basis
+0	0	0	Panel_A_I_data/fitted_params/Xenium_calibration_seed_00.json	1233ece46c4321ed56fc5e4ffd98f829c8716a43dc3600a008d280bf43dfc51d	1781	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+1	1	1	Panel_A_I_data/fitted_params/Xenium_calibration_seed_01.json	8ea585b01821de243c82621b7edabe054d5bb04682d0104e424fab3ac81a2fb2	1782	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+2	2	2	Panel_A_I_data/fitted_params/Xenium_calibration_seed_02.json	7ca52ae9d7ab03c6bbbbc64cfa745997df3e1af07721ff7d8950b4afbae69897	1783	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+3	3	3	Panel_A_I_data/fitted_params/Xenium_calibration_seed_03.json	33f4813e39e41bf39af3de5690f60a95712186eb12737efc5cb30287dcb4bf8a	1778	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+4	4	4	Panel_A_I_data/fitted_params/Xenium_calibration_seed_04.json	c651b80380b47a62b500ddd3f24428995c802d90b0e21c631e9ac413975f456e	1782	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+5	5	5	Panel_A_I_data/fitted_params/Xenium_calibration_seed_05.json	a8d1f4fd49b7a6a6fabbcd7be8c73fa8c943844c56a0dd8c92fecf9fffccefcc	1781	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+6	6	6	Panel_A_I_data/fitted_params/Xenium_calibration_seed_06.json	bdf6a4ca68e863e7d1647da34576c1469a46ec595419b98a52f276babaeb5225	1777	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+7	7	7	Panel_A_I_data/fitted_params/Xenium_calibration_seed_07.json	a1c7d421262ea7233d4733c0ece65e2374c7da7547d9c4f017861bd6dbd4528a	1765	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+8	8	8	Panel_A_I_data/fitted_params/Xenium_calibration_seed_08.json	3ab09a8913327b2b329de7fef5bed8d2f36197515c139e7b64d02de22dd49532	1778	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9
+9	9	9	Panel_A_I_data/fitted_params/Xenium_calibration_seed_09.json	d6b6887cf4d140ce48f402d1312e5b27f63cf694c0118a76e93eb280e1e58464	1779	83	author-confirmed: source suffix 1--10 maps to optimizer seeds 0--9

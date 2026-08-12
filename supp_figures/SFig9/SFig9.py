@@ -1,12 +1,14 @@
 """Supplementary Figure 9: local reference-guided validation for R1-2/R1-3.
 
-The analysis deliberately reuses the frozen Figure 4 Xenium tile and fitted
-SimSpace parameters.  It does not refit the model or treat cells, genes, or
-simulation seeds as independent biological replicates.
+The spatial robustness analysis uses ten independently calibrated SimSpace
+parameter sets (optimizer seeds 0--9) for the frozen Figure 4 Xenium tile and
+generates one layout per fit with the matching generation seed. Cells, genes,
+and seeded runs are not treated as independent biological replicates.
 """
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import os
@@ -38,19 +40,20 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parents[1]
 FIG3_DATA = REPO_ROOT / "main_figures" / "Fig4" / "Panel_B_C_D_data"
 DATA_DIR = SCRIPT_DIR / "Panel_A_I_data"
+FITTED_PARAMS_DIR = DATA_DIR / "fitted_params"
 EXPRESSION_DATA_DIR = SCRIPT_DIR / "Panel_J_K_data"
 MOLECULAR_DATA_DIR = SCRIPT_DIR / "Panel_L_data"
 EXAMPLE_DIR = REPO_ROOT / "example_output" / "SFig9"
 
 K_NEIGHBORS = 20
 WHOLE_LAYOUT_RIPLEY_RADII = np.linspace(0.0, 0.25, 25)
-SIMULATION_SEEDS = tuple(range(10))
+OPTIMIZER_SEEDS = tuple(range(10))
 PERMUTATIONS = 100
 MIN_CELLTYPE_COUNT = 20
 MIN_GENE_DETECTION = 0.05
 MAX_GENE_DETECTION = 0.95
 SIMSPACE_EXPECTED_VERSION = "0.4.0"
-SIMSPACE_SOURCE_COMMIT = "de0a4c002e4ae733e354e3e180ab69b381ad994a"
+SIMSPACE_SOURCE_COMMIT = "9889513c0eccd254544a12347c48c0b846e281ba"
 
 TYPE_ABBREVIATIONS = {
     "Invasive_Tumor": "Tumor",
@@ -76,6 +79,42 @@ def sha256_file(path: Path) -> str:
 def coordinate_hash(coordinates: np.ndarray) -> str:
     rounded = np.round(np.asarray(coordinates, dtype="<f8"), 8)
     return hashlib.sha256(rounded.tobytes()).hexdigest()
+
+
+def fitted_parameter_vector(path: Path) -> np.ndarray:
+    """Validate a SimSpace fit archive and return its numeric parameters."""
+    with path.open(encoding="utf-8") as handle:
+        payload = json.load(handle)
+    expected_keys = {
+        "n_group",
+        "n_state",
+        "niche_theta",
+        "theta_list",
+        "density_replicates",
+        "phi_replicates",
+    }
+    if set(payload) != expected_keys:
+        raise ValueError(f"Unexpected fitted-parameter schema in {path}.")
+    values = {key: payload[key]["value"] for key in expected_keys}
+    if int(values["n_group"]) != 2 or int(values["n_state"]) != 9:
+        raise ValueError(f"Unexpected fitted dimensions in {path}.")
+    if np.asarray(values["niche_theta"]).shape != (1,):
+        raise ValueError(f"Unexpected niche_theta dimensions in {path}.")
+    if np.asarray(values["theta_list"]).shape != (2, 36):
+        raise ValueError(f"Unexpected theta_list dimensions in {path}.")
+    if np.asarray(values["density_replicates"]).shape != (9,):
+        raise ValueError(f"Unexpected density dimensions in {path}.")
+    vector = np.concatenate(
+        [
+            np.ravel(np.asarray(values["niche_theta"], dtype=float)),
+            np.ravel(np.asarray(values["theta_list"], dtype=float)),
+            np.ravel(np.asarray(values["density_replicates"], dtype=float)),
+            np.ravel(np.asarray(values["phi_replicates"], dtype=float)),
+        ]
+    )
+    if len(vector) != 83 or not np.isfinite(vector).all():
+        raise ValueError(f"Invalid numeric fitted parameters in {path}.")
+    return vector
 
 
 def normalize_coordinates(coordinates: pd.DataFrame | np.ndarray) -> np.ndarray:
@@ -170,7 +209,7 @@ def celltype_metrics(
         rows.append(
             {
                 "dataset": dataset,
-                "seed": seed,
+                "optimizer_seed": seed,
                 "cell_type": cell_type,
                 "n_cells": int(indicator.sum()),
                 "moran_i": moran_i,
@@ -200,7 +239,7 @@ def metric_agreement(
         valid = np.isfinite(reference_values) & np.isfinite(simulated_values)
         rows.append(
             {
-                "seed": seed,
+                "optimizer_seed": seed,
                 "metric": metric,
                 "pearson_r": float(
                     pearsonr(
@@ -230,7 +269,7 @@ def ripley_profile_table(
     return pd.DataFrame(
         {
             "dataset": dataset,
-            "seed": seed,
+            "optimizer_seed": seed,
             "normalized_radius": WHOLE_LAYOUT_RIPLEY_RADII,
             "centered_l": profile,
         }
@@ -241,7 +280,7 @@ def ripley_profile_agreement(
     reference_profile: np.ndarray, simulated_profile: np.ndarray, seed: int
 ) -> dict[str, float | int]:
     return {
-        "seed": seed,
+        "optimizer_seed": seed,
         "pearson_r": float(
             pearsonr(reference_profile, simulated_profile).statistic
         ),
@@ -380,10 +419,22 @@ def molecular_replicate_agreement(
     reference_counts: pd.DataFrame,
     replicate_summaries: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Compare each molecular realization's gene means with the reference."""
+    """Compare each fitted-run molecular realization with the reference."""
     reference_means = np.log1p(reference_counts.astype(float).mean(axis=0))
     rows = []
-    for seed, frame in replicate_summaries.groupby("molecular_seed"):
+    required = {"optimizer_seed", "generation_seed", "molecular_seed"}
+    if not required.issubset(replicate_summaries.columns):
+        raise ValueError(
+            "Molecular summaries must record optimizer, generation, and "
+            "molecular seeds."
+        )
+    for optimizer_seed, frame in replicate_summaries.groupby("optimizer_seed"):
+        generation_seeds = frame["generation_seed"].unique()
+        molecular_seeds = frame["molecular_seed"].unique()
+        if len(generation_seeds) != 1 or len(molecular_seeds) != 1:
+            raise ValueError(
+                f"Inconsistent seed mapping for optimizer seed {optimizer_seed}."
+            )
         simulated_means = frame.set_index("gene")["mean_count"]
         genes = reference_means.index.intersection(
             simulated_means.index, sort=False
@@ -395,7 +446,9 @@ def molecular_replicate_agreement(
         valid = np.isfinite(reference_values) & np.isfinite(simulated_values)
         rows.append(
             {
-                "molecular_seed": int(seed),
+                "optimizer_seed": int(optimizer_seed),
+                "generation_seed": int(generation_seeds[0]),
+                "molecular_seed": int(molecular_seeds[0]),
                 "pearson_r": float(
                     pearsonr(
                         reference_values[valid], simulated_values[valid]
@@ -415,11 +468,16 @@ def molecular_replicate_agreement(
                 "n_genes": int(valid.sum()),
             }
         )
-    agreement = pd.DataFrame(rows).sort_values("molecular_seed")
-    if agreement["molecular_seed"].tolist() != list(SIMULATION_SEEDS):
+    agreement = pd.DataFrame(rows).sort_values("optimizer_seed")
+    if agreement["optimizer_seed"].tolist() != list(OPTIMIZER_SEEDS):
         raise ValueError(
-            "Molecular summaries must contain exactly seeds 0--9."
+            "Molecular summaries must contain optimizer seeds 0--9 exactly once."
         )
+    if not (
+        agreement["generation_seed"].tolist() == list(OPTIMIZER_SEEDS)
+        and agreement["molecular_seed"].tolist() == list(OPTIMIZER_SEEDS)
+    ):
+        raise ValueError("Expected matched optimizer/generation/molecular seeds.")
     return agreement
 
 
@@ -462,7 +520,7 @@ def matrix_long(
             rows.append(
                 {
                     "dataset": dataset,
-                    "seed": seed,
+                    "optimizer_seed": seed,
                     "cell_type_a": first,
                     "cell_type_b": second,
                     "centered_colocalization": float(matrix[i, j]),
@@ -478,7 +536,7 @@ def colocalization_agreement(
     reference_values = reference[upper]
     simulated_values = simulated[upper]
     return {
-        "seed": seed,
+        "optimizer_seed": seed,
         "pearson_r": float(
             pearsonr(reference_values, simulated_values).statistic
         ),
@@ -588,9 +646,18 @@ def summary_rows(
     add("reference_cells", len(reference_metadata), "cells", "input")
     add("reference_genes", reference_counts.shape[1], "genes", "input")
     add(
-        "postfit_spatial_realizations",
+        "independent_fitted_spatial_runs",
         len(seed_provenance),
-        "seeds",
+        "optimizer seeds",
+        "seed_provenance.tsv",
+    )
+    add(
+        "all_parameter_hashes_unique",
+        int(
+            seed_provenance["parameter_file_sha256"].nunique()
+            == len(seed_provenance)
+        ),
+        "boolean",
         "seed_provenance.tsv",
     )
     add(
@@ -688,9 +755,9 @@ def summary_rows(
             "../Panel_L_data/molecular_replicate_agreement.tsv",
         )
     add(
-        "molecular_replicates",
+        "independent_fit_molecular_realizations",
         int(len(molecular_replicate_agreement_table)),
-        "seeds",
+        "fitted runs",
         "../Panel_L_data/molecular_replicate_agreement.tsv",
     )
     for column in ["pearson_r", "rmse"]:
@@ -810,7 +877,7 @@ def plot_figure(
     spatial_agreement_axis.set_ylim(-1.05, 1.05)
     spatial_agreement_axis.set_xlabel("")
     spatial_agreement_axis.set_ylabel("Reference–simulation Pearson r")
-    spatial_agreement_axis.set_title("SimSpace vs Xenium (10 seeds)")
+    spatial_agreement_axis.set_title("SimSpace vs Xenium (10 independent fits)")
     add_panel_label(spatial_agreement_axis, "A")
 
     gene_labels = {
@@ -853,7 +920,7 @@ def plot_figure(
         label, panel = gene_labels[metric]
         axis.set_title(f"Gene {label} (n={len(gene_metric_table)})")
         axis.set_xlabel("Xenium reference")
-        axis.set_ylabel("SimSpace seed 0")
+        axis.set_ylabel("SimSpace realization")
         add_panel_label(axis, panel)
 
     reference_ripley = ripley_profile_table_data.loc[
@@ -863,7 +930,7 @@ def plot_figure(
         ripley_profile_table_data["dataset"] == "SimSpace"
     ].pivot(
         index="normalized_radius",
-        columns="seed",
+        columns="optimizer_seed",
         values="centered_l",
     )
     radii = simulated_ripley.index.to_numpy(dtype=float)
@@ -1041,15 +1108,15 @@ def plot_figure(
             f"{title} (n={int(agreement['n_genes'])})"
         )
         axis.set_xlabel("Xenium reference (log1p)")
-        axis.set_ylabel("SimSpace seed 0 (log1p)")
+        axis.set_ylabel("SimSpace realization (log1p)")
         add_panel_label(axis, panel)
 
-    seeds = molecular_replicate_agreement_table["molecular_seed"].to_numpy()
+    seeds = molecular_replicate_agreement_table["optimizer_seed"].to_numpy()
     robustness_specs = [
         (
             robustness_axes[0],
             "pearson_r",
-            "PCC across 10 molecular seeds",
+            "PCC across 10 independent fits",
             "PCC",
             "#2f75b5",
             "J",
@@ -1058,7 +1125,7 @@ def plot_figure(
         (
             robustness_axes[1],
             "rmse",
-            "RMSE across 10 molecular seeds",
+            "RMSE across 10 independent fits",
             "RMSE (log1p mean-count units)",
             "#c45a3c",
             "K",
@@ -1077,7 +1144,7 @@ def plot_figure(
             zorder=3,
         )
         axis.set_xticks(seeds)
-        axis.set_xlabel("Simulation seed")
+        axis.set_xlabel("Optimizer seed")
         axis.set_ylabel(ylabel)
         axis.set_title(title)
         axis.grid(False)
@@ -1100,8 +1167,9 @@ def plot_figure(
     return fig
 
 
-def main() -> None:
+def main(prepare_molecular_design: bool = False) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    FITTED_PARAMS_DIR.mkdir(parents=True, exist_ok=True)
     EXPRESSION_DATA_DIR.mkdir(parents=True, exist_ok=True)
     MOLECULAR_DATA_DIR.mkdir(parents=True, exist_ok=True)
     EXAMPLE_DIR.mkdir(parents=True, exist_ok=True)
@@ -1113,17 +1181,46 @@ def main() -> None:
             f"{SIMSPACE_EXPECTED_VERSION}; found {simspace_version}."
         )
 
+    parameter_paths = {
+        seed: FITTED_PARAMS_DIR / f"Xenium_calibration_seed_{seed:02d}.json"
+        for seed in OPTIMIZER_SEEDS
+    }
+    expected_parameter_paths = set(parameter_paths.values())
+    observed_parameter_paths = set(FITTED_PARAMS_DIR.glob("*.json"))
+    if observed_parameter_paths != expected_parameter_paths:
+        missing = sorted(expected_parameter_paths - observed_parameter_paths)
+        extra = sorted(observed_parameter_paths - expected_parameter_paths)
+        raise ValueError(
+            f"Expected exactly optimizer-seed parameter files 00--09; "
+            f"missing={missing}, extra={extra}."
+        )
+    parameter_vectors = {
+        seed: fitted_parameter_vector(path)
+        for seed, path in parameter_paths.items()
+    }
+    parameter_hashes = {
+        seed: sha256_file(path) for seed, path in parameter_paths.items()
+    }
+    if len(set(parameter_hashes.values())) != len(OPTIMIZER_SEEDS):
+        raise ValueError("Independent fitted parameter files must have unique hashes.")
+
     input_paths = {
         "reference_metadata": FIG3_DATA / "Xenium_reference_metadata.csv",
         "reference_counts": FIG3_DATA / "Xenium_reference_count.csv",
-        "simulated_metadata": FIG3_DATA / "simspace_fitted_metadata.csv",
-        "simulated_counts": FIG3_DATA / "simspace_fitted_count.csv",
-        "fitted_parameters": FIG3_DATA / "simspace_fitted_params.json",
-        "reference_banksy_domains": FIG3_DATA / "BANKSY_xenium_domain.csv",
-        "simulated_banksy_domains": FIG3_DATA / "BANKSY_simspace_domain.csv",
+        "frozen_figure4_simulated_metadata": (
+            FIG3_DATA / "simspace_fitted_metadata.csv"
+        ),
+        "frozen_figure4_simulated_counts": (
+            FIG3_DATA / "simspace_fitted_count.csv"
+        ),
+        "frozen_figure4_reference_banksy_domains": (
+            FIG3_DATA / "BANKSY_xenium_domain.csv"
+        ),
+        "frozen_figure4_simulated_banksy_domains": (
+            FIG3_DATA / "BANKSY_simspace_domain.csv"
+        ),
     }
-    manifest = pd.DataFrame(
-        [
+    manifest_rows = [
             {
                 "role": role,
                 "path_from_repository_root": str(path.relative_to(REPO_ROOT)),
@@ -1132,8 +1229,40 @@ def main() -> None:
             }
             for role, path in input_paths.items()
         ]
+    manifest_rows.extend(
+        {
+            "role": f"independent_fitted_parameters_optimizer_seed_{seed}",
+            "path_from_repository_root": str(path.relative_to(REPO_ROOT)),
+            "sha256": parameter_hashes[seed],
+            "bytes": path.stat().st_size,
+        }
+        for seed, path in parameter_paths.items()
     )
+    manifest = pd.DataFrame(manifest_rows)
     manifest.to_csv(DATA_DIR / "input_manifest.tsv", sep="\t", index=False)
+    calibration_manifest = pd.DataFrame(
+        [
+            {
+                "optimizer_seed": seed,
+                "generation_seed": seed,
+                "molecular_seed": seed,
+                "parameter_file": str(
+                    parameter_paths[seed].relative_to(SCRIPT_DIR)
+                ),
+                "parameter_file_sha256": parameter_hashes[seed],
+                "parameter_file_bytes": parameter_paths[seed].stat().st_size,
+                "n_fitted_numeric_parameters": len(parameter_vectors[seed]),
+                "mapping_basis": (
+                    "author-confirmed: source suffix 1--10 maps to optimizer "
+                    "seeds 0--9"
+                ),
+            }
+            for seed in OPTIMIZER_SEEDS
+        ]
+    )
+    calibration_manifest.to_csv(
+        DATA_DIR / "calibration_manifest.tsv", sep="\t", index=False
+    )
 
     reference_metadata = pd.read_csv(input_paths["reference_metadata"])
     reference_counts = pd.read_csv(
@@ -1143,22 +1272,20 @@ def main() -> None:
         reference_metadata["cell_id"].astype(str)
     ]
     frozen_simulated_metadata = pd.read_csv(
-        input_paths["simulated_metadata"], index_col=0
+        input_paths["frozen_figure4_simulated_metadata"], index_col=0
     )
     simulated_counts = pd.read_csv(
-        input_paths["simulated_counts"], index_col=0
+        input_paths["frozen_figure4_simulated_counts"], index_col=0
     )
     if len(frozen_simulated_metadata) != len(simulated_counts):
         raise ValueError("Figure 4 simulated metadata/count rows do not align.")
 
-    state_to_celltype = (
-        frozen_simulated_metadata[["state", "fitted_celltype"]]
-        .drop_duplicates()
-        .set_index("state")["fitted_celltype"]
-        .to_dict()
-    )
-    if len(state_to_celltype) != frozen_simulated_metadata["state"].nunique():
-        raise ValueError("A simulated state maps to more than one cell type.")
+    rank_to_celltype = {
+        rank: cell_type
+        for rank, cell_type in enumerate(
+            reference_metadata["Cluster"].value_counts().index, start=1
+        )
+    }
 
     reference_coordinates = normalize_coordinates(
         reference_metadata[["x_centroid", "y_centroid"]]
@@ -1213,45 +1340,38 @@ def main() -> None:
     simulated_matrices = []
     seed_rows = []
     molecular_design_tables = []
-    seed_zero_metadata: pd.DataFrame | None = None
 
-    for seed in SIMULATION_SEEDS:
+    for optimizer_seed in OPTIMIZER_SEEDS:
+        generation_seed = optimizer_seed
+        parameter_path = parameter_paths[optimizer_seed]
         simulation = ss.util.sim_from_json(
-            input_file=str(input_paths["fitted_parameters"]),
+            input_file=str(parameter_path),
             shape=(100, 100),
             num_iteration=4,
             n_iter=6,
-            seed=seed,
+            seed=generation_seed,
         )
         metadata = simulation.meta.copy()
         metadata.columns = ["state", "row", "col", "niche", "state_rank"]
         metadata["state"] = metadata["state"].astype(int)
-        metadata["fitted_celltype"] = metadata["state"].map(state_to_celltype)
+        metadata["state_rank"] = metadata["state_rank"].astype(int)
+        metadata["fitted_celltype"] = metadata["state_rank"].map(
+            rank_to_celltype
+        )
         if metadata["fitted_celltype"].isna().any():
-            raise ValueError(f"Unmapped cell state in simulation seed {seed}.")
+            raise ValueError(
+                f"Unmapped cell-state rank for optimizer seed {optimizer_seed}."
+            )
         coordinates = normalize_coordinates(metadata[["row", "col"]])
         labels = metadata["fitted_celltype"].to_numpy()
         molecular_design = metadata[
             ["row", "col", "fitted_celltype"]
         ].copy()
         molecular_design.insert(0, "cell_index", np.arange(len(metadata)))
-        molecular_design.insert(0, "molecular_seed", seed)
+        molecular_design.insert(0, "molecular_seed", optimizer_seed)
+        molecular_design.insert(0, "generation_seed", generation_seed)
+        molecular_design.insert(0, "optimizer_seed", optimizer_seed)
         molecular_design_tables.append(molecular_design)
-
-        if seed == 0:
-            same_state = np.array_equal(
-                metadata["state"].to_numpy(),
-                frozen_simulated_metadata["state"].astype(int).to_numpy(),
-            )
-            same_coordinates = np.allclose(
-                metadata[["row", "col"]].to_numpy(),
-                frozen_simulated_metadata[["row", "col"]].to_numpy(),
-            )
-            if not (same_state and same_coordinates):
-                raise ValueError(
-                    "Seed-0 replay does not match the frozen Figure 4 metadata."
-                )
-            seed_zero_metadata = metadata.copy()
 
         coordinate_matches = len(
             reference_coordinate_set.intersection(
@@ -1263,23 +1383,28 @@ def main() -> None:
         )
         seed_rows.append(
             {
-                "simulation_seed": seed,
+                "optimizer_seed": optimizer_seed,
+                "generation_seed": generation_seed,
+                "molecular_seed": optimizer_seed,
                 "n_cells": len(metadata),
                 "coordinate_hash": coordinate_hash(coordinates),
                 "coordinate_matches_to_reference": coordinate_matches,
-                "parameter_file_sha256": manifest.loc[
-                    manifest["role"] == "fitted_parameters", "sha256"
-                ].iloc[0],
+                "parameter_file": str(parameter_path.relative_to(SCRIPT_DIR)),
+                "parameter_file_sha256": parameter_hashes[optimizer_seed],
             }
         )
 
         simulated_ripley_profile = whole_layout_centered_ripley_l(coordinates)
         ripley_profile_tables.append(
-            ripley_profile_table("SimSpace", seed, simulated_ripley_profile)
+            ripley_profile_table(
+                "SimSpace", optimizer_seed, simulated_ripley_profile
+            )
         )
         ripley_agreements.append(
             ripley_profile_agreement(
-                reference_ripley_profile, simulated_ripley_profile, seed
+                reference_ripley_profile,
+                simulated_ripley_profile,
+                optimizer_seed,
             )
         )
 
@@ -1288,14 +1413,14 @@ def main() -> None:
             labels,
             cell_types,
             dataset="SimSpace",
-            seed=seed,
+            seed=optimizer_seed,
         )
         celltype_tables.append(metrics)
         agreement_tables.append(
             metric_agreement(
                 reference_celltype[["cell_type", "moran_i", "geary_c"]],
                 metrics[["cell_type", "moran_i", "geary_c"]],
-                seed=seed,
+                seed=optimizer_seed,
                 id_column="cell_type",
                 metrics=["moran_i", "geary_c"],
             )
@@ -1305,7 +1430,7 @@ def main() -> None:
             labels,
             knn_indices(coordinates),
             cell_types,
-            np.random.default_rng(10_000 + seed),
+            np.random.default_rng(10_000 + optimizer_seed),
         )
         simulated_matrices.append(simulated_colocalization)
         colocalization_tables.append(
@@ -1313,17 +1438,16 @@ def main() -> None:
                 simulated_colocalization,
                 cell_types,
                 dataset="SimSpace",
-                seed=seed,
+                seed=optimizer_seed,
             )
         )
         colocalization_agreements.append(
             colocalization_agreement(
-                reference_colocalization, simulated_colocalization, seed
+                reference_colocalization,
+                simulated_colocalization,
+                optimizer_seed,
             )
         )
-
-    if seed_zero_metadata is None:
-        raise RuntimeError("Seed 0 was not generated.")
 
     seed_provenance = pd.DataFrame(seed_rows)
     celltype_metric_table = pd.concat(celltype_tables, ignore_index=True)
@@ -1348,14 +1472,19 @@ def main() -> None:
         sep="\t",
         index=False,
     )
+    if prepare_molecular_design:
+        print(
+            "Wrote Panel_L_data/molecular_simulation_design.tsv for "
+            "optimizer seeds 0--9."
+        )
+        return
 
-    simulated_coordinates = normalize_coordinates(
-        seed_zero_metadata[["row", "col"]]
+    frozen_figure4_coordinates = normalize_coordinates(
+        frozen_simulated_metadata[["row", "col"]]
     )
-    simulated_labels = seed_zero_metadata["fitted_celltype"].to_numpy()
     gene_metric_table = gene_metrics(
         reference_coordinates,
-        simulated_coordinates,
+        frozen_figure4_coordinates,
         reference_counts,
         simulated_counts,
     )
@@ -1375,13 +1504,35 @@ def main() -> None:
     molecular_replicate_summaries = pd.read_csv(
         molecular_summary_path, sep="\t"
     )
+    summary_cell_counts = (
+        molecular_replicate_summaries.groupby("optimizer_seed")["n_cells"]
+        .nunique()
+    )
+    if not (summary_cell_counts == 1).all():
+        raise ValueError("Molecular summaries contain inconsistent cell counts.")
+    observed_cell_counts = (
+        molecular_replicate_summaries.groupby("optimizer_seed")["n_cells"]
+        .first()
+        .astype(int)
+    )
+    expected_cell_counts = seed_provenance.set_index("optimizer_seed")[
+        "n_cells"
+    ].astype(int)
+    if not observed_cell_counts.equals(expected_cell_counts):
+        raise ValueError(
+            "Molecular summaries are stale relative to the spatial design."
+        )
     molecular_replicate_agreement_table = molecular_replicate_agreement(
         reference_counts,
         molecular_replicate_summaries,
     )
 
-    reference_domains = pd.read_csv(input_paths["reference_banksy_domains"])
-    simulated_domains = pd.read_csv(input_paths["simulated_banksy_domains"])
+    reference_domains = pd.read_csv(
+        input_paths["frozen_figure4_reference_banksy_domains"]
+    )
+    simulated_domains = pd.read_csv(
+        input_paths["frozen_figure4_simulated_banksy_domains"]
+    )
     niche_metric_table, niche_composition_table = niche_metrics(
         reference_domains,
         simulated_domains,
@@ -1456,11 +1607,20 @@ def main() -> None:
     config = {
         "analysis": "R1-2/R1-3 local reference-guided validation",
         "reference_scope": "one 1 mm x 1 mm Xenium breast-tumor tile",
-        "fit_reused": True,
+        "spatial_fit_reused": False,
+        "spatial_fit_design": (
+            "ten independently fitted parameter sets archived for optimizer "
+            "seeds 0--9; this script consumes rather than reruns calibration"
+        ),
         "held_out_data": False,
         "simspace_version": simspace_version,
         "simspace_source_commit": SIMSPACE_SOURCE_COMMIT,
-        "simulation_seeds": list(SIMULATION_SEEDS),
+        "optimizer_seeds": list(OPTIMIZER_SEEDS),
+        "generation_seeds": list(OPTIMIZER_SEEDS),
+        "optimizer_generation_seed_pairing": "matched 0--9",
+        "spatial_generation_shape": [100, 100],
+        "niche_sweeps": 6,
+        "phenotype_sweeps": 4,
         "knn_k": K_NEIGHBORS,
         "ripley_scope": (
             "all cell coordinates in the complete tile, without cell-type "
@@ -1477,24 +1637,24 @@ def main() -> None:
         ],
         "colocalization_permutations": PERMUTATIONS,
         "gene_diagnostics": (
-            "frozen seed-0 molecular realization aligned to the exact "
-            "replayed seed-0 coordinates"
+            "separate frozen Figure 4 spatial and molecular realization"
         ),
         "expression_fidelity": (
             "Pearson correlation and RMSE between Xenium and the frozen "
-            "seed-0 molecular realization for log1p gene-wise raw-count "
+            "Figure 4 molecular realization for log1p gene-wise raw-count "
             "means and log1p unbiased raw-count variances across all "
             "shared genes"
         ),
         "molecular_replicate_fidelity": (
             "The scDesign3 marginal and copula models were fitted once to "
-            "the Xenium tile, then molecular draws for spatial seeds 0--9 "
-            "were generated with matching molecular seeds. For each seed, "
+            "the Xenium tile, then one molecular draw was generated for each "
+            "independently fitted spatial layout using matched molecular "
+            "seeds 0--9. For each fit, "
             "Pearson correlation and RMSE compare the log1p gene-wise mean "
             "count vector with Xenium across all 220 genes."
         ),
         "molecular_model_fit_seed": 0,
-        "molecular_draw_seeds": list(SIMULATION_SEEDS),
+        "molecular_draw_seeds": list(OPTIMIZER_SEEDS),
         "molecular_model": {
             "marginal_family": "negative binomial",
             "mu_formula": "celltype",
@@ -1503,7 +1663,8 @@ def main() -> None:
             "correlation_group": "celltype",
             "scDesign3_version": "1.5.0",
         },
-        "niche_diagnostics": "frozen Figure 4 BANKSY outputs",
+        "frozen_figure4_diagnostic_panels": ["B", "C", "G", "H", "I"],
+        "niche_diagnostics": "separate frozen Figure 4 BANKSY outputs",
     }
     (DATA_DIR / "analysis_config.json").write_text(
         json.dumps(config, indent=2) + "\n", encoding="utf-8"
@@ -1560,4 +1721,14 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--prepare-molecular-design",
+        action="store_true",
+        help=(
+            "Generate the ten fitted spatial layouts and molecular design, "
+            "then stop before reading the scDesign3 summaries."
+        ),
+    )
+    arguments = parser.parse_args()
+    main(prepare_molecular_design=arguments.prepare_molecular_design)

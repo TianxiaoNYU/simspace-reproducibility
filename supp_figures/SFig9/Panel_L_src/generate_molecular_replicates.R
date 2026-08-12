@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 
-# Generate gene-level summaries for ten independently seeded molecular
-# realizations using one scDesign3 fit to the Figure 4 Xenium tile.
+# Generate one molecular realization for each independently fitted SFig9
+# spatial layout using one scDesign3 fit to the Figure 4 Xenium tile.
 
 suppressPackageStartupMessages({
   library(SingleCellExperiment)
@@ -46,7 +46,8 @@ if (nrow(reference_metadata) != ncol(reference_counts)) {
   stop("Reference metadata rows and count-matrix columns do not align.")
 }
 required_design_columns <- c(
-  "molecular_seed", "cell_index", "row", "col", "fitted_celltype"
+  "optimizer_seed", "generation_seed", "molecular_seed", "cell_index",
+  "row", "col", "fitted_celltype"
 )
 if (!all(required_design_columns %in% colnames(simulation_design))) {
   stop("Molecular simulation design is missing required columns.")
@@ -93,11 +94,36 @@ copula_fit <- fit_copula(
   input_data = model_data$dat
 )
 
-summaries <- vector("list", 10)
-for (seed in 0:9) {
-  message(sprintf("Generating molecular realization for seed %d...", seed))
+optimizer_seeds <- sort(unique(simulation_design$optimizer_seed))
+if (!identical(as.integer(optimizer_seeds), 0:9)) {
+  stop("Molecular design must contain optimizer seeds 0--9.")
+}
+
+summaries <- vector("list", length(optimizer_seeds))
+for (optimizer_seed in optimizer_seeds) {
+  run_design <- simulation_design[
+    simulation_design$optimizer_seed == optimizer_seed,
+    ,
+    drop = FALSE
+  ]
+  generation_seeds <- unique(run_design$generation_seed)
+  molecular_seeds <- unique(run_design$molecular_seed)
+  if (
+    length(generation_seeds) != 1 ||
+      length(molecular_seeds) != 1 ||
+      generation_seeds != optimizer_seed ||
+      molecular_seeds != optimizer_seed
+  ) {
+    stop(sprintf("Seed provenance mismatch for optimizer seed %d.", optimizer_seed))
+  }
+  message(
+    sprintf(
+      "Generating molecular realization for optimizer seed %d...",
+      optimizer_seed
+    )
+  )
   new_metadata <- simulation_design[
-    simulation_design$molecular_seed == seed,
+    simulation_design$optimizer_seed == optimizer_seed,
     c("row", "col", "fitted_celltype"),
     drop = FALSE
   ]
@@ -112,7 +138,7 @@ for (seed in 0:9) {
     new_covariate = new_metadata,
     data = model_data$dat
   )
-  set.seed(seed)
+  set.seed(molecular_seeds)
   simulated_counts <- simu_new(
     sce = sce,
     mean_mat = parameters$mean_mat,
@@ -129,14 +155,16 @@ for (seed in 0:9) {
   )
   simulated_counts <- as.matrix(simulated_counts)
   if (nrow(simulated_counts) != nrow(reference_counts)) {
-    stop(sprintf("Unexpected gene count for molecular seed %d.", seed))
+    stop(sprintf("Unexpected gene count for optimizer seed %d.", optimizer_seed))
   }
   gene_names <- rownames(simulated_counts)
   if (is.null(gene_names)) {
     gene_names <- rownames(reference_counts)
   }
-  summaries[[seed + 1]] <- data.frame(
-    molecular_seed = seed,
+  summaries[[optimizer_seed + 1]] <- data.frame(
+    optimizer_seed = optimizer_seed,
+    generation_seed = generation_seeds,
+    molecular_seed = molecular_seeds,
     gene = gene_names,
     mean_count = rowMeans(simulated_counts),
     variance = apply(simulated_counts, 1, var),
