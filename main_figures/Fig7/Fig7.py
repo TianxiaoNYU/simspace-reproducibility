@@ -13,6 +13,13 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 import simspace as ss
 
+SIMSPACE_EXPECTED_VERSION = "0.4.1"
+if ss.__version__ != SIMSPACE_EXPECTED_VERSION:
+    raise RuntimeError(
+        f"Figure 7 requires SimSpace {SIMSPACE_EXPECTED_VERSION}; "
+        f"found {ss.__version__} at {ss.__file__}."
+    )
+
 Marker_list = [
     'DAPI', 'MPO', 'Ecadherin', 'PDL1', 'CD163', 'PD1', 'CD47', 
     'GAL3', 'PARP1', 'LAG3', 'CD4', 'PI3KCA', 'TIM3', 'CD68', 
@@ -35,15 +42,24 @@ sim.fit_scdesign(
     'X_centroid',
     'Y_centroid',
     seed=0,
+    family='gaussian',
 )
 
-cells = pd.read_csv(f"{script_dir}/Panel_A_B_C_data/CODEX_ref.csv")
+simulated_intensities = sim.omics.to_numpy(dtype=float)
+if not np.isfinite(simulated_intensities).all():
+    raise RuntimeError("Simulated CODEX marker intensities contain non-finite values.")
+if (simulated_intensities < 0).any():
+    raise RuntimeError("Simulated CODEX marker intensities contain negative values.")
+if not (np.abs(simulated_intensities - np.rint(simulated_intensities)) > 1e-8).any():
+    raise RuntimeError("Continuous CODEX simulation unexpectedly produced only integer values.")
+
+cells = pd.read_csv(f"{script_dir}/Panel_A_B_C_data/CODEX_meta.csv")
+cells['cell_type'] = cells['phenotype']
 cell_counts = cells['cell_type'].value_counts()
 ranked_cell_types = {cell_type: rank for rank, cell_type in enumerate(cells['cell_type'].value_counts().index, 1)}
 cells['celltype_rank'] = cells['cell_type'].map(ranked_cell_types)
 cells['x_centroid'] = 50 * (cells['centroid_x'] - cells['centroid_x'].min()) / (cells['centroid_x'].max() - cells['centroid_x'].min())
 cells['y_centroid'] = 50 * (cells['centroid_y'] - cells['centroid_y'].min()) / (cells['centroid_y'].max() - cells['centroid_y'].min())
-cells['cell_type'] = cells['cell_type'].replace('CD4+ T cells', 'Helper T cells')
 # Get unique cell types from both sim.meta['fitted_celltype'] and cells['phenotype']
 sim_celltypes = sim.meta['fitted_celltype'].unique()
 # cells_celltypes = cells['phenotype'].unique()
@@ -67,7 +83,7 @@ plt.gca().set_aspect('equal')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.title('SimSpace Simulation')
 plt.tight_layout()
-plt.show()
+plt.savefig(f'{script_dir}/Fig7_Panel_A4.png')
 
 plt.figure(figsize=(6, 3.5), dpi=250)
 sns.scatterplot(
@@ -96,13 +112,13 @@ plt.xlabel('X')
 plt.ylabel('Y')
 plt.gca().set_aspect('equal')
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.title('PD1 Marker Expression')
+plt.title('PD1 Marker Intensity')
 plt.tight_layout()
 plt.savefig(f'{script_dir}/Fig7_Panel_A2.png')
 
 ss.plot.plot_gene(
     sim.meta, sim.omics['PD1'], size=14, 
-    figsize=(5,5), dpi=300, title='PD1 Marker Expression',)
+    figsize=(5,5), dpi=300, title='PD1 Marker Intensity',)
 plt.savefig(f'{script_dir}/Fig7_Panel_A3.png', bbox_inches='tight', dpi=300)
 
 
@@ -118,13 +134,18 @@ hm_data = hm_data.reindex(sorted(hm_data.columns), axis=1)
 hm_data = hm_data.reindex(sorted(hm_data.index), axis=0)
 
 # make all diagonal elements NA for hm_data
-hm_arr = hm_data.to_numpy(copy=True)
-np.fill_diagonal(hm_arr, np.nan)
+hm_plot_values = hm_data.to_numpy(copy=True)
+np.fill_diagonal(hm_plot_values, np.nan)
+hm_plot = pd.DataFrame(
+    hm_plot_values,
+    index=hm_data.index,
+    columns=hm_data.columns,
+)
 
 # plot na as gray
 plt.figure(figsize=(7,7), dpi=250)
-sns.heatmap(hm_arr, annot=True, cmap='viridis', vmin=0, fmt='.2g', 
-            mask=np.eye(hm_arr.shape[0], dtype=bool), 
+sns.heatmap(hm_plot, annot=True, cmap='viridis', vmin=0, fmt='.2g',
+            mask=np.eye(hm_plot.shape[0], dtype=bool),
             cbar_kws={'label': 'Interaction Strength'}, square=True, 
             linewidths=0, linecolor='black')
 plt.xlabel('Cell Type')

@@ -27,6 +27,12 @@ conda activate simspace-repro
 pip install simspace==0.4.0
 ```
 
+The archived workflows use SimSpace 0.4.0 unless a figure-specific README
+states otherwise. Figure 7 requires SimSpace 0.4.1 for continuous CODEX marker
+intensities; install that version before running `main_figures/Fig7/Fig7.py`,
+then reinstall 0.4.0 for supplementary scripts that enforce the archived
+version.
+
 ### 2) Setting Up the R Environment for Omics Simulation
 
 SimSpace supports external omics profile simulation via R-based tools, including **scDesign3**, **SRTsim**, and **splatter**. These tools are optional but recommended if you want to simulate gene expression profiles in addition to spatial patterns.
