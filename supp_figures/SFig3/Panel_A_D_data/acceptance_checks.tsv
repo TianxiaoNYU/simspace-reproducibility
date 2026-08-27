@@ -1,11 +1,19 @@
 check	value	criterion	passed
 default_equals_disabled_components	1.0	equal to 1.0	True
 default_equals_zero_spatial_effect	1.0	equal to 1.0	True
-latent_spatial_coefficient_exact	9.992007221626409e-16	maximum absolute error < 1e-10	True
-observed_dose_response_monotonic	0.23921104230227835	all within-basis adjacent median differences > 0	True
-observed_sign_recovery	1.0	at least 0.95 across seed-level gene summaries	True
-observed_median_bias	0.00717327519846922	maximum absolute median bias <= 0.15	True
-observed_null_control_bias	0.0036325621097918473	maximum absolute null-control median <= 0.10	True
-capture_calibration	7.26124360224123e-05	maximum median absolute error <= 0.03	True
-ambient_calibration	0.04235277523408598	maximum median absolute error <= 0.50 counts per cell	True
-dropout_calibration	0.0012531094674015364	maximum seed-level absolute error <= 0.01	True
+balanced_effect_and_null_roles	6.0	each basis has 24 nonzero and 6 null genes per role	True
+fixed_effect_fits_converged	1.0	equal to 1.0	True
+fixed_effect_design_full_rank	1.0	rank equals the number of design columns	True
+full_model_dominates_reduced_model	2.388042048551142e-07	minimum full-minus-reduced log likelihood >= -1e-6	True
+lrt_p_values_valid	1.0	all p-values are finite and in [0, 1]	True
+latent_spatial_vectors_exact	1.683342891450515e-14	maximum absolute error < 1e-10	True
+observed_dose_response_monotonic	0.17596517212530893	all within-basis adjacent median differences > 0	True
+observed_sign_recovery	0.9959635416666667	at least 0.95 across nonzero gene-level fits	True
+observed_median_bias	0.05946019731026264	maximum absolute median bias <= 0.15	True
+observed_null_control_bias	0.031979673066183836	maximum absolute null-control median <= 0.10	True
+null_lrt_type_i_error_upper_bound	0.08333333333333333	maximum basis-by-role null rejection rate <= 0.125 at unadjusted per-gene alpha 0.05	True
+pooled_null_lrt_type_i_error	0.02291666666666667	each basis-pooled null rejection rate lies between 0.02 and 0.08 at unadjusted per-gene alpha 0.05	True
+nonzero_lrt_power_ge_0_5	0.9388888888888889	minimum basis-by-role-by-sign power >= 0.80 for |coefficient| >= 0.5	True
+capture_calibration	0.00011845006100691391	maximum median absolute error <= 0.03	True
+ambient_calibration	0.024832137655565134	maximum median absolute error <= 0.50 counts per cell	True
+dropout_calibration	0.0011816451591568078	maximum seed-level absolute error <= 0.01	True

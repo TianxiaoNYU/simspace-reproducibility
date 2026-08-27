@@ -88,8 +88,9 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Path:** `supp_figures/SFig3/`
 - **Entry script:** `supp_figures/SFig3/SFig3.py`
 - **Figure README:** `supp_figures/SFig3/SFig3_README.md`
-- **Analysis:** validation of optional direct spatial-expression and observation layers across twenty seeds
-- **Run:** `python supp_figures/SFig3/SFig3.py --render-only`
+- **Analysis:** twenty-seed validation of a full finite-basis shared-plus-phenotype-deviation design, target-block likelihood-ratio tests, and optional observation layers
+- **Regenerate:** `PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py`
+- **Render archived data:** `PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py --render-only`
 
 ### Supplementary Figure 4
 - **Path:** `supp_figures/SFig4/`

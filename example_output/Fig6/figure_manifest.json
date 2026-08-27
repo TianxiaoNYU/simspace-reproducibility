@@ -43,19 +43,19 @@
   "outputs": {
     "A": {
       "Panel_A.png": "4cde13eea383b233df53cb9ad8b8400f4c17149407b9dd3fbc58223c3088cafd",
-      "Panel_A.svg": "09fda53d6284d68f6c5a9ed38cf8e8ea585b3453ad176fdb26ea2693824ca7ce"
+      "Panel_A.svg": "04181d8dfd30cf98d19109937e62a8f330c984ce571c18de5f37dee536de14f3"
     },
     "B": {
       "Panel_B.png": "9039bd1d1f6ef723a72e0620150b26dd5f7423ab52d4192596a6489b19c93859",
-      "Panel_B.svg": "005d4b420f249b6f0e3b6b3de6ff5a1aff21752785f1f4f4499474ca1aed8f38"
+      "Panel_B.svg": "902ab7771a66f1e59bcb21e9a55d278cd755b2c9e1d5b9cdb0b010ecbed7f118"
     },
     "C": {
       "Panel_C.png": "62cbf03a64f212e68fa2a25d230c02e6de44dae3657aeb1f4e1b97c634639313",
-      "Panel_C.svg": "3e695f75d01c284db86061bbb66029dbb37f4de129d2ca86150eb5af48ae349d"
+      "Panel_C.svg": "a4635c0fd292b6a46489a40d2b0e4fbeac3d2c22ce58e39637690b9d3acd9c98"
     },
     "complete": {
       "Fig6.png": "ba41255c8e0d1c0a64d1ebabb19cdaf7144bfe60d44a94741308d133130424aa",
-      "Fig6.svg": "7c5b93e40fb06fd179b9c1486c68fa3c5d4155ef56756f7111cd88e988473a25"
+      "Fig6.svg": "453e214976c3811fbc94c4e1c03b2b31c4464d6348738893441752d0b9a5724e"
     }
   }
 }

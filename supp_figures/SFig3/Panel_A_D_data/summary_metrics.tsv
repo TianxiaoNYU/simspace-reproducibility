@@ -1,131 +1,427 @@
 section	group	metric	n_seeds	median	minimum	maximum
-direct_spatial_effect	basis=hotspot; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000007	-0.9999999999999991
-direct_spatial_effect	basis=hotspot; configured_strength=-1.0	observed_strength	20	-0.9993097398665259	-1.0202487144911356	-0.9659744325481947
-direct_spatial_effect	basis=hotspot; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000004	-0.7499999999999996
-direct_spatial_effect	basis=hotspot; configured_strength=-0.75	observed_strength	20	-0.7451348630717978	-0.7696545156226269	-0.7271270691338134
-direct_spatial_effect	basis=hotspot; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000003	-0.49999999999999967
-direct_spatial_effect	basis=hotspot; configured_strength=-0.5	observed_strength	20	-0.5027664414665849	-0.523835955657572	-0.4779907793291401
-direct_spatial_effect	basis=hotspot; configured_strength=-0.25	latent_strength	20	-0.24999999999999997	-0.25000000000000017	-0.24999999999999978
-direct_spatial_effect	basis=hotspot; configured_strength=-0.25	observed_strength	20	-0.2524245276328252	-0.26916923333376463	-0.2239918205067365
-direct_spatial_effect	basis=hotspot; configured_strength=0.0	latent_strength	20	0.0	0.0	0.0
-direct_spatial_effect	basis=hotspot; configured_strength=0.0	observed_strength	20	0.0016942236989746602	-0.011207326563698702	0.0144262896827892
-direct_spatial_effect	basis=hotspot; configured_strength=0.25	latent_strength	20	0.25	0.24999999999999978	0.25000000000000017
-direct_spatial_effect	basis=hotspot; configured_strength=0.25	observed_strength	20	0.2515388746644994	0.2307210284801392	0.2630668023288413
-direct_spatial_effect	basis=hotspot; configured_strength=0.5	latent_strength	20	0.5	0.49999999999999956	0.5000000000000003
-direct_spatial_effect	basis=hotspot; configured_strength=0.5	observed_strength	20	0.5015083707115695	0.4865617487084112	0.5109999676338961
-direct_spatial_effect	basis=hotspot; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999996	0.7500000000000004
-direct_spatial_effect	basis=hotspot; configured_strength=0.75	observed_strength	20	0.7508256835822951	0.7309450987728681	0.7657983950984881
-direct_spatial_effect	basis=hotspot; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999991	1.0000000000000007
-direct_spatial_effect	basis=hotspot; configured_strength=1.0	observed_strength	20	1.001030152945281	0.9789436901832533	1.0133471208268319
-direct_spatial_effect	basis=linear; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000004	-0.9999999999999996
-direct_spatial_effect	basis=linear; configured_strength=-1.0	observed_strength	20	-0.9984296918348814	-1.012106405272444	-0.9819769380160039
-direct_spatial_effect	basis=linear; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000003	-0.7499999999999997
-direct_spatial_effect	basis=linear; configured_strength=-0.75	observed_strength	20	-0.7512073776591135	-0.7645516714975045	-0.7347799140618688
-direct_spatial_effect	basis=linear; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000002	-0.4999999999999998
-direct_spatial_effect	basis=linear; configured_strength=-0.5	observed_strength	20	-0.5014245842988834	-0.5176301834940028	-0.4787602923426419
-direct_spatial_effect	basis=linear; configured_strength=-0.25	latent_strength	20	-0.25	-0.2500000000000001	-0.2499999999999999
-direct_spatial_effect	basis=linear; configured_strength=-0.25	observed_strength	20	-0.2558871020550794	-0.2640947615436451	-0.22917498220406474
-direct_spatial_effect	basis=linear; configured_strength=0.0	latent_strength	20	0.0	0.0	0.0
-direct_spatial_effect	basis=linear; configured_strength=0.0	observed_strength	20	-0.00010122822136594746	-0.021370603971806	0.012903781122215479
-direct_spatial_effect	basis=linear; configured_strength=0.25	latent_strength	20	0.25	0.2499999999999999	0.2500000000000001
-direct_spatial_effect	basis=linear; configured_strength=0.25	observed_strength	20	0.24948319300419092	0.23574439602906272	0.26419523586085225
-direct_spatial_effect	basis=linear; configured_strength=0.5	latent_strength	20	0.5	0.4999999999999998	0.5000000000000002
-direct_spatial_effect	basis=linear; configured_strength=0.5	observed_strength	20	0.49555036496637317	0.4853136535250348	0.515085372028769
-direct_spatial_effect	basis=linear; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999997	0.7500000000000003
-direct_spatial_effect	basis=linear; configured_strength=0.75	observed_strength	20	0.7518901686968607	0.7347362638378391	0.7626969262488779
-direct_spatial_effect	basis=linear; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999996	1.0000000000000004
-direct_spatial_effect	basis=linear; configured_strength=1.0	observed_strength	20	1.0006135879221738	0.9875885854226278	1.0320044812018807
-direct_spatial_effect	basis=radial; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000004	-0.9999999999999993
-direct_spatial_effect	basis=radial; configured_strength=-1.0	observed_strength	20	-1.0067825486859923	-1.0430105889119008	-0.9591408298898338
-direct_spatial_effect	basis=radial; configured_strength=-0.75	latent_strength	20	-0.7499999999999999	-0.7500000000000003	-0.7499999999999994
-direct_spatial_effect	basis=radial; configured_strength=-0.75	observed_strength	20	-0.754774450120216	-0.7775605665996818	-0.7007223579559936
-direct_spatial_effect	basis=radial; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000002	-0.49999999999999967
-direct_spatial_effect	basis=radial; configured_strength=-0.5	observed_strength	20	-0.4948133376831423	-0.564765311119206	-0.46154558295609704
-direct_spatial_effect	basis=radial; configured_strength=-0.25	latent_strength	20	-0.25	-0.2500000000000001	-0.2499999999999999
-direct_spatial_effect	basis=radial; configured_strength=-0.25	observed_strength	20	-0.25560229538086393	-0.28853706037585547	-0.21557644497022527
-direct_spatial_effect	basis=radial; configured_strength=0.0	latent_strength	20	0.0	-0.0	-0.0
-direct_spatial_effect	basis=radial; configured_strength=0.0	observed_strength	20	0.0036325621097918473	-0.021706019762468592	0.022491131722212218
-direct_spatial_effect	basis=radial; configured_strength=0.25	latent_strength	20	0.24999999999999997	0.24999999999999983	0.2500000000000001
-direct_spatial_effect	basis=radial; configured_strength=0.25	observed_strength	20	0.24853372374047206	0.21709123217329393	0.2752257006262523
-direct_spatial_effect	basis=radial; configured_strength=0.5	latent_strength	20	0.49999999999999994	0.49999999999999967	0.5000000000000002
-direct_spatial_effect	basis=radial; configured_strength=0.5	observed_strength	20	0.5043545826552598	0.464764337198447	0.5374690838229437
-direct_spatial_effect	basis=radial; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999994	0.7500000000000003
-direct_spatial_effect	basis=radial; configured_strength=0.75	observed_strength	20	0.7540591563884269	0.7123956152894357	0.7751318654836115
-direct_spatial_effect	basis=radial; configured_strength=1.0	latent_strength	20	0.9999999999999999	0.9999999999999994	1.0000000000000004
-direct_spatial_effect	basis=radial; configured_strength=1.0	observed_strength	20	0.9962471252529899	0.9540469694715936	1.0245674267742668
-direct_spatial_effect	basis=structure_distance; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000004	-0.9999999999999993
-direct_spatial_effect	basis=structure_distance; configured_strength=-1.0	observed_strength	20	-0.9983322382928277	-1.0317024412869347	-0.9683176580848121
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000006	-0.7499999999999991
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.75	observed_strength	20	-0.7493374015210758	-0.7841235835546575	-0.7179996140908933
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000002	-0.49999999999999967
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.5	observed_strength	20	-0.4973974389907758	-0.5190452198967583	-0.45983300871332256
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.25	latent_strength	20	-0.25	-0.2500000000000001	-0.24999999999999983
-direct_spatial_effect	basis=structure_distance; configured_strength=-0.25	observed_strength	20	-0.24862406027929868	-0.2945595169928277	-0.21794899074335417
-direct_spatial_effect	basis=structure_distance; configured_strength=0.0	latent_strength	20	0.0	0.0	0.0
-direct_spatial_effect	basis=structure_distance; configured_strength=0.0	observed_strength	20	-0.0022653352946196627	-0.020100922365023394	0.02219256643403395
-direct_spatial_effect	basis=structure_distance; configured_strength=0.25	latent_strength	20	0.24999999999999997	0.24999999999999983	0.2500000000000001
-direct_spatial_effect	basis=structure_distance; configured_strength=0.25	observed_strength	20	0.25096923845118635	0.22256619259157545	0.27932388416707776
-direct_spatial_effect	basis=structure_distance; configured_strength=0.5	latent_strength	20	0.49999999999999994	0.49999999999999967	0.5000000000000002
-direct_spatial_effect	basis=structure_distance; configured_strength=0.5	observed_strength	20	0.5071732751984692	0.46360100003179394	0.5229999555321034
-direct_spatial_effect	basis=structure_distance; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999991	0.7500000000000003
-direct_spatial_effect	basis=structure_distance; configured_strength=0.75	observed_strength	20	0.7507814774265363	0.7264935163755317	0.8047709485103677
-direct_spatial_effect	basis=structure_distance; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999993	1.0000000000000004
-direct_spatial_effect	basis=structure_distance; configured_strength=1.0	observed_strength	20	0.9968887225342113	0.9689262089430742	1.0276966097379199
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	latent_strength	20	-1.0000000000000004	-1.0000000000000016	-0.9999999999999989
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	observed_strength	20	-0.9844977588030694	-1.1200812509686544	-0.9171612771956411
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	latent_strength	20	-0.7500000000000002	-0.7500000000000011	-0.7499999999999989
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	observed_strength	20	-0.7572708697213186	-0.8807347483273649	-0.6326235116880209
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	latent_strength	20	-0.5	-0.500000000000001	-0.49999999999999944
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	observed_strength	20	-0.49910710581899276	-0.6081293080750928	-0.35995431840588976
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	latent_strength	20	-0.24999999999999997	-0.2500000000000009	-0.24999999999999872
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	observed_strength	20	-0.245664796084274	-0.3389436016959329	-0.052171309450202354
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	latent_strength	20	-1.2080354742993141e-17	-1.0521183214263506e-15	1.7357659957379085e-15
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	observed_strength	20	0.0013901804416734847	-0.07152071503688144	0.05988148841934871
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	latent_strength	20	0.25000000000000006	0.2499999999999989	0.25000000000000244
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	observed_strength	20	0.24996153674741656	0.11390125110120088	0.32635566424988083
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	latent_strength	20	0.5000000000000002	0.49999999999999817	0.5000000000000023
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	observed_strength	20	0.47222184059310535	0.3373869660771114	0.5433355964336923
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	latent_strength	20	0.7500000000000002	0.7499999999999979	0.7500000000000033
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	observed_strength	20	0.7593669219017083	0.6477987639507947	0.827124574239686
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999987	1.0000000000000033
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	observed_strength	20	1.0148808074112683	0.8864171439118999	1.107662024541046
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	latent_strength	20	-0.9999999999999996	-1.0000000000000038	-0.9999999999999983
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	observed_strength	20	-1.0087204777747305	-1.1312184809998311	-0.9592693277195985
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000023	-0.749999999999998
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	observed_strength	20	-0.7580210535398787	-0.8482628692138201	-0.6538564387819746
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	latent_strength	20	-0.49999999999999983	-0.5000000000000014	-0.4999999999999988
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	observed_strength	20	-0.5329947755268944	-0.6121206876258692	-0.3834463628680706
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	latent_strength	20	-0.24999999999999997	-0.25000000000000044	-0.249999999999998
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	observed_strength	20	-0.24304432039772494	-0.3323719536841149	-0.15580331849107779
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	latent_strength	20	8.049265714331915e-18	-1.0231169034437288e-15	1.9938800548924025e-15
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	observed_strength	20	-0.005393366450211045	-0.07809786226232102	0.04045648815180926
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	latent_strength	20	0.2499999999999999	0.24999999999999925	0.2500000000000008
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	observed_strength	20	0.26570393767072253	0.16586211794004868	0.3280100649080095
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	latent_strength	20	0.4999999999999999	0.4999999999999991	0.500000000000003
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	observed_strength	20	0.48175025073662414	0.4213239133389443	0.5566955916266889
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	latent_strength	20	0.7499999999999998	0.7499999999999986	0.7500000000000011
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	observed_strength	20	0.7630341840927406	0.6496630688394326	0.8854732873618782
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	latent_strength	20	0.9999999999999998	0.9999999999999984	1.0000000000000018
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	observed_strength	20	0.9836970580864457	0.8658909143859727	1.1535233809841856
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	latent_strength	20	-0.9999999999999998	-1.0000000000000009	-0.9999999999999986
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	observed_strength	20	-0.997562298225999	-1.0818175147945872	-0.9342722318424844
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	latent_strength	20	-0.7499999999999999	-0.7500000000000016	-0.7499999999999983
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	observed_strength	20	-0.7652855700323434	-0.9353015424663561	-0.650171215683408
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	latent_strength	20	-0.4999999999999999	-0.5000000000000018	-0.49999999999999856
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	observed_strength	20	-0.5172309277271404	-0.6675846065812945	-0.38596570933772906
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	latent_strength	20	-0.24999999999999992	-0.2500000000000008	-0.24999999999999928
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	observed_strength	20	-0.24074837812397484	-0.32223939846166333	-0.12468947586918916
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	latent_strength	20	1.054880078409385e-17	-1.4342619591531377e-15	1.7855502650858943e-15
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	observed_strength	20	-0.0009526931434640366	-0.08305655037315351	0.10625640657856011
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	latent_strength	20	0.2500000000000001	0.249999999999999	0.25000000000000167
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	observed_strength	20	0.21811059394898105	0.12130840354981345	0.3080084013521255
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	latent_strength	20	0.49999999999999994	0.4999999999999986	0.500000000000001
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	observed_strength	20	0.5139346117665422	0.4031433827857158	0.674700134611352
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999991	0.7500000000000006
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	observed_strength	20	0.7691527205388893	0.6643086146914329	0.871906455158521
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	latent_strength	20	1.0	0.999999999999999	1.0000000000000018
+direct_spatial_effect	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	observed_strength	20	1.0104763286255474	0.8478613083182573	1.1232229559611169
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000049	-0.9999999999999934
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-1.0	observed_strength	20	-0.9942324560220954	-1.0825052188410325	-0.9000454669476872
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000088	-0.7499999999999963
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.75	observed_strength	20	-0.7388200562044955	-0.8351875710533067	-0.6692891019288953
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.5	latent_strength	20	-0.5000000000000001	-0.5000000000000085	-0.49999999999999867
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.5	observed_strength	20	-0.48966410412924355	-0.5523251431799975	-0.4080941314640501
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.25	latent_strength	20	-0.25000000000000017	-0.25000000000000694	-0.24999999999999548
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=-0.25	observed_strength	20	-0.24846343710817353	-0.35618735504848387	-0.19457306825454052
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.0	latent_strength	20	-9.367804988088239e-17	-2.919589706662391e-15	2.8639316555262657e-15
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.0	observed_strength	20	0.01875409914568326	-0.02934421059839598	0.08442119188365799
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.25	latent_strength	20	0.24999999999999994	0.2499999999999958	0.2500000000000037
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.25	observed_strength	20	0.2310171862060948	0.1668797925163248	0.3180399163240279
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.5	latent_strength	20	0.4999999999999998	0.49999999999998623	0.5000000000000039
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.5	observed_strength	20	0.4896201809642695	0.438731839052474	0.5711078911185153
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.75	latent_strength	20	0.7499999999999996	0.7499999999999934	0.750000000000001
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=0.75	observed_strength	20	0.75111677179619	0.6878384264583485	0.8014292697694044
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=1.0	latent_strength	20	0.9999999999999998	0.9999999999999951	1.0000000000000069
+direct_spatial_effect	basis=hotspot; effect_scope=overall; effect_role=overall; configured_strength=1.0	observed_strength	20	0.9918172647591654	0.9440339024963147	1.0731468358801166
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	latent_strength	20	-0.9999999999999996	-1.0000000000000013	-0.9999999999999984
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	observed_strength	20	-1.0227923020379843	-1.083471486020576	-0.8606742218684968
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000011	-0.7499999999999987
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	observed_strength	20	-0.7551805594220109	-0.8760423253226256	-0.6735686841139941
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000009	-0.49999999999999833
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	observed_strength	20	-0.4713978503395385	-0.5620688723129255	-0.4084997957253783
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	latent_strength	20	-0.25	-0.25000000000000105	-0.24999999999999828
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	observed_strength	20	-0.23969275829405193	-0.3448180500131558	-0.13184778688993784
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	latent_strength	20	6.095628570769254e-17	-1.147108584174921e-15	1.4538165278623751e-15
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	observed_strength	20	0.0032061875334402955	-0.06460941491403613	0.05692171901347248
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	latent_strength	20	0.2500000000000001	0.24999999999999867	0.25000000000000144
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	observed_strength	20	0.24097185539278004	0.1878558673736003	0.3357138797490755
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	latent_strength	20	0.5000000000000002	0.4999999999999988	0.5000000000000012
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	observed_strength	20	0.4901998996903011	0.38999644343586576	0.6330243518449941
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999987	0.7500000000000032
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	observed_strength	20	0.7280107221488421	0.6823438985422104	0.8667395247913856
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999983	1.0000000000000013
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	observed_strength	20	1.013444031725529	0.8939249946217322	1.0930284223024893
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	latent_strength	20	-0.9999999999999996	-1.0000000000000013	-0.9999999999999978
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	observed_strength	20	-0.9703250703406439	-1.0864524863272509	-0.9161979138922134
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000022	-0.749999999999998
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	observed_strength	20	-0.7560745442865504	-0.8677403580183951	-0.6706009066413593
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	latent_strength	20	-0.4999999999999997	-0.5000000000000016	-0.49999999999999833
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	observed_strength	20	-0.5194541159130256	-0.5970983268809205	-0.37842383861811413
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	latent_strength	20	-0.24999999999999994	-0.2500000000000011	-0.24999999999999817
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	observed_strength	20	-0.2333816377596708	-0.34423699295603527	-0.1825036122395538
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	latent_strength	20	1.0461648588128305e-16	-1.6732156771472585e-15	1.480427313668888e-15
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	observed_strength	20	0.031979673066183836	-0.04831196777031799	0.06870751837266036
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	latent_strength	20	0.24999999999999992	0.24999999999999864	0.2500000000000011
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	observed_strength	20	0.25443669607772873	0.11392630699336469	0.3782340256495166
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	latent_strength	20	0.4999999999999998	0.49999999999999784	0.5000000000000018
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	observed_strength	20	0.5393062043679575	0.39718162194538276	0.5911607774993076
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	latent_strength	20	0.7499999999999999	0.7499999999999978	0.750000000000002
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	observed_strength	20	0.7603847141096258	0.6757063890625503	0.8753634295961161
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	latent_strength	20	0.9999999999999998	0.9999999999999982	1.0000000000000033
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	observed_strength	20	0.9778284161327603	0.8341024717843417	1.0855509529792051
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	latent_strength	20	-0.9999999999999996	-1.0000000000000013	-0.999999999999998
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	observed_strength	20	-1.012997919197438	-1.0901743987982084	-0.871478697275198
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	latent_strength	20	-0.7499999999999998	-0.7500000000000014	-0.7499999999999987
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	observed_strength	20	-0.7428960289392894	-0.9069976438622824	-0.6065324851337455
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	latent_strength	20	-0.4999999999999998	-0.5000000000000007	-0.49999999999999784
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	observed_strength	20	-0.4983535730067033	-0.5876355715461706	-0.35668815238288437
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	latent_strength	20	-0.24999999999999992	-0.25000000000000133	-0.24999999999999847
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	observed_strength	20	-0.28061633791672463	-0.3581722238822064	-0.17317216272230296
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	latent_strength	20	1.5846257496096583e-16	-1.4530805081577146e-15	1.4155540244248306e-15
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	observed_strength	20	0.005005025448130818	-0.04751186155909175	0.05414029311160142
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	latent_strength	20	0.25000000000000033	0.24999999999999878	0.25000000000000366
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	observed_strength	20	0.26002492938547916	0.17068807744349934	0.29749451245020403
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	latent_strength	20	0.5000000000000002	0.49999999999999795	0.500000000000002
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	observed_strength	20	0.47247504102853827	0.3790524575238132	0.5703901251599603
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999971	0.7500000000000011
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	observed_strength	20	0.7254775344930929	0.6524998748925269	0.8273511182529831
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	latent_strength	20	0.9999999999999999	0.9999999999999971	1.0000000000000022
+direct_spatial_effect	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	observed_strength	20	0.9809670395982599	0.8965393914913614	1.1937428143357838
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000018	-0.9999999999999986
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-1.0	observed_strength	20	-0.9912063113010552	-1.0397249105959667	-0.8852834210874312
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.75	latent_strength	20	-0.7499999999999998	-0.7500000000000011	-0.7499999999999981
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.75	observed_strength	20	-0.750862854993543	-0.7947944536386831	-0.6804819197926334
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000011	-0.49999999999999833
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.5	observed_strength	20	-0.47967317844761515	-0.5697925915988772	-0.4489227076477878
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.25	latent_strength	20	-0.25	-0.25000000000000155	-0.24999999999999933
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=-0.25	observed_strength	20	-0.24465617001883821	-0.3004815250324679	-0.18574145979589535
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.0	latent_strength	20	9.602137446595659e-18	-9.95258031497157e-16	7.848424646233179e-16
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.0	observed_strength	20	-0.010118016095139295	-0.0464551699989605	0.021141005820627654
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.25	latent_strength	20	0.24999999999999992	0.24999999999999795	0.25000000000000044
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.25	observed_strength	20	0.2500770307758031	0.21420913390239754	0.3442802260289384
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.5	latent_strength	20	0.4999999999999999	0.4999999999999984	0.5000000000000011
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.5	observed_strength	20	0.48707023214951456	0.42033222291660727	0.587835963549118
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.75	latent_strength	20	0.7499999999999996	0.7499999999999987	0.7500000000000009
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=0.75	observed_strength	20	0.7384842447787499	0.6114954090915918	0.8122311611179452
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=1.0	latent_strength	20	0.9999999999999996	0.999999999999998	1.0000000000000018
+direct_spatial_effect	basis=linear; effect_scope=overall; effect_role=overall; configured_strength=1.0	observed_strength	20	0.9978274186900261	0.9540102259341511	1.0361749298151848
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	latent_strength	20	-1.0000000000000004	-1.000000000000003	-0.999999999999998
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	observed_strength	20	-0.9814538340117855	-1.237801643312888	-0.8055394900189714
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	latent_strength	20	-0.7500000000000002	-0.7500000000000023	-0.7499999999999958
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	observed_strength	20	-0.7631661307630065	-0.9679846394244285	-0.627355079691315
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	latent_strength	20	-0.5	-0.5000000000000027	-0.4999999999999976
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	observed_strength	20	-0.49523261739223146	-0.6619966374026013	-0.3861574295744991
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	latent_strength	20	-0.2499999999999998	-0.2500000000000028	-0.24999999999999856
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	observed_strength	20	-0.20928790571871383	-0.3964160810747061	-0.05468107323971215
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	latent_strength	20	2.0462432065512038e-17	-2.224883982906922e-15	2.2569144732696717e-15
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	observed_strength	20	0.03188410118288605	-0.21309564199870312	0.16915930928739795
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	latent_strength	20	0.2499999999999999	0.24999999999999709	0.25000000000000216
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	observed_strength	20	0.21226394208234825	0.01779632008729918	0.3753868822093212
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	latent_strength	20	0.4999999999999998	0.4999999999999984	0.5000000000000027
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	observed_strength	20	0.5199973835923732	0.16605574504270115	0.9270637182197897
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999953	0.7500000000000019
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	observed_strength	20	0.737317080654351	0.5343075351006266	1.040204531651175
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	latent_strength	20	0.9999999999999994	0.9999999999999962	1.000000000000003
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	observed_strength	20	0.9928511258145984	0.8025260446289448	1.2422815701800323
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	latent_strength	20	-1.0000000000000004	-1.0000000000000036	-0.9999999999999959
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	observed_strength	20	-1.0384203026730399	-1.1420998991664864	-0.8527557254196053
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000024	-0.7499999999999959
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	observed_strength	20	-0.721821025919941	-0.9117325862080758	-0.5357304547124173
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	latent_strength	20	-0.5000000000000009	-0.5000000000000029	-0.499999999999997
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	observed_strength	20	-0.5458558537946321	-0.6814070254543569	-0.38392101612003704
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	latent_strength	20	-0.24999999999999997	-0.25000000000000316	-0.24999999999999792
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	observed_strength	20	-0.2799266894258041	-0.4599451122780819	-0.07850677009737689
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	latent_strength	20	-2.513095516215398e-16	-2.9922152788157044e-15	3.0475810984958595e-15
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	observed_strength	20	0.004451143888923004	-0.09169260814922228	0.18451234951411277
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	latent_strength	20	0.24999999999999994	0.24999999999999817	0.25000000000000244
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	observed_strength	20	0.265104555480689	0.07876816118534734	0.41037397078106375
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	latent_strength	20	0.49999999999999994	0.4999999999999974	0.5000000000000018
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	observed_strength	20	0.5246931832718364	0.3579558723343076	0.6857553106743282
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	latent_strength	20	0.7499999999999996	0.7499999999999972	0.7500000000000023
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	observed_strength	20	0.7893056455085516	0.5337642113548748	1.0432563091941127
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999978	1.0000000000000029
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	observed_strength	20	0.99110953084023	0.8183040303052678	1.0959627258604125
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	latent_strength	20	-1.0000000000000004	-1.0000000000000027	-0.9999999999999977
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	observed_strength	20	-1.0334153861018887	-1.1421887661234171	-0.7881182028606729
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	latent_strength	20	-0.7500000000000004	-0.7500000000000017	-0.7499999999999979
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	observed_strength	20	-0.6905398026897374	-0.9490667432760781	-0.5890650176851786
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	latent_strength	20	-0.5000000000000001	-0.5000000000000043	-0.4999999999999987
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	observed_strength	20	-0.4822063118969452	-0.6793203983751706	-0.2837319874345793
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	latent_strength	20	-0.2500000000000002	-0.25000000000000255	-0.24999999999999753
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	observed_strength	20	-0.21503163211975457	-0.4135628907950011	-0.04801961450557215
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	latent_strength	20	-7.894689495548942e-17	-2.4710370551992305e-15	1.960680908516886e-15
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	observed_strength	20	0.008431636524866944	-0.07275203325352021	0.11611084309934365
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	latent_strength	20	0.24999999999999906	0.24999999999999414	0.2500000000000011
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	observed_strength	20	0.2720182773238655	0.0035277582251045585	0.4095157578424793
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	latent_strength	20	0.5000000000000001	0.49999999999999706	0.5000000000000029
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	observed_strength	20	0.47083578433000917	0.2802826202775355	0.697978015133464
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	latent_strength	20	0.7499999999999998	0.7499999999999971	0.7500000000000038
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	observed_strength	20	0.7536744837850484	0.5166998249190775	0.9562597531270238
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	latent_strength	20	0.9999999999999999	0.9999999999999964	1.0000000000000029
+direct_spatial_effect	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	observed_strength	20	1.0480838204902616	0.8782115273841297	1.2794882607459386
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-1.0	latent_strength	20	-0.9999999999999994	-1.0000000000000016	-0.9999999999999979
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-1.0	observed_strength	20	-1.0036148300694359	-1.1288969388730126	-0.8850490743175815
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.75	latent_strength	20	-0.7499999999999997	-0.7500000000000021	-0.7499999999999976
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.75	observed_strength	20	-0.7347579977628939	-0.9677744238584093	-0.6161324739157089
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.5	latent_strength	20	-0.49999999999999967	-0.5000000000000033	-0.49999999999999784
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.5	observed_strength	20	-0.5110173232863533	-0.6746776316975887	-0.3488566938747338
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.25	latent_strength	20	-0.24999999999999983	-0.2500000000000014	-0.24999999999999678
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=-0.25	observed_strength	20	-0.22205943740600947	-0.3769276168421732	-0.06785311295483612
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.0	latent_strength	20	-1.9700147413202864e-18	-1.0177776816136077e-15	1.3048910633472975e-15
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.0	observed_strength	20	-0.009737029584514483	-0.07337425810297443	0.09275904829282126
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.25	latent_strength	20	0.2499999999999999	0.2499999999999988	0.25000000000000167
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.25	observed_strength	20	0.27670778537481927	0.09241229531702065	0.3816067340294649
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.5	latent_strength	20	0.5	0.49999999999999833	0.5000000000000018
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.5	observed_strength	20	0.4659430533708798	0.332443096935649	0.5924247032692904
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999983	0.7500000000000018
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=0.75	observed_strength	20	0.7809073743852333	0.6026804208898479	0.8449652745659075
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=1.0	latent_strength	20	1.0	0.9999999999999984	1.0000000000000029
+direct_spatial_effect	basis=radial; effect_scope=overall; effect_role=overall; configured_strength=1.0	observed_strength	20	1.021598034109024	0.8780613640706868	1.194201247312881
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	latent_strength	20	-1.0	-1.000000000000003	-0.9999999999999987
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-1.0	observed_strength	20	-0.9621170570852651	-1.1788550737475334	-0.7112928672820871
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	latent_strength	20	-0.75	-0.7500000000000027	-0.7499999999999991
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.75	observed_strength	20	-0.7092866762576926	-0.878697792574695	-0.5217872511859034
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	latent_strength	20	-0.5000000000000001	-0.5000000000000011	-0.49999999999999917
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.5	observed_strength	20	-0.4891770622781396	-0.6762782176193477	-0.3709129796342371
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	latent_strength	20	-0.25000000000000006	-0.25000000000000056	-0.2499999999999992
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=-0.25	observed_strength	20	-0.25281240508913627	-0.42933177026268676	-0.15064411950007622
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	latent_strength	20	4.324995510777777e-17	-4.066681856746349e-16	2.3992364330675276e-16
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.0	observed_strength	20	-0.005103520474325798	-0.11341922259099842	0.2895334808379335
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	latent_strength	20	0.2500000000000001	0.24999999999999956	0.25000000000000094
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.25	observed_strength	20	0.19412302341847254	0.12314117799966921	0.38359243843372937
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	latent_strength	20	0.5	0.4999999999999989	0.5000000000000016
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.5	observed_strength	20	0.5401246733133296	0.1931998552902423	0.6526107678494313
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	latent_strength	20	0.7500000000000001	0.7499999999999983	0.7500000000000027
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=0.75	observed_strength	20	0.748380211388553	0.586451849507513	0.890720155700296
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	latent_strength	20	1.0000000000000002	0.9999999999999987	1.0000000000000036
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; configured_strength=1.0	observed_strength	20	1.02943470314534	0.8210988007348915	1.1455115506264457
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	latent_strength	20	-1.0	-1.0000000000000013	-0.9999999999999989
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-1.0	observed_strength	20	-0.9809108110806798	-1.1424025590288596	-0.8301319765250209
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	latent_strength	20	-0.7499999999999999	-0.750000000000001	-0.749999999999999
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.75	observed_strength	20	-0.7440640145737105	-0.9273580095998404	-0.5544647752372587
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	latent_strength	20	-0.4999999999999999	-0.5000000000000009	-0.4999999999999991
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.5	observed_strength	20	-0.5092495923387411	-0.7567966793573893	-0.2826967992220205
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	latent_strength	20	-0.25	-0.25000000000000056	-0.2499999999999996
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=-0.25	observed_strength	20	-0.24286911853777995	-0.37049323845241283	-0.03996948348483768
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	latent_strength	20	6.778912692424739e-17	-5.77702903862902e-16	2.830642429338398e-16
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.0	observed_strength	20	0.012282056527817808	-0.05667988839287131	0.1389881653175981
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	latent_strength	20	0.24999999999999997	0.2499999999999985	0.2500000000000005
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.25	observed_strength	20	0.26891459502241	0.016115103919337823	0.47401315815937395
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	latent_strength	20	0.4999999999999999	0.49999999999999906	0.500000000000001
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.5	observed_strength	20	0.537477890229662	0.2714540463563698	0.6836179106754355
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999993	0.7500000000000009
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=0.75	observed_strength	20	0.730827228223127	0.518727562492703	0.8828094214690454
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	latent_strength	20	1.0000000000000002	0.999999999999999	1.000000000000001
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; configured_strength=1.0	observed_strength	20	0.9693913340004224	0.8135646049631275	1.2071030638208984
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	latent_strength	20	-0.9999999999999997	-1.0000000000000007	-0.9999999999999959
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-1.0	observed_strength	20	-1.0349675819847062	-1.2273779797461855	-0.8911847336194252
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	latent_strength	20	-0.7499999999999996	-0.7500000000000006	-0.7499999999999979
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.75	observed_strength	20	-0.7261112354075125	-0.9945064683853098	-0.5586977988978893
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	latent_strength	20	-0.49999999999999967	-0.5000000000000006	-0.4999999999999983
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.5	observed_strength	20	-0.4863181146292007	-0.6577414100590827	-0.30444095359938345
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	latent_strength	20	-0.2499999999999999	-0.2500000000000011	-0.24999999999999878
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=-0.25	observed_strength	20	-0.2578546041143045	-0.4741867451056319	-0.09488534958721345
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	latent_strength	20	2.4964752979703726e-17	-3.877051895678641e-16	3.946678733581821e-16
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.0	observed_strength	20	-0.023034227291987855	-0.1322294333840466	0.10411760593142219
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	latent_strength	20	0.24999999999999997	0.2499999999999992	0.2500000000000008
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.25	observed_strength	20	0.28380641496137765	0.11523815754165202	0.5126779066075244
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	latent_strength	20	0.4999999999999999	0.49999999999999856	0.5000000000000012
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.5	observed_strength	20	0.5428316289135848	0.3276911219410777	0.8030925532092307
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	latent_strength	20	0.7499999999999999	0.749999999999998	0.7500000000000008
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=0.75	observed_strength	20	0.7405112548857896	0.634107444755705	0.8828162204682414
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	latent_strength	20	0.9999999999999998	0.9999999999999966	1.000000000000001
+direct_spatial_effect	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; configured_strength=1.0	observed_strength	20	1.0279586759942685	0.8464237227601988	1.1379042812031976
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-1.0	latent_strength	20	-0.9999999999999999	-1.0000000000000009	-0.9999999999999988
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-1.0	observed_strength	20	-1.0070365704916286	-1.113834305537564	-0.8523473585936889
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.75	latent_strength	20	-0.7499999999999998	-0.7500000000000007	-0.7499999999999991
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.75	observed_strength	20	-0.7786651717633934	-0.8722292471319976	-0.6835959665750062
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.5	latent_strength	20	-0.49999999999999994	-0.5000000000000008	-0.4999999999999991
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.5	observed_strength	20	-0.4944923604255014	-0.6483651954356466	-0.3890735748438288
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.25	latent_strength	20	-0.25	-0.25000000000000117	-0.2499999999999995
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=-0.25	observed_strength	20	-0.22948229727191732	-0.359382744993608	-0.08649099196212974
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.0	latent_strength	20	2.7221649653437914e-18	-2.8145354718962487e-16	4.992259994724682e-16
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.0	observed_strength	20	-0.006687864712791352	-0.08461897680961923	0.08223917059434283
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.25	latent_strength	20	0.25	0.2499999999999988	0.2500000000000005
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.25	observed_strength	20	0.2175303067485661	0.03321908617489922	0.3717923828519852
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.5	latent_strength	20	0.5	0.49999999999999883	0.5000000000000003
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.5	observed_strength	20	0.4671996960070441	0.37348170957995513	0.6038355476468993
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.75	latent_strength	20	0.75	0.7499999999999991	0.7500000000000007
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=0.75	observed_strength	20	0.7629454708261053	0.6093876025988396	0.9751779779756458
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=1.0	latent_strength	20	0.9999999999999999	0.9999999999999991	1.0000000000000009
+direct_spatial_effect	basis=structure_distance; effect_scope=overall; effect_role=overall; configured_strength=1.0	observed_strength	20	1.0128576186402631	0.8977435135156961	1.0750726872926983
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.5	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.5	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.3333333333333333	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.5	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=overall; effect_role=overall; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=hotspot; effect_scope=overall; effect_role=overall; absolute_strength=0.25	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=hotspot; effect_scope=overall; effect_role=overall; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=overall; effect_role=overall; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=hotspot; effect_scope=overall; effect_role=overall; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.3333333333333333	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.5	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.5	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=overall; effect_role=overall; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=linear; effect_scope=overall; effect_role=overall; absolute_strength=0.25	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=linear; effect_scope=overall; effect_role=overall; absolute_strength=0.5	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=overall; effect_role=overall; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=linear; effect_scope=overall; effect_role=overall; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.25	detection_rate	20	0.3333333333333333	0.16666666666666666	0.8333333333333334
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.5	detection_rate	20	0.9166666666666667	0.6666666666666666	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.75	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.25	detection_rate	20	0.3333333333333333	0.0	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.5	detection_rate	20	1.0	0.6666666666666666	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.75	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.25	detection_rate	20	0.3333333333333333	0.16666666666666666	0.6666666666666666
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.5	detection_rate	20	0.8333333333333334	0.6666666666666666	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.75	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=radial; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=radial; effect_scope=overall; effect_role=overall; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=radial; effect_scope=overall; effect_role=overall; absolute_strength=0.25	detection_rate	20	0.8333333333333334	0.16666666666666666	1.0
+block_lrt_detection	basis=radial; effect_scope=overall; effect_role=overall; absolute_strength=0.5	detection_rate	20	1.0	0.6666666666666666	1.0
+block_lrt_detection	basis=radial; effect_scope=overall; effect_role=overall; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=radial; effect_scope=overall; effect_role=overall; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.5
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.25	detection_rate	20	0.3333333333333333	0.0	0.8333333333333334
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.5	detection_rate	20	1.0	0.5	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_1; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.25	detection_rate	20	0.3333333333333333	0.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.5	detection_rate	20	0.8333333333333334	0.5	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_2; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.3333333333333333
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.25	detection_rate	20	0.5	0.0	0.8333333333333334
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.5	detection_rate	20	1.0	0.6666666666666666	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=cell_type_specific; effect_role=state_3; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=overall; effect_role=overall; absolute_strength=0.0	detection_rate	20	0.0	0.0	0.16666666666666666
+block_lrt_detection	basis=structure_distance; effect_scope=overall; effect_role=overall; absolute_strength=0.25	detection_rate	20	0.6666666666666666	0.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=overall; effect_role=overall; absolute_strength=0.5	detection_rate	20	1.0	0.8333333333333334	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=overall; effect_role=overall; absolute_strength=0.75	detection_rate	20	1.0	1.0	1.0
+block_lrt_detection	basis=structure_distance; effect_scope=overall; effect_role=overall; absolute_strength=1.0	detection_rate	20	1.0	1.0	1.0
 observation_control_calibration	component=capture; level=efficiency_1	configured_value	20	1.0	1.0	1.0
 observation_control_calibration	component=capture; level=efficiency_1	realized_value	20	1.0	1.0	1.0
 observation_control_calibration	component=capture; level=efficiency_0.85	configured_value	20	0.85	0.85	0.85
-observation_control_calibration	component=capture; level=efficiency_0.85	realized_value	20	0.8499363074960848	0.8497103010418126	0.8502026562410118
+observation_control_calibration	component=capture; level=efficiency_0.85	realized_value	20	0.8499337299910981	0.8497563309842745	0.8502648145891718
 observation_control_calibration	component=capture; level=efficiency_0.7	configured_value	20	0.7	0.7	0.7
-observation_control_calibration	component=capture; level=efficiency_0.7	realized_value	20	0.6999273875639775	0.6996817173307114	0.7002754216946889
+observation_control_calibration	component=capture; level=efficiency_0.7	realized_value	20	0.6998973234684668	0.69971501845863	0.7002816701190041
 observation_control_calibration	component=capture; level=efficiency_0.55	configured_value	20	0.55	0.55	0.55
-observation_control_calibration	component=capture; level=efficiency_0.55	realized_value	20	0.5499371474360636	0.5496616543731674	0.5503041737216096
+observation_control_calibration	component=capture; level=efficiency_0.55	realized_value	20	0.5499248090524961	0.5496050773996767	0.5502621550415413
 observation_control_calibration	component=capture; level=efficiency_0.4	configured_value	20	0.4	0.4	0.4
-observation_control_calibration	component=capture; level=efficiency_0.4	realized_value	20	0.40005542166527125	0.39974099633705934	0.40036707424116974
+observation_control_calibration	component=capture; level=efficiency_0.4	realized_value	20	0.40011845006100694	0.39966207708866414	0.4003509671774866
 observation_control_calibration	component=ambient; level=rate_0	configured_value	20	0.0	0.0	0.0
 observation_control_calibration	component=ambient; level=rate_0	realized_value	20	0.0	0.0	0.0
 observation_control_calibration	component=ambient; level=rate_5	configured_value	20	5.0	5.0	5.0
-observation_control_calibration	component=ambient; level=rate_5	realized_value	20	5.0036836508955425	4.904320987654321	5.149002493765586
+observation_control_calibration	component=ambient; level=rate_5	realized_value	20	5.002148971650076	4.9067901234567906	5.149002493765586
 observation_control_calibration	component=ambient; level=rate_20	configured_value	20	20.0	20.0	20.0
-observation_control_calibration	component=ambient; level=rate_20	realized_value	20	19.998467198038014	19.78827160493827	20.212176009644363
+observation_control_calibration	component=ambient; level=rate_20	realized_value	20	20.010042100824172	19.794392523364486	20.236889692585894
 observation_control_calibration	component=ambient; level=rate_50	configured_value	20	50.0	50.0	50.0
-observation_control_calibration	component=ambient; level=rate_50	realized_value	20	50.042352775234086	49.69968847352025	50.31242158092848
+observation_control_calibration	component=ambient; level=rate_50	realized_value	20	50.024832137655565	49.67102803738318	50.26850690087829
 observation_control_calibration	component=ambient; level=rate_100	configured_value	20	100.0	100.0	100.0
-observation_control_calibration	component=ambient; level=rate_100	realized_value	20	100.01468605132936	99.5	100.34390243902439
+observation_control_calibration	component=ambient; level=rate_100	realized_value	20	100.01586095278306	99.57911001236094	100.63864491844417
 observation_control_calibration	component=dropout; level=Off	configured_value	20	0.0	0.0	0.0
 observation_control_calibration	component=dropout; level=Off	realized_value	20	0.0	0.0	0.0
-observation_control_calibration	component=dropout; level=Very low	configured_value	20	0.05076160312787892	0.049941023369893846	0.05160853845014388
-observation_control_calibration	component=dropout; level=Very low	realized_value	20	0.050724054149033214	0.050318495297805646	0.051820086260012325
-observation_control_calibration	component=dropout; level=Low	configured_value	20	0.1254525850532872	0.12373054396049589	0.1273168942418952
-observation_control_calibration	component=dropout; level=Low	realized_value	20	0.12543163388664155	0.12427629911280101	0.12740357362908195
-observation_control_calibration	component=dropout; level=Moderate	configured_value	20	0.27559261143934544	0.27283040642288464	0.27878814986158024
-observation_control_calibration	component=dropout; level=Moderate	realized_value	20	0.275897479133294	0.27353358681875795	0.278788662969809
-observation_control_calibration	component=dropout; level=High	configured_value	20	0.5000520916842636	0.49689116330781247	0.5036165285825421
-observation_control_calibration	component=dropout; level=High	realized_value	20	0.5003647818283015	0.4975640050697085	0.5038706099815157
+observation_control_calibration	component=dropout; level=Very low	configured_value	20	0.050699708802245405	0.049882663696732506	0.05154874583572438
+observation_control_calibration	component=dropout; level=Very low	realized_value	20	0.05065870421644213	0.050219435736677115	0.05175723967960567
+observation_control_calibration	component=dropout; level=Low	configured_value	20	0.12533864668739003	0.12362747664548202	0.1272102324066304
+observation_control_calibration	component=dropout; level=Low	realized_value	20	0.1253003312874878	0.12416730038022813	0.1273641404805915
+observation_control_calibration	component=dropout; level=Moderate	configured_value	20	0.2754836196502411	0.27273869057770017	0.2786888029122989
+observation_control_calibration	component=dropout; level=Moderate	realized_value	20	0.2758580789711953	0.2733346007604563	0.27855452865064695
+observation_control_calibration	component=dropout; level=High	configured_value	20	0.500085009953557	0.49693555634232717	0.5036541388750124
+observation_control_calibration	component=dropout; level=High	realized_value	20	0.5003176133441214	0.49780608365019013	0.5038176216882316
 observation_consequences	condition=Clean	median_library_ratio	20	1.0	1.0	1.0
-observation_consequences	condition=Clean	zero_fraction	20	0.001373883329650557	0.0011013941698352345	0.001767097966728281
-observation_consequences	condition=Clean	mean_variance_spearman	20	0.5658270475838255	0.5333481525958238	0.6518073720198957
-observation_consequences	condition=Clean	latent_recovery_pearson	20	0.80248465692401	0.7916472554271337	0.8081079771757794
-observation_consequences	condition=Clean	observed_spatial_slope	20	0.9980407326017966	0.9683178678508375	1.0557211533183337
-observation_consequences	condition=Capture 0.4	median_library_ratio	20	0.40007362399152513	0.3989832732043293	0.40100250626566414
-observation_consequences	condition=Capture 0.4	zero_fraction	20	0.029546841663203448	0.027523447401774398	0.03150215650030807
-observation_consequences	condition=Capture 0.4	mean_variance_spearman	20	0.7040324202777585	0.680401688858942	0.7699358628342847
-observation_consequences	condition=Capture 0.4	latent_recovery_pearson	20	0.6461484592110097	0.6316944958137984	0.6544921627878137
-observation_consequences	condition=Capture 0.4	observed_spatial_slope	20	1.0097013596472584	0.8987822578560304	1.1127793277158764
-observation_consequences	condition=Ambient 100	median_library_ratio	20	1.01657346840345	1.016052416052416	1.0170882894957278
-observation_consequences	condition=Ambient 100	zero_fraction	20	0.0011820738238791208	0.000917617237008872	0.0015243376463339494
-observation_consequences	condition=Ambient 100	mean_variance_spearman	20	0.5682187431080536	0.5349792921146874	0.6537087080359283
-observation_consequences	condition=Ambient 100	latent_recovery_pearson	20	0.8009225828949367	0.790102407830786	0.8066943765799461
-observation_consequences	condition=Ambient 100	observed_spatial_slope	20	0.9831944879169073	0.9436274893644926	1.0373502673949866
-observation_consequences	condition=Dropout high	median_library_ratio	20	0.5370403080967786	0.5329881409721062	0.5401593096581481
-observation_consequences	condition=Dropout high	zero_fraction	20	0.5007578957335774	0.4979087452471483	0.5043339494762785
-observation_consequences	condition=Dropout high	mean_variance_spearman	20	0.9357301019188191	0.9223924770815545	0.9519794351729456
-observation_consequences	condition=Dropout high	latent_recovery_pearson	20	0.32420191124156394	0.3135512339368234	0.3286874302477703
-observation_consequences	condition=Dropout high	observed_spatial_slope	20	1.3846546367594863	1.220164935775288	1.5247428497853472
-observation_consequences	condition=Combined	median_library_ratio	20	0.5342510754875811	0.531485733027222	0.5361765682044474
-observation_consequences	condition=Combined	zero_fraction	20	0.2787280707610147	0.27460709759188845	0.28186937769562537
-observation_consequences	condition=Combined	mean_variance_spearman	20	0.8645684097700823	0.8416907055709468	0.8926565954402271
-observation_consequences	condition=Combined	latent_recovery_pearson	20	0.4099404821112947	0.39871923636037226	0.41807836127879605
-observation_consequences	condition=Combined	observed_spatial_slope	20	1.2353175950265016	1.105093464366062	1.3371746654129686
+observation_consequences	condition=Clean	zero_fraction	20	0.0013457699646731301	0.001091254752851711	0.0017723880597014926
+observation_consequences	condition=Clean	mean_variance_spearman	20	0.5593697649801225	0.5254175388205033	0.6453909744153016
+observation_consequences	condition=Clean	latent_recovery_pearson	20	0.79933207558521	0.7883704963889574	0.8048093054696546
+observation_consequences	condition=Clean	observed_spatial_slope	20	1.0286353700136859	0.8840302482421023	1.1478472267909563
+observation_consequences	condition=Capture 0.4	median_library_ratio	20	0.39998361461576276	0.39914796001966246	0.40120663650075417
+observation_consequences	condition=Capture 0.4	zero_fraction	20	0.029020119542176353	0.02705830164765526	0.031138632162661738
+observation_consequences	condition=Capture 0.4	mean_variance_spearman	20	0.7059115060232358	0.6822455867037256	0.766731505350976
+observation_consequences	condition=Capture 0.4	latent_recovery_pearson	20	0.6420773527458861	0.6260613218228229	0.6495283306465289
+observation_consequences	condition=Capture 0.4	observed_spatial_slope	20	1.0656297779264028	0.8730000670329555	1.3252972299055568
+observation_consequences	condition=Ambient 100	median_library_ratio	20	1.0165665231567356	1.0160761154855642	1.0171313402754452
+observation_consequences	condition=Ambient 100	zero_fraction	20	0.001129734923685339	0.000917617237008872	0.0014937810945273632
+observation_consequences	condition=Ambient 100	mean_variance_spearman	20	0.5609295344248518	0.5280809237370773	0.6477979955692094
+observation_consequences	condition=Ambient 100	latent_recovery_pearson	20	0.7979094941687581	0.7869140889328413	0.803396082771207
+observation_consequences	condition=Ambient 100	observed_spatial_slope	20	1.019420544075424	0.8648831044931758	1.1103404125252383
+observation_consequences	condition=Dropout high	median_library_ratio	20	0.5367583309110495	0.5326359832635983	0.5393203086521097
+observation_consequences	condition=Dropout high	zero_fraction	20	0.5006415023779311	0.4981622306717364	0.5043203943314849
+observation_consequences	condition=Dropout high	mean_variance_spearman	20	0.9383928300475594	0.923679968066443	0.9528241771067529
+observation_consequences	condition=Dropout high	latent_recovery_pearson	20	0.3206364863218758	0.3102877518754535	0.3252075822033147
+observation_consequences	condition=Dropout high	observed_spatial_slope	20	1.4771117821674924	0.7560630592195421	1.8870164586861402
+observation_consequences	condition=Combined	median_library_ratio	20	0.5335547712229616	0.5309778142974527	0.5357801240154181
+observation_consequences	condition=Combined	zero_fraction	20	0.2785780465908568	0.27447782002534854	0.28166851509550217
+observation_consequences	condition=Combined	mean_variance_spearman	20	0.8639030347652112	0.8443184012282842	0.8952715353839523
+observation_consequences	condition=Combined	latent_recovery_pearson	20	0.40579166011263074	0.3941799794711362	0.4134880139190875
+observation_consequences	condition=Combined	observed_spatial_slope	20	1.2352019735010296	0.6753819293221659	1.725741476854099
 compatibility	all seeds	default_equals_disabled	20	1.0	1.0	1.0
 compatibility	all seeds	default_equals_zero_spatial	20	1.0	1.0	1.0
 compatibility	all seeds	default_disabled_mismatched_entries	20	0.0	0.0	0.0

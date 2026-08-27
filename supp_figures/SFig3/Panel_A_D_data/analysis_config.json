@@ -1,15 +1,30 @@
 {
-  "analysis": "Supplementary Figure 3 optional spatial-expression and observation layers",
+  "analysis": "Supplementary Figure 3 finite-basis fixed spatial effects and observation layers",
+  "analysis_script_sha256": "582e509ed0866fe5a375e5a0f58b37bd9d7b4f71a99e43045c2ef7fa6d97d19b",
   "reviewer_comments": [
     "R2-M1",
     "R2-m5"
   ],
   "related_comment": "R2-M3",
-  "simspace_expected_version": "0.3.4",
-  "simspace_installed_version": "0.3.4",
-  "simspace_source_commit": "de0a4c002e4ae733e354e3e180ab69b381ad994a",
-  "adjacent_simspace_commit_at_run": "de0a4c002e4ae733e354e3e180ab69b381ad994a",
+  "simspace_expected_version": "0.4.1",
+  "simspace_runtime_version": "0.4.1",
+  "simspace_effective_distribution_version": "0.4.2",
+  "simspace_distributions_visible_at_run": [
+    {
+      "version": "0.4.2",
+      "metadata_path": "/Users/zhaotianxiao/mambaforge/envs/simspace-repro/lib/python3.11/site-packages/simspace-0.4.2.dist-info"
+    }
+  ],
+  "simspace_import_path": "/Users/zhaotianxiao/mambaforge/envs/simspace-repro/lib/python3.11/site-packages/simspace/__init__.py",
+  "simspace_loaded_from_adjacent_checkout": false,
+  "adjacent_simspace_commit_at_run": "747bb234020f807c8fd9963310cd687dd70f1925",
   "adjacent_simspace_source_dirty_at_run": false,
+  "adjacent_simspace_source_sha256": {
+    "simspace/omics.py": "c5b3b285f3a8f9244644cfd946012cea5b295b2b7047ab8c10ec074a00ab49e0",
+    "simspace/core.py": "0f13849d7eda4ee36ee1dd090fbf888f84ff0850f24fbc22dfdf4f033a0e081b",
+    "simspace/__init__.py": "112791d817a3582a74ce0143438c81276099b1b26612aae534dae1c2b9db6219",
+    "tests/test_omics.py": "5c4762b14958c6a3f076d8689a105fb72f01d052bd7f841dac3e04c1d4bce8f8"
+  },
   "python": "3.11.9 | packaged by conda-forge | (main, Apr 19 2024, 18:34:54) [Clang 16.0.6 ]",
   "platform": "macOS-26.5.2-arm64-arm-64bit",
   "software": {
@@ -42,13 +57,36 @@
     19
   ],
   "representative_seed": 0,
-  "representative_gene_id": 95,
-  "representative_gene": "Gene_95",
-  "representative_gene_selection": "Among seed-0 linear genes with configured strength +1, select the gene with the largest minimum phenotype-specific baseline mean; break ties by the median phenotype-specific baseline mean and then GeneID.",
+  "representative_gene_id": 46,
+  "representative_gene": "Gene_46",
+  "representative_gene_selection": "For the illustrative seed-0 map only, rank the nine linear genes with a cell-type-specific deviation of +1 using a deterministic, count-blind visualization score. The score combines configured truth span, expected post-artifact visibility, Poisson working contrast and design-information proxies, direct-effect attribution, and target-to-background prominence. Break score ties by GeneID. Realized counts do not enter selection, and the display choice does not enter the coefficient-recovery or likelihood-ratio summaries.",
+  "representative_gene_selection_metrics": {
+    "rank": 1,
+    "visualization_score": 77.55555555555554,
+    "truth_q90_span": 0.9624832761704256,
+    "expected_visible_fraction": 0.7413468976043375,
+    "expected_lower_quintile_count": 3.8857142439482026,
+    "expected_upper_quintile_count": 10.318622032833858,
+    "poisson_working_contrast_proxy": 1.7068558834589131,
+    "sqrt_poisson_working_information_proxy": 9.927570538765751,
+    "direct_effect_fraction_of_log_count_sd": 0.5433055801403094,
+    "target_high_to_nontarget_q95": 1.9440302028561125
+  },
+  "representative_gene_selection_weights": {
+    "truth_q90_span": 0.22,
+    "poisson_working_contrast_proxy": 0.25,
+    "direct_effect_fraction_of_log_count_sd": 0.23,
+    "expected_visible_fraction": 0.12,
+    "sqrt_poisson_working_information_proxy": 0.1,
+    "target_high_to_nontarget_q95": 0.08
+  },
   "representative_gene_effect": {
     "basis": "linear",
+    "effect_role": "state_1",
+    "effect_role_label": "Type 1 deviation",
+    "target_state": 1,
     "configured_strength": 1.0,
-    "direction": "Anti-diagonal"
+    "direction": "Diagonal"
   },
   "shape": [
     50,
@@ -67,24 +105,10 @@
     "structure_distance"
   ],
   "spatial_basis_settings": {
-    "linear_directions": {
-      "Horizontal": [
-        1.0,
-        0.0
-      ],
-      "Vertical": [
-        0.0,
-        1.0
-      ],
-      "Diagonal": [
-        0.7071067811865475,
-        0.7071067811865475
-      ],
-      "Anti-diagonal": [
-        0.7071067811865475,
-        -0.7071067811865475
-      ]
-    },
+    "linear_validation_direction": [
+      0.7071067811865475,
+      0.7071067811865475
+    ],
     "radial_center": [
       0.5,
       0.5
@@ -119,10 +143,6 @@
     "coordinate_scaling": "unit_range",
     "center_basis": true
   },
-  "representative_spatial_direction": [
-    0.7071067811865475,
-    0.7071067811865475
-  ],
   "spatial_strengths": [
     -1.0,
     -0.75,
@@ -136,6 +156,43 @@
   ],
   "n_effect_genes_per_basis": 96,
   "n_null_validation_genes_per_basis": 24,
+  "reference_state": 0,
+  "effect_roles": [
+    {
+      "role": "overall",
+      "label": "Base/reference f0",
+      "nonzero_genes_per_basis": 24,
+      "null_genes_per_basis": 6
+    },
+    {
+      "role": "state_1",
+      "label": "Type 1 deviation",
+      "nonzero_genes_per_basis": 24,
+      "null_genes_per_basis": 6
+    },
+    {
+      "role": "state_2",
+      "label": "Type 2 deviation",
+      "nonzero_genes_per_basis": 24,
+      "null_genes_per_basis": 6
+    },
+    {
+      "role": "state_3",
+      "label": "Type 3 deviation",
+      "nonzero_genes_per_basis": 24,
+      "null_genes_per_basis": 6
+    }
+  ],
+  "nonzero_genes_per_strength_and_role": 3,
+  "fixed_effect_model": {
+    "link": "Poisson log link",
+    "formula": "intercept + non-reference phenotype main effects + B(s) + non-reference phenotype-by-B(s) interactions",
+    "library_size_factor": 1.0,
+    "estimation": "maximum likelihood by Fisher scoring; no oracle baseline offset",
+    "test": "target-block likelihood-ratio test against the nested model",
+    "test_degrees_of_freedom": "basis dimension (2 for linear; 1 otherwise)",
+    "detection_alpha": 0.05
+  },
   "capture_levels": [
     1.0,
     0.85,

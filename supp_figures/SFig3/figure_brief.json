@@ -1,34 +1,52 @@
 {
-  "figure_type": "Validation and evaluation",
-  "manuscript_role": "Supplementary evidence for R2-M1 and R2-m5; truth resource for related R2-M3",
+  "figure_type": "Component validation and evaluation",
+  "manuscript_role": "Supplementary evidence for R2-M1 and R2-m5; conditional truth that could support a future separately prespecified known-truth SVG benchmark",
   "audience": "Genome Biology editor and spatial-transcriptomics reviewers",
-  "one_sentence_takeaway": "Optional coordinate-conditioned effects create recoverable within-cell-type spatial truth, while optional capture, ambient, and dropout controls behave as declared and leave the original output unchanged when disabled.",
+  "one_sentence_takeaway": "The full finite-basis shared-plus-phenotype-deviation implementation separates the base/reference spatial surface from treatment-coded cell-type deviations, recovers their configured coefficients without an oracle baseline offset, supports target-block tests with explicit null rejection-rate checks, and preserves the original generator when disabled.",
+  "model": {
+    "reference_state": 0,
+    "design": "Poisson log link with intercept, three non-reference phenotype main effects, full B(s), and three phenotype-by-B(s) interactions",
+    "api": "overall_coefficients plus nested gene-to-state cell_type_coefficients",
+    "inference": "Full-versus-reduced target-block likelihood-ratio test; df equals basis dimension; unadjusted per-gene alpha = 0.05. The base/reference-block test is conditional on deviation blocks."
+  },
   "panels": {
-    "A": "Phenotype labels, direct spatial log-fold truth, and observed Gene 95 expression after combined artifacts",
-    "B": "Configured versus recovered coefficients for linear, radial, hotspot, and structure-distance effects across 20 seeds",
+    "A": "Phenotype labels, type-1-specific direct spatial log-fold truth, and combined-artifact observed expression for count-blind display-selected Gene 46; non-target phenotypes are masked gray in the observed map",
+    "B": "Separate base/reference-f0 and cell-type-specific-fk coefficient recovery plus target-block power and null rejection rates across 20 seeds",
     "C": "One-factor calibration for capture, ambient background, and dropout",
     "D": "Consequences for library size, zero fraction, mean-variance association, and latent recovery"
   },
   "column_width_ratio": "A/C to B/D = 1.25:1",
-  "row_height_ratio": "A/B to C/D = 0.85:1.15",
+  "row_height_ratio": "A/B to C/D approximately 0.85:1.15",
   "panel_c_layout": "Equal-sized two-over-one calibration grid: capture and ambient above, dropout centered below.",
   "statistical_unit": "Simulation seed (n=20)",
-  "simulation_scale": "50 x 50 nominal lattice, approximately 1,600 retained cells per seed, 500 genes",
-  "effect_design": "For each spatial basis, 96 nonzero-effect genes span coefficients from -1 to 1 and 24 null-control genes provide the zero level; gene results are summarized within seed before across-seed display.",
-  "representative_gene": "Gene 95: the seed-0 strength-1 linear gene with the largest minimum phenotype-specific baseline mean; selected without using realized observed counts.",
+  "simulation_scale": "50 x 50 nominal lattice, approximately 1,600 retained cells per seed, four phenotypes, 500 genes",
+  "effect_design": "For each of four spatial bases, 96 nonzero genes are split equally among the base/reference f0 block and deviations for states 1, 2, and 3 (three genes per signed strength per role); 24 null controls are split as six per role.",
+  "linear_effect_direction": "Fixed diagonal unit vector (1,1)/sqrt(2); estimated vectors are projected onto this configured direction.",
+  "representative_gene": "Gene 46: first among nine seed-0 strength-1 cell-type-specific linear candidates under a deterministic count-blind visualization score (weighted-percentile score 77.6; configured 90% truth span = 0.963; Poisson working contrast proxy = 1.71; direct-effect fraction of expected log-count SD = 0.543; high-target/non-target-q95 prominence = 1.94). The contrast and design-information terms are Poisson working ranking proxies, not exact calculations for the dropout-contaminated observation law.",
+  "representative_selection_guardrail": "Realized counts do not enter selection; the weights were fixed during revision rather than preregistered; selection is explicitly display-only and does not enter coefficient-recovery or likelihood-ratio summaries.",
+  "archived_results": {
+    "fit_convergence": "9,600/9,600 full and reduced fits converged; all fixed-effect designs were full rank",
+    "latent_vector_max_abs_error": 1.683342891450515e-14,
+    "observed_sign_recovery": 0.9959635416666667,
+    "max_role_specific_median_abs_bias": 0.05946019731026264,
+    "pooled_null_rejection_rate": 0.049479166666666664,
+    "basis_null_rejection_rate_range": [0.03125, 0.07291666666666667],
+    "min_basis_role_sign_power_abs_coefficient_ge_0_5": 0.9388888888888889,
+    "test_scope": "Unadjusted per-gene alpha 0.05; not an FDR-controlled discovery claim"
+  },
   "visual_conventions": {
-    "latent_truth": "diverging blue-red spatial map and open black diamonds",
-    "observed_counts": "viridis spatial map",
-    "capture": "green",
-    "ambient": "orange",
-    "dropout": "purple",
-    "combined_artifacts": "red",
-    "optional_or_expected_relationships": "dashed identity/reference lines"
+    "latent_truth": "Diverging blue-red spatial map",
+    "observed_counts": "Viridis for target-phenotype counts with all non-target phenotypes masked in neutral gray; gray does not denote zero expression",
+    "spatial_bases": "Basis-specific colors and markers",
+    "base_reference_detection": "Black circles/line",
+    "cell_type_specific_detection": "Purple triangles/line",
+    "optional_or_expected_relationships": "Dashed identity or nominal-alpha reference lines"
   },
   "assumptions_and_limits": [
-    "The analysis validates declared simulator behavior rather than fit to a real platform.",
+    "This is controlled validation of SimSpace components, not a cross-method SVG benchmark or fit to a real platform.",
+    "The native reference-free generator currently uses library-size factor one.",
     "Coordinate-conditioned effects apply only to the native reference-free generator.",
-    "The R2-M3 multi-method SVG benchmark is separate even though it can reuse gene_truth.tsv."
+    "The existing R2-M3 concordance/stability analysis remains separate; a broader cross-method known-truth benchmark would require a future prespecified analysis."
   ],
   "formats": ["PNG"],
   "editable_source": "SFig3.py"

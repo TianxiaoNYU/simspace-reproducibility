@@ -33,7 +33,8 @@ SUMMARY_PATH = SCRIPT_DIR / "Panel_C_data" / "experiment_summary.tsv"
 MAP_CACHE_PATH = SCRIPT_DIR / "Panel_A_B_data" / "representative_maps.tsv.gz"
 RAW_DATA_ROOT = SCRIPT_DIR / "Panel_A_B_C_src" / "experiment_data"
 RAW_RESULTS_ROOT = SCRIPT_DIR / "Panel_A_B_C_src" / "experiment_results"
-DEFAULT_OUTPUT_DIR = SCRIPT_DIR
+REPO_ROOT = SCRIPT_DIR.parents[1]
+DEFAULT_OUTPUT_DIR = REPO_ROOT / "example_output" / "Fig6"
 
 REPRESENTATIVE_SEED = 0
 REPRESENTATIVE_DIFFICULTY = "moderate"
@@ -618,7 +619,7 @@ def draw_panel_c(
         title="Method",
         loc="center left",
         bbox_to_anchor=(0.80, 0.52),
-        frameon=True,
+        frameon=False,
     )
     if panel_label is not None:
         container.text(
@@ -771,7 +772,7 @@ def make_complete_figure(cache: pd.DataFrame, summary: pd.DataFrame) -> plt.Figu
         method_labels,
         title="Method",
         loc="center",
-        frameon=True,
+        frameon=False,
     )
     signal_label_ax = fig.add_subplot(panel_c_grid[2, :2])
     signal_label_ax.axis("off")
