@@ -112,7 +112,7 @@ COMBINED_DROPOUT = {
     "intercept": 1.5,
     "slope": -1.0,
 }
-SIMSPACE_EXPECTED_VERSION = "0.4.1"
+SIMSPACE_EXPECTED_VERSION = "0.4.2"
 REPRESENTATIVE_SEED = 0
 REPRESENTATIVE_GENE_SELECTION = (
     "For the illustrative seed-0 map only, rank the nine linear genes with a "
@@ -1439,12 +1439,11 @@ def acceptance_checks(
 
 
 def generate_data() -> dict[str, pd.DataFrame]:
-    runtime_version = getattr(ss, "__version__", "unknown")
+    runtime_version = package_version("simspace")
     if runtime_version != SIMSPACE_EXPECTED_VERSION:
         raise RuntimeError(
             f"Supplementary Figure 3 requires SimSpace {SIMSPACE_EXPECTED_VERSION}; "
-            f"imported {runtime_version} from {Path(ss.__file__).resolve()}. "
-            "Use PYTHONPATH=../SimSpace to run against the adjacent source checkout."
+            f"found distribution {runtime_version} at {Path(ss.__file__).resolve()}."
         )
 
     effect_rows: list[dict[str, object]] = []
@@ -1763,7 +1762,7 @@ def write_configuration(frames: dict[str, pd.DataFrame]) -> None:
         "reviewer_comments": ["R2-M1", "R2-m5"],
         "related_comment": "R2-M3",
         "simspace_expected_version": SIMSPACE_EXPECTED_VERSION,
-        "simspace_runtime_version": getattr(ss, "__version__", "unknown"),
+        "simspace_runtime_version": package_version("simspace"),
         "simspace_effective_distribution_version": package_version("simspace"),
         "simspace_distributions_visible_at_run": visible_package_distributions(
             "simspace"

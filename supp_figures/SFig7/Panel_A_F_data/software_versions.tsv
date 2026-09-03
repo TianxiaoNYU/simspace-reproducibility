@@ -1,11 +1,11 @@
 software	version
 Python	3.11.9
-SimSpace	0.3.4
+SimSpace	0.4.2
 NumPy	2.3.3
 pandas	3.0.0
 SciPy	1.16.2
 scikit-learn	1.8.0
 matplotlib	3.10.8
 seaborn	0.13.2
-platform	macOS-26.5.2-arm64-arm-64bit
+platform	macOS-26.6.2-arm64-arm-64bit
 python_executable	/Users/zhaotianxiao/mambaforge/envs/simspace-repro/bin/python

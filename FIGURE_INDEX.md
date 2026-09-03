@@ -12,6 +12,13 @@ This index maps each manuscript figure to the exact script and data used to repr
 - Main figures: `python plot_main.py`
 - Supplementary figures: `python plot_supp.py`
 
+**SimSpace version policy**
+
+- The default environment and every current figure-reproduction workflow use
+  SimSpace 0.4.2.
+- Version guards and generated run metadata verify the installed 0.4.2
+  distribution.
+
 ---
 
 ## Main Figures
@@ -64,6 +71,7 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Path:** `main_figures/Fig7/`
 - **Entry script:** `main_figures/Fig7/Fig7.py`
 - **Figure README:** `main_figures/Fig7/Fig7_README.md`
+- **SimSpace version:** 0.4.2
 - **Panels/resources:** `main_figures/Fig7/Panel_*_data/` and `main_figures/Fig7/Panel_*_src/`
 - **Run:** `python main_figures/Fig7/Fig7.py`
 
@@ -89,8 +97,9 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Entry script:** `supp_figures/SFig3/SFig3.py`
 - **Figure README:** `supp_figures/SFig3/SFig3_README.md`
 - **Analysis:** twenty-seed validation of a full finite-basis shared-plus-phenotype-deviation design, target-block likelihood-ratio tests, and optional observation layers
-- **Regenerate:** `PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py`
-- **Render archived data:** `PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py --render-only`
+- **SimSpace version:** 0.4.2
+- **Regenerate:** `python supp_figures/SFig3/SFig3.py`
+- **Render archived data:** `python supp_figures/SFig3/SFig3.py --render-only`
 
 ### Supplementary Figure 4
 - **Path:** `supp_figures/SFig4/`
@@ -104,6 +113,7 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Entry script:** `supp_figures/SFig5/SFig5.py`
 - **Figure README:** `supp_figures/SFig5/SFig5_README.md`
 - **Analysis:** phenotype-level Gibbs-sweep sensitivity
+- **SimSpace version:** 0.4.2
 - **Run:** `python supp_figures/SFig5/SFig5.py`
 
 ### Supplementary Figure 6
@@ -120,6 +130,7 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Full data-generation script:** `supp_figures/SFig7/SFig7_generate_data.py`
 - **Figure README:** `supp_figures/SFig7/SFig7_README.md`
 - **Analysis:** quantitative reference-free 3-D spatial structure and truth-based niche recovery
+- **SimSpace version:** 0.4.2; the normal entry point renders the regenerated results
 - **Run:** `python supp_figures/SFig7/SFig7.py`
 
 ### Supplementary Figure 8
@@ -135,6 +146,7 @@ This index maps each manuscript figure to the exact script and data used to repr
 - **Figure README:** `supp_figures/SFig9/SFig9_README.md`
 - **Inputs:** Figure 4 Xenium tile; ten independent spatial fits (optimizer seeds 0–9); molecular realizations; and BANKSY outputs
 - **Analysis:** local independent-calibration spatial robustness and molecular, co-localization, and niche fidelity
+- **SimSpace version:** 0.4.2
 - **Run:** follow the staged Python–R–Python commands in `supp_figures/SFig9/SFig9_README.md`
 
 ### Supplementary Figure 10

@@ -9,15 +9,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import colorcet as cc
 import os
+from importlib.metadata import version as distribution_version
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 import simspace as ss
 
-SIMSPACE_EXPECTED_VERSION = "0.4.1"
-if ss.__version__ != SIMSPACE_EXPECTED_VERSION:
+SIMSPACE_EXPECTED_VERSION = "0.4.2"
+simspace_version = distribution_version("simspace")
+if simspace_version != SIMSPACE_EXPECTED_VERSION:
     raise RuntimeError(
         f"Figure 7 requires SimSpace {SIMSPACE_EXPECTED_VERSION}; "
-        f"found {ss.__version__} at {ss.__file__}."
+        f"found distribution {simspace_version} at {ss.__file__}."
     )
 
 Marker_list = [

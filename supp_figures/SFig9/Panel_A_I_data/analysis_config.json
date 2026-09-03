@@ -4,8 +4,8 @@
   "spatial_fit_reused": false,
   "spatial_fit_design": "ten independently fitted parameter sets archived for optimizer seeds 0--9; this script consumes rather than reruns calibration",
   "held_out_data": false,
-  "simspace_version": "0.4.0",
-  "simspace_source_commit": "9889513c0eccd254544a12347c48c0b846e281ba",
+  "simspace_version": "0.4.2",
+  "simspace_source_commit": "747bb234020f807c8fd9963310cd687dd70f1925",
   "optimizer_seeds": [
     0,
     1,

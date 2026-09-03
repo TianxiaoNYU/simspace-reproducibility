@@ -40,9 +40,9 @@ with another simulator or a published domain-identification method.
 
 ## Fast figure regeneration
 
-The archived run uses SimSpace 0.4.0. From the reproducibility repository
-root, the normal entry point reads the archived ten-seed outputs and
-regenerates only the figure:
+The workflow uses SimSpace 0.4.2. From the reproducibility repository root, the
+normal entry point reads the regenerated ten-seed outputs and redraws only the
+figure:
 
 ```bash
 conda activate simspace-repro

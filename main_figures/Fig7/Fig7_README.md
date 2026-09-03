@@ -5,18 +5,18 @@ multi-panel manuscript figure is assembled manually from these outputs.
 
 ## Environment
 
-Figure 7 requires SimSpace 0.4.1 because this version adds continuous-intensity
-support to the scDesign3 adapter. After the release is available, install the
-exact version in the reproducibility environment:
+Figure 7 is reproduced with SimSpace 0.4.2, which provides the
+continuous-intensity support used by the scDesign3 adapter. Create or activate
+the repository environment and verify the installed distribution:
 
 ```bash
+conda env create -f environment.yml
 conda activate simspace-repro
-python -m pip install simspace==0.4.1
-python -c "import simspace; print(simspace.__version__, simspace.__file__)"
+python -c "from importlib.metadata import version; print(version('simspace'))"
 ```
 
-The script checks the imported SimSpace version before running. The local R
-environment must contain the scDesign3 dependencies described in the main
+The figure's version guard uses the installed distribution metadata. The local
+R environment must contain the scDesign3 dependencies described in the main
 reproducibility README.
 
 ## Run

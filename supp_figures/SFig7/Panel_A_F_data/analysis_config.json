@@ -248,6 +248,6 @@
     "ligand_receptor_ratio": 0.0,
     "direct_spatial_effect": false
   },
-  "simspace_version": "0.3.4",
-  "simspace_source_commit": "de0a4c002e4ae733e354e3e180ab69b381ad994a"
+  "simspace_version": "0.4.2",
+  "simspace_source_commit": "747bb234020f807c8fd9963310cd687dd70f1925"
 }

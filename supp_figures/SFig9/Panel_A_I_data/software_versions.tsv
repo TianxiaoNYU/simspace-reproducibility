@@ -6,4 +6,4 @@ scipy	1.16.2
 matplotlib	3.10.8
 seaborn	0.13.2
 scikit-learn	1.8.0
-simspace	0.4.0; source commit 9889513c0eccd254544a12347c48c0b846e281ba
+simspace	0.4.2; source commit 747bb234020f807c8fd9963310cd687dd70f1925

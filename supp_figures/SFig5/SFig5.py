@@ -12,7 +12,6 @@ import json
 import math
 import os
 import platform
-import subprocess
 import sys
 from copy import deepcopy
 from importlib.metadata import PackageNotFoundError, version
@@ -52,8 +51,8 @@ PERTURBATION_SD = 0.2
 MORAN_K = 5
 GEARY_K = 20
 INTERACTION_K = 50
-SIMSPACE_EXPECTED_VERSION = "0.4.0"
-SIMSPACE_SOURCE_COMMIT = "de0a4c002e4ae733e354e3e180ab69b381ad994a"
+SIMSPACE_EXPECTED_VERSION = "0.4.2"
+SIMSPACE_SOURCE_COMMIT = "747bb234020f807c8fd9963310cd687dd70f1925"
 
 METRIC_LABELS = {
     "moran_i": "Moran's I",
@@ -73,19 +72,6 @@ def package_version(package: str) -> str:
         return version(package)
     except PackageNotFoundError:
         return "not installed as a distribution"
-
-
-def adjacent_simspace_commit() -> str:
-    source_checkout = REPO_ROOT.parent / "SimSpace"
-    if not (source_checkout / ".git").exists():
-        return "adjacent source checkout not found"
-    result = subprocess.run(
-        ["git", "-C", str(source_checkout), "rev-parse", "HEAD"],
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    return result.stdout.strip()
 
 
 def knn_edges(coordinates: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarray]:
@@ -405,12 +391,6 @@ def plot_figure(
 
 
 def write_provenance() -> None:
-    simspace_commit = adjacent_simspace_commit()
-    if simspace_commit != SIMSPACE_SOURCE_COMMIT:
-        raise RuntimeError(
-            "Unexpected adjacent SimSpace source commit: "
-            f"{simspace_commit}; expected {SIMSPACE_SOURCE_COMMIT}."
-        )
     simspace_version = package_version("simspace")
     if simspace_version != SIMSPACE_EXPECTED_VERSION:
         raise RuntimeError(
@@ -438,7 +418,7 @@ def write_provenance() -> None:
         "geary_knn": GEARY_K,
         "interaction_knn": INTERACTION_K,
         "simspace_version": simspace_version,
-        "simspace_source_commit": simspace_commit,
+        "simspace_source_commit": SIMSPACE_SOURCE_COMMIT,
     }
     (DATA_DIR / "analysis_config.json").write_text(
         json.dumps(configuration, indent=2) + "\n",

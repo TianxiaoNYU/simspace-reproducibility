@@ -26,7 +26,8 @@ than independent biological replicates.
 
 ## Run
 
-The frozen run uses SimSpace 0.4.0. From the reproducibility repository root:
+This workflow uses SimSpace 0.4.2 for both data regeneration and figure
+rendering. From the reproducibility repository root:
 
 ```bash
 conda activate simspace-repro

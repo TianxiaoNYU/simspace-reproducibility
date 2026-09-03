@@ -54,8 +54,8 @@ spatial diagnostic.
 
 ## Regeneration
 
-Use the repository environment and SimSpace 0.4.0 (source tag commit
-`9889513c0eccd254544a12347c48c0b846e281ba`). From the reproducibility
+The analysis is regenerated with SimSpace 0.4.2 (source tag commit
+`747bb234020f807c8fd9963310cd687dd70f1925`). From the reproducibility
 repository root:
 
 ```bash

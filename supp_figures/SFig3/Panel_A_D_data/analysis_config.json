@@ -1,13 +1,13 @@
 {
   "analysis": "Supplementary Figure 3 finite-basis fixed spatial effects and observation layers",
-  "analysis_script_sha256": "582e509ed0866fe5a375e5a0f58b37bd9d7b4f71a99e43045c2ef7fa6d97d19b",
+  "analysis_script_sha256": "4b67dfe52c5a4d8f410a457ba66dc65b9341f219112fa28f77cc9c0e2bf70a07",
   "reviewer_comments": [
     "R2-M1",
     "R2-m5"
   ],
   "related_comment": "R2-M3",
-  "simspace_expected_version": "0.4.1",
-  "simspace_runtime_version": "0.4.1",
+  "simspace_expected_version": "0.4.2",
+  "simspace_runtime_version": "0.4.2",
   "simspace_effective_distribution_version": "0.4.2",
   "simspace_distributions_visible_at_run": [
     {
@@ -26,7 +26,7 @@
     "tests/test_omics.py": "5c4762b14958c6a3f076d8689a105fb72f01d052bd7f841dac3e04c1d4bce8f8"
   },
   "python": "3.11.9 | packaged by conda-forge | (main, Apr 19 2024, 18:34:54) [Clang 16.0.6 ]",
-  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
   "software": {
     "numpy": "2.3.3",
     "pandas": "3.0.0",

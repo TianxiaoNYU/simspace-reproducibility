@@ -24,14 +24,19 @@ git clone https://github.com/TianxiaoNYU/simspace-reproducibility.git
 ```bash
 conda env create -f environment.yml
 conda activate simspace-repro
-pip install simspace==0.4.0
+python -c "from importlib.metadata import version; print(version('simspace'))"
 ```
 
-The archived workflows use SimSpace 0.4.0 unless a figure-specific README
-states otherwise. Figure 7 requires SimSpace 0.4.1 for continuous CODEX marker
-intensities; install that version before running `main_figures/Fig7/Fig7.py`,
-then reinstall 0.4.0 for supplementary scripts that enforce the archived
-version.
+The default environment pins SimSpace **0.4.2**.
+Use `importlib.metadata.version("simspace")`, as above, to verify the installed
+distribution.
+
+### SimSpace version policy
+
+Every main and supplementary figure is reproduced and checked with **SimSpace
+0.4.2**. Figure-level version guards and generated run metadata verify the
+installed distribution version. The corresponding tagged source commit is
+`747bb234020f807c8fd9963310cd687dd70f1925` (`v0.4.2`).
 
 ### 2) Setting Up the R Environment for Omics Simulation
 

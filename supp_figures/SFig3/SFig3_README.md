@@ -32,8 +32,8 @@ is phenotype \(k\)'s deviation from that surface. Thus phenotype 0 has surface
 \(\eta_{g0}+\eta_{gk}\). The reference interaction is zero for
 identifiability. The native library-size factor is one. This is implemented
 with the API key `overall_coefficients`, nested gene-to-state
-`cell_type_coefficients`, and `reference_state=0`; the historical
-`coefficients` key remains an alias for the base/reference surface in SimSpace.
+`cell_type_coefficients`, and `reference_state=0`; the compatibility
+`coefficients` key is an alias for the base/reference surface in SimSpace.
 
 The validation asks whether the configured base/reference and cell-type-specific
 coefficient blocks can be recovered from counts without supplying the generated
@@ -41,13 +41,14 @@ phenotype means as an oracle offset, whether likelihood-ratio tests have useful
 power and appropriate null rejection rates at unadjusted per-gene
 \(\alpha=0.05\), whether observation parameters control
 their declared quantities, and whether omitted or zero-valued options preserve
-historical output exactly.
+the baseline output exactly.
 
 ## Frozen simulation design
 
-- SimSpace runtime API: local version 0.4.1 loaded from the adjacent source
-  checkout; the exact base commit, dirty-worktree flag, import path, and SHA-256
-  hashes of relevant source files are written to `analysis_config.json`.
+- SimSpace distribution: 0.4.2, from source commit
+  `747bb234020f807c8fd9963310cd687dd70f1925`. The distribution version, import
+  path, and SHA-256 hashes of relevant source files are written to
+  `analysis_config.json`.
 - Seeds: 0–19; the simulation seed is the independent statistical unit.
 - Layout: 50 × 50 reference-free lattice, four phenotypes, one fixed MRF
   affinity matrix, three Gibbs sweeps, 0.65 uniform retention (approximately
@@ -162,12 +163,12 @@ selection does not enter the coefficient-recovery or likelihood-ratio summaries.
 
 ## Run
 
-From the reproducibility-repository root, load the adjacent revised SimSpace
-source explicitly:
+From the reproducibility-repository root, use the default environment, which
+installs SimSpace 0.4.2:
 
 ```bash
 conda activate simspace-repro
-PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py
+python supp_figures/SFig3/SFig3.py
 ```
 
 With no flag, the command reruns the complete 20-seed analysis, evaluates all
@@ -175,17 +176,12 @@ acceptance checks, writes the data, and renders the figure. To redraw the
 figure from archived tables without rerunning simulations:
 
 ```bash
-PYTHONPATH=../SimSpace python supp_figures/SFig3/SFig3.py --render-only
+python supp_figures/SFig3/SFig3.py --render-only
 ```
 
-The runtime version and import path—not only installed distribution
-metadata—are checked and recorded. This permits an adjacent dirty source
-checkout to be used transparently while preserving exact provenance. In the
-archived run, the effective `PYTHONPATH` exposed the adjacent 0.4.1 egg metadata
-first, while the base `simspace-repro` environment still contained a 0.4.0
-wheel; both distribution versions and metadata paths are recorded. Reproduction
-therefore requires the documented `PYTHONPATH=../SimSpace` command unless the
-environment is upgraded or editable-installed at 0.4.1.
+The installed distribution version is the authoritative release check. The
+import path, adjacent source state, and source hashes are also retained for
+reproducibility.
 
 ## Outputs
 

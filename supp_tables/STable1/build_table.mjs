@@ -212,7 +212,7 @@ legend.getRange("A12:B17").values = [
   ["Cell-cell interaction scope", "Distinguishes planted ligand–receptor/pairwise effects from an explicit receptor-to-downstream-target cascade."],
   ["Truth exports", "Planted latent variables that can be consumed independently by downstream methods."],
   ["Evidence traceability", "Evidence IDs in StTable1 map to versioned primary sources or inspected source code on the Evidence sheet."],
-  ["SimSpace release scope", "The SimSpace row audits v0.4.0, which adds a headless CLI and stable CLI outputs without changing the production simulation functions."],
+  ["SimSpace release scope", "The SimSpace row audits v0.4.2, the release used throughout the finalized reproducibility repository."],
 ];
 styleBody(legend, "A12:B17");
 legend.getRange("A12:A17").format = {
