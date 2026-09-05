@@ -50,8 +50,8 @@ SHAPE = (50, 50, 20)
 N_NICHES = 3
 N_STATES = 6
 N_GENES = 36
-NICHE_SWEEPS = 10
-PHENOTYPE_SWEEPS = 4
+NICHE_SWEEPS = 4
+PHENOTYPE_SWEEPS = 5
 PHI = 5.0
 DENSITY_RETENTION = 0.85
 PERTURBATION_SD = 0.40
@@ -143,7 +143,7 @@ def simulate(seed: int) -> ss.SimSpace:
     simulation = ss.SimSpace(
         shape=SHAPE,
         num_states=N_STATES,
-        num_iterations=PHENOTYPE_SWEEPS,
+        num_iterations=4,
         theta=theta_list,
         phi=PHI,
         neighborhood=list(SIX_CONNECTED_NEIGHBORHOOD),
@@ -152,7 +152,7 @@ def simulate(seed: int) -> ss.SimSpace:
     simulation.initialize3D()
     simulation.create_niche3D(
         num_niches=N_NICHES,
-        n_iter=NICHE_SWEEPS,
+        n_iter=10,
         theta_niche=niche_theta,
         neighborhood=list(SIX_CONNECTED_NEIGHBORHOOD),
     )
